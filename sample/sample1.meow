@@ -1,0 +1,146 @@
+//class delc
+class Mo{
+	int ang;
+	int sec;
+	string world;
+}
+
+class RedBoy{
+	int num;
+}
+
+//global delc
+int age = 1000000;
+string eng = "Four score and seven years ago";
+
+
+//function delc
+int travel(){
+	int a = 10000000;
+	return a;
+}
+void print_int(int x) {
+    int y,z = y;
+    return;
+}
+void print_string (string s){
+    return;
+}
+void journalists(string location){
+	if (location == "HongKong"){
+		print_string("naive!\n");
+		print_string("fast!\n");
+		print_string("too young\\too simple.");
+	}
+}
+
+Mo xu(Mo m0, RedBoy boys){
+	int i;
+	for (i = 0; i < boys.num; ++i){
+		m0.sec++;
+	}
+	return m0;
+}
+
+int main(){
+	//test initialization
+	int a;
+	int b;
+	int c;
+	int year = 2016;
+	string tell = "wukefengggao\n";;
+	string tellno = tell;
+	bool zici = true;
+	bool nozici = false;
+	RedBoy boy = new RedBoy;//default initializer is "()"-free
+	RedBoy[] boys = new RedBoy[3];
+	RedBoy[][][] boyss = new RedBoy[1][2][3];
+	Mo haha = new Mo;
+
+	//test for constant
+	false;
+	true;
+	null;
+	123;
+	"Four score and seven years ago\n\\\"";
+
+	//test for opeartion
+	a = 1;
+	b = 2;
+	a = b = c;//be aware of the right association
+
+	a + b;
+	a - b;
+	a * b;
+	a / b;
+	a % b;
+
+	a < 1;
+	a > 2;
+	a == b;
+	a != b;
+	a <= b;
+	a >= b;
+
+	zici && nozici;
+	true || false;
+	!a;
+
+	a << 1;
+	a >> 2;
+	~a;
+	a | b;
+	a ^ b;
+	a & b;
+
+	++a;
+	b++;
+	(++a)++;
+
+	boy.num;
+
+	boys[2].num;
+	boyss[1][2][3].num;
+
+	xu(new Mo, boy);
+    int i = 0;
+	//test for iteration
+	for (i = 0; i < 3; ++i){
+		xu(haha, boys[i]);
+	}
+
+	for (i = 0; i < 3; ++i) xu(haha, boys[i]);
+	for (;;);
+	i = 0;
+	while(i < year) print_int(i);
+	while(i == 10) ;
+
+	//test for if
+	if (i < year){
+		print_int(travel());
+	}
+	else{
+		print_string("naive!\n");
+	}
+
+	if (i < year) print_int(travel());
+	else if (i == year) print_string("naive!\n");
+	else print_string("too young!\\");
+
+	i = 0;
+	while(true){
+		if (i == year) break;
+		++i;
+	}
+
+	i = 0;
+	while(i == 0){
+		if (i < year) {
+			++i;
+			continue;
+		}
+		break;
+	}
+
+	return 0;
+}

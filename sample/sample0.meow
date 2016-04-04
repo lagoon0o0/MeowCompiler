@@ -1,0 +1,14 @@
+
+
+class RedBoy{
+	int num;
+}
+
+
+int main(){
+	RedBoy boy = new RedBoy;//default initializer is "()"-free
+
+	boy.num;
+
+	return 0;
+}
