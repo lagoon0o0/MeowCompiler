@@ -1,4 +1,4 @@
-// Generated from /Users/lagoon0o0/Documents/Compiler/Meow/src/FrontEnd/Meow.g4 by ANTLR 4.5.1
+// Generated from /Users/lagoon0o0/Documents/Compiler/MeowCompiler/src/FrontEnd/Meow.g4 by ANTLR 4.5.1
 package FrontEnd.CstListenerAndVisitor;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -886,18 +886,6 @@ public interface MeowListener extends ParseTreeListener {
 	 */
 	void exitProgram(MeowParser.ProgramContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code translationUnitsCur}
-	 * labeled alternative in {@link MeowParser#translationUnits}.
-	 * @param ctx the parse tree
-	 */
-	void enterTranslationUnitsCur(MeowParser.TranslationUnitsCurContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code translationUnitsCur}
-	 * labeled alternative in {@link MeowParser#translationUnits}.
-	 * @param ctx the parse tree
-	 */
-	void exitTranslationUnitsCur(MeowParser.TranslationUnitsCurContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code translationUnitPre}
 	 * labeled alternative in {@link MeowParser#translationUnits}.
 	 * @param ctx the parse tree
@@ -909,6 +897,18 @@ public interface MeowListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTranslationUnitPre(MeowParser.TranslationUnitPreContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code translationUnitsCur}
+	 * labeled alternative in {@link MeowParser#translationUnits}.
+	 * @param ctx the parse tree
+	 */
+	void enterTranslationUnitsCur(MeowParser.TranslationUnitsCurContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code translationUnitsCur}
+	 * labeled alternative in {@link MeowParser#translationUnits}.
+	 * @param ctx the parse tree
+	 */
+	void exitTranslationUnitsCur(MeowParser.TranslationUnitsCurContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code translationUnitClassDeclaration}
 	 * labeled alternative in {@link MeowParser#translationUnit}.

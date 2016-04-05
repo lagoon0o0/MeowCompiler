@@ -1,4 +1,4 @@
-// Generated from /Users/lagoon0o0/Documents/Compiler/Meow/src/FrontEnd/Meow.g4 by ANTLR 4.5.1
+// Generated from /Users/lagoon0o0/Documents/Compiler/MeowCompiler/src/FrontEnd/Meow.g4 by ANTLR 4.5.1
 package FrontEnd.CstListenerAndVisitor;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -524,19 +524,19 @@ public interface MeowVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(MeowParser.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code translationUnitsCur}
-	 * labeled alternative in {@link MeowParser#translationUnits}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTranslationUnitsCur(MeowParser.TranslationUnitsCurContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code translationUnitPre}
 	 * labeled alternative in {@link MeowParser#translationUnits}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitTranslationUnitPre(MeowParser.TranslationUnitPreContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code translationUnitsCur}
+	 * labeled alternative in {@link MeowParser#translationUnits}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTranslationUnitsCur(MeowParser.TranslationUnitsCurContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code translationUnitClassDeclaration}
 	 * labeled alternative in {@link MeowParser#translationUnit}.

@@ -1,4 +1,4 @@
-// Generated from /Users/lagoon0o0/Documents/Compiler/Meow/src/FrontEnd/Meow.g4 by ANTLR 4.5.1
+// Generated from /Users/lagoon0o0/Documents/Compiler/MeowCompiler/src/FrontEnd/Meow.g4 by ANTLR 4.5.1
 package FrontEnd.CstListenerAndVisitor;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

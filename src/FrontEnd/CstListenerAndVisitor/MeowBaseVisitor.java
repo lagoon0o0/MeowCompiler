@@ -1,4 +1,4 @@
-// Generated from /Users/lagoon0o0/Documents/Compiler/Meow/src/FrontEnd/Meow.g4 by ANTLR 4.5.1
+// Generated from /Users/lagoon0o0/Documents/Compiler/MeowCompiler/src/FrontEnd/Meow.g4 by ANTLR 4.5.1
 package FrontEnd.CstListenerAndVisitor;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -535,14 +535,14 @@ public class MeowBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements M
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTranslationUnitsCur(MeowParser.TranslationUnitsCurContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTranslationUnitPre(MeowParser.TranslationUnitPreContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTranslationUnitPre(MeowParser.TranslationUnitPreContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTranslationUnitsCur(MeowParser.TranslationUnitsCurContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
