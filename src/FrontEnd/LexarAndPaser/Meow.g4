@@ -24,6 +24,8 @@ unaryExpression
     | '--' unaryExpression          #unaryExpressionMinusMinus
     | '!' unaryExpression           #unaryExpressionNot
     | '~' unaryExpression           #unaryExpressionTilde
+    | '+' unaryExpression           #unaryExpressionPlus
+    | '-' unaryExpression           #unaryExpressionMinus
     ;
 castExpression
     : unaryExpression                   #castExpressionPre
@@ -105,7 +107,7 @@ creator
 typeName
     : primitiveType                     #typeNameprimitiveType
     | Identifier                        #typeNameIdentifier
-    | typeName '[' ']'              #typeNameArray
+    | typeName '[' ']'                  #typeNameArray
     ;
 
 primitiveType
@@ -139,7 +141,7 @@ program
     : translationUnits? EOF
     ;
 translationUnits
-    : translationUnit translationUnits  #translationUnitsCur
+    : translationUnits  translationUnit #translationUnitsCur
     | translationUnit                   #translationUnitPre
     ;
 translationUnit
