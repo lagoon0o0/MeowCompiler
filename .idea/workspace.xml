@@ -3,25 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4407b6ff-3995-47ae-88ad-41ee71786462" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compiler2016-testcases" afterPath="$PROJECT_DIR$/compiler2016-testcases" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MeowCompiler.iml" afterPath="$PROJECT_DIR$/MeowCompiler.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/sample0.meow" afterPath="$PROJECT_DIR$/sample/sample0.meow" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/sample1.meow" afterPath="$PROJECT_DIR$/sample/sample1.meow" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/TranslationUnit/FunctionDeclaration.java" afterPath="$PROJECT_DIR$/src/AST/TranslationUnit/FunctionDeclaration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/CstListenerAndVisitor/MeowASTListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/CstListenerAndVisitor/MeowASTListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/CompilationError.java" afterPath="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/CompilationError.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase1.java" afterPath="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase2.java" afterPath="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase3.java" afterPath="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/ArrayType.java" afterPath="$PROJECT_DIR$/src/SymbolTable/ArrayType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/BaseScope.java" afterPath="$PROJECT_DIR$/src/SymbolTable/BaseScope.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/FunctionSymbol.java" afterPath="$PROJECT_DIR$/src/SymbolTable/FunctionSymbol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/PrimitiveType.java" afterPath="$PROJECT_DIR$/src/SymbolTable/PrimitiveType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/SymbolTable.java" afterPath="$PROJECT_DIR$/src/SymbolTable/SymbolTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/SemanticCheckerTest.java" afterPath="$PROJECT_DIR$/test/SemanticCheckerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MeowCompiler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,8 +42,8 @@
       <file leaf-file-name="Makefile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Makefile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="119">
+              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -82,16 +64,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
               <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="expr-5110309085-jintianxing.mx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/expr-5110309085-jintianxing.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="48" selection-start-line="0" selection-start-column="48" selection-end-line="0" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -153,9 +125,9 @@
         <option value="$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowVisitor.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/CstListenerAndVisitor/MeowASTListener.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/testing.sh" />
         <option value="$PROJECT_DIR$/src/midtermvars.sh" />
+        <option value="$PROJECT_DIR$/Makefile" />
       </list>
     </option>
   </component>
@@ -193,7 +165,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -219,6 +190,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -810,6 +782,7 @@
       <workItem from="1459950225971" duration="36000" />
       <workItem from="1459950275358" duration="420000" />
       <workItem from="1459958364298" duration="524000" />
+      <workItem from="1460013131399" duration="905000" />
     </task>
     <servers />
   </component>
@@ -846,7 +819,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37324000" />
+    <option name="totallyTimeSpent" value="38229000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -859,14 +832,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13168317" sideWeight="0.5021299" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13168317" sideWeight="0.5021299" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11386139" sideWeight="0.49574015" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -941,13 +914,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/var-4-5140309552-wancheng.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/var-4-5140309552-wancheng.mx" />
     <entry file="file://$PROJECT_DIR$/src/AST/TypeNode/FunctionTypeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1004,111 +971,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/asiop-2-5100379071-puyouer.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/biop-1-5100379071-puyouer.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/fldop-1-5120309049-liaochao.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/func-5-5100309127-hetianxing.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/func-2-5120309049-liaochao.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/basicopt1-5100309127-hetianxing.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/builtin-5140519064-youyurong.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/bulgarian-5110379024-wuhang.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/hanoi-5100379110-daibo.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/heapsort-5100379110-daibo.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="28" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse2-5100309153-yanghuan.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse3-5100309153-yanghuan.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/lvalue2-5110379024-wuhang.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/magic-5100309153-yanghuan.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="64" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/hashmap-5100309127-hetianxing.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/asiop-2-5100379071-puyouer.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/biop-1-5100379071-puyouer.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/fldop-1-5120309049-liaochao.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/func-5-5100309127-hetianxing.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/func-2-5120309049-liaochao.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/basicopt1-5100309127-hetianxing.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/builtin-5140519064-youyurong.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/bulgarian-5110379024-wuhang.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/hanoi-5100379110-daibo.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/heapsort-5100379110-daibo.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse2-5100309153-yanghuan.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse3-5100309153-yanghuan.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/lvalue2-5110379024-wuhang.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/magic-5100309153-yanghuan.mx" />
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/hashmap-5100309127-hetianxing.mx" />
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/SemanticChecker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1123,13 +1000,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse-5100309153-yanghuan.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse-5100309153-yanghuan.mx" />
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1155,19 +1026,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/sample0.meow">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/sample/sample0.meow" />
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowVisitor.java" />
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowLexer.tokens">
       <provider selected="true" editor-type-id="text-editor">
@@ -1177,13 +1039,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test.java" />
-    <entry file="file://$PROJECT_DIR$/gen/Meow.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/Meow.tokens" />
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1199,14 +1055,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/expr-5110309085-jintianxing.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="48" selection-start-line="0" selection-start-column="48" selection-end-line="0" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/expr-5110309085-jintianxing.mx" />
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/Meow.tokens">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1236,24 +1085,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gen/MeowListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="40" selection-start-line="1" selection-start-column="40" selection-end-line="1" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/MeowBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/MeowListener.java" />
+    <entry file="file://$PROJECT_DIR$/gen/MeowBaseListener.java" />
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/CstListenerAndVisitor/MeowASTListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing.sh" />
+    <entry file="file://$PROJECT_DIR$/midtermvars.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1269,26 +1115,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/midtermvars.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Makefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="119">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
           <folding />
         </state>
       </provider>
