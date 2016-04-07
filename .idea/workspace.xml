@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4407b6ff-3995-47ae-88ad-41ee71786462" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compiler2016-testcases" afterPath="$PROJECT_DIR$/compiler2016-testcases" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="4407b6ff-3995-47ae-88ad-41ee71786462" name="Default" comment="" />
     <ignored path="MeowCompiler.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -783,7 +780,7 @@
       <workItem from="1459950275358" duration="420000" />
       <workItem from="1459958364298" duration="524000" />
       <workItem from="1460013131399" duration="905000" />
-      <workItem from="1460014186825" duration="80000" />
+      <workItem from="1460014186825" duration="193000" />
     </task>
     <servers />
   </component>
@@ -820,7 +817,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38309000" />
+    <option name="totallyTimeSpent" value="38422000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
