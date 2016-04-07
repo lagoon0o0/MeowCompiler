@@ -24,7 +24,9 @@ public class Phase1 extends SemanticChecker {
     }
     @Override
     public void visit(ClassDeclaration ctx) {
-        symbolTable.getCurrentScope().define(ctx.symbol = new ClassSymbol(ctx.id,symbolTable.getCurrentScope()));
+        if(!symbolTable.getCurrentScope().define(ctx.symbol = new ClassSymbol(ctx.id,symbolTable.getCurrentScope()))) {
+            compilationError.add(ctx, "RedfineClass:" + ctx.id);
+        }
         ctx.scope = symbolTable.getCurrentScope();
     }
 }

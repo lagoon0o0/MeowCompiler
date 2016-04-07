@@ -54,7 +54,7 @@ int main(){
 	bool nozici = false;
 	RedBoy boy = new RedBoy;//default initializer is "()"-free
 	RedBoy[] boys = new RedBoy[3];
-	RedBoy[][][] boyss = new RedBoy[1][2][3];
+	RedBoy[][][] boyss = new RedBoy[1][2][];
 	Mo haha = new Mo;
 
 	//test for constant

@@ -1,6 +1,7 @@
 package AST.TranslationUnit;
 
 import AST.Statement.Block;
+import AST.Statement.Statement;
 import AST.TypeNode.TypeNode;
 import AST.Statement.VariableDeclarationStatement;
 import FrontEnd.VisitorAST.Visitor;
@@ -16,6 +17,7 @@ public class FunctionDeclaration extends TranslationUnit {
     public TypeNode typeNode;
     public String id;
     public List<VariableDeclarationStatement> argumentlist;
+    public List<Statement> bodyStatements;
     public Block body;
     public Scope scope;
     @Override

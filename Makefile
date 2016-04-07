@@ -1,0 +1,16 @@
+all: clean
+	@mkdir -p ./bin
+	@cd ./src/FrontEnd/LexarAndPaser && java -jar "../../../lib/antlr-4.5-complete.jar" -package FrontEnd.LexarAndPaser -Dlanguage=Java -listener -no-visitor -lib . Meow.g4
+	@cd ./src && javac -cp "../lib/antlr-4.5-complete.jar" \
+		./*/*/*/*.java \
+		./*/*/*.java \
+		./*/*.java \
+		./*.java \
+		-d ../bin
+	@cp ./lib/antlr-4.5-complete.jar ./bin
+	@cd ./bin && jar xf ./antlr-4.5-complete.jar\
+			 && rm -rf ./META-INF \
+			 && jar cef Main MeowCompiler.jar ./ \
+			 && rm -rf ./antlr-4.5-complete.jar ./AST ./FrontEnd Main.class ./SymbolTable ./org  ./st4hidden
+clean:
+	rm -rf ./bin

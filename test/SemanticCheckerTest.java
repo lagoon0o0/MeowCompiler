@@ -1,7 +1,5 @@
 import AST.AstNode;
 import FrontEnd.CstListenerAndVisitor.MeowASTListener;
-import FrontEnd.CstListenerAndVisitor.MeowLexer;
-import FrontEnd.CstListenerAndVisitor.MeowParser;
 import FrontEnd.SematicAnalysis.CompilationError;
 import FrontEnd.SematicAnalysis.Phase1;
 import FrontEnd.SematicAnalysis.Phase2;
@@ -38,9 +36,9 @@ public class SemanticCheckerTest {
                 params.add(new Object[] { "compiler2016-testcases/passed/" + f.getName(), true });
             }
         }
-        for (File f : new File("compiler2016-testcases/compile_error").listFiles()) {
+        for (File f : new File("compiler2016-testcases/compile_error/").listFiles()) {
             if (f.isFile() && f.getName().endsWith(".mx")) {
-                params.add(new Object[] { "compiler2016-testcases/compile_error" + f.getName(), false });
+                params.add(new Object[] { "compiler2016-testcases/compile_error/" + f.getName(), false });
             }
         }
         return params;
@@ -59,6 +57,7 @@ public class SemanticCheckerTest {
         System.out.println(filename);
 
         try {
+
             InputStream is = new FileInputStream(filename); // or System.in;
             ANTLRInputStream input = new ANTLRInputStream(is);
 
@@ -67,11 +66,11 @@ public class SemanticCheckerTest {
             MeowParser parser = new  MeowParser(tokens);
             ParseTree tree = parser.program(); // calc is the starting rule
 
-            System.out.println("LISP:");
-            System.out.println(tree.toStringTree(parser));
-            System.out.println();
+            //System.out.println("LISP:");
+            //System.out.println(tree.toStringTree(parser));
+            //System.out.println();
 
-            System.out.println("Listener:");
+            //System.out.println("Listener:");
             ParseTreeWalker walker = new ParseTreeWalker();
             MeowASTListener Listener = new MeowASTListener();
             walker.walk(Listener, tree);

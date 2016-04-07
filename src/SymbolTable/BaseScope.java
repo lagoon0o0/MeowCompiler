@@ -41,6 +41,9 @@ abstract public class BaseScope implements Scope{
     public boolean define(Symbol sym) {
         if(field.containsKey(sym.name))
             return false;
+        //Symbol symbol = resolve(sym.name);
+        //if(symbol != null && (symbol instanceof ClassSymbol || symbol instanceof FunctionSymbol))
+        //    return false;
         field.put(sym.name, sym);
         return true;
     }

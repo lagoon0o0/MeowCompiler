@@ -3,12 +3,12 @@ package SymbolTable;
 /**
  * Created by lagoon0o0 on 16/4/3.
  */
-public class PrimitiveType extends Symbol implements Type{
-    PrimitiveType(String name, Type type) {
-        super(name,type);
+public class PrimitiveType extends ScopedSymbol implements Type{
+    PrimitiveType(String name, Type type, Scope enclosingScope) {
+        super(name,type,enclosingScope);
     }
-    PrimitiveType(String name) {
-        super(name, null);
+    PrimitiveType(String name, Scope enclosingScope) {
+        super(name, null, enclosingScope);
         type = this;
     }
 

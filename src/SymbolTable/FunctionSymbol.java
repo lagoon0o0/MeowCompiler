@@ -10,11 +10,13 @@ import java.util.Map;
  */
 public class FunctionSymbol extends ScopedSymbol {
     public List<Type> argumentTypeList;
-    {
-        argumentTypeList = new ArrayList<>();
-    }
     public FunctionSymbol(String name, Type type, Scope enclosingScope) {
         super(name, type, enclosingScope);
+        argumentTypeList = new ArrayList<>();
+    }
+    public FunctionSymbol(String name, Type type, Scope enclosingScope, List<Type> anArgumentList) {
+        super(name, type, enclosingScope);
+        argumentTypeList = anArgumentList;
     }
     public void addArgument(Type type) {
         argumentTypeList.add(type);

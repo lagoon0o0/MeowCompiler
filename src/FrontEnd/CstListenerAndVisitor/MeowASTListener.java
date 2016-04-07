@@ -1,6 +1,7 @@
 package FrontEnd.CstListenerAndVisitor; /**
  * Created by lagoon0o0 on 16/3/30.
  */
+import FrontEnd.LexarAndPaser.*;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import AST.*;
 import AST.Expression.*;
@@ -12,7 +13,7 @@ import AST.TypeNode.*;
 
 import java.util.*;
 
-public class MeowASTListener extends MeowBaseListener{
+public class MeowASTListener extends MeowBaseListener {
     public ParseTreeProperty<Object> values = new ParseTreeProperty<>();
     public AstNode astRoot;
     //
@@ -79,10 +80,15 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitPostfixExpressionDot(MeowParser.PostfixExpressionDotContext ctx) {
-        MemberExpression cur = new MemberExpression();
-        values.put(ctx,cur);
-        cur.parent = (Expression) values.get(ctx.postfixExpression());
-        cur.child = ctx.Identifier().getText();
+        values.put(ctx,new MemberExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                parent = (Expression) values.get(ctx.postfixExpression());
+                child = ctx.Identifier().getText();
+            }
+        });
+
     }
 
     @Override
@@ -156,7 +162,7 @@ public class MeowASTListener extends MeowBaseListener{
             {
                 row = ctx.getStart().getLine();
                 column = ctx.getStart().getCharPositionInLine();
-                operator = UnaryExpression.Operator.LogicalNot;
+                operator = Operator.LogicalNot;
                 expression = (Expression) values.get(ctx.unaryExpression());
             }
 
@@ -169,7 +175,33 @@ public class MeowASTListener extends MeowBaseListener{
             {
                 row = ctx.getStart().getLine();
                 column = ctx.getStart().getCharPositionInLine();
-                operator = UnaryExpression.Operator.BitwiseNot;
+                operator = Operator.BitwiseNot;
+                expression = (Expression) values.get(ctx.unaryExpression());
+            }
+
+        });
+    }
+
+    @Override
+    public void exitUnaryExpressionMinus(MeowParser.UnaryExpressionMinusContext ctx) {
+        values.put(ctx, new UnaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = Operator.Minus;
+                expression = (Expression) values.get(ctx.unaryExpression());
+            }
+
+        });
+    }
+
+    @Override
+    public void exitUnaryExpressionPlus(MeowParser.UnaryExpressionPlusContext ctx) {
+        values.put(ctx, new UnaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = Operator.Plus;
                 expression = (Expression) values.get(ctx.unaryExpression());
             }
 
@@ -272,11 +304,16 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitShiftExpressionRightShift(MeowParser.ShiftExpressionRightShiftContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.RightShift;
-        cur.lhs = (Expression) values.get(ctx.shiftExpression());
-        cur.rhs = (Expression) values.get(ctx.addativeExpression());
+        values.put(ctx, new BinaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.RightShift;
+                lhs = (Expression) values.get(ctx.shiftExpression());
+                rhs = (Expression) values.get(ctx.addativeExpression());
+            }
+        });
+
     }
 
     @Override
@@ -286,38 +323,58 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitRelationalExpressionGreaterOrEqualThan(MeowParser.RelationalExpressionGreaterOrEqualThanContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.GreaterOrEqualThan;
-        cur.lhs = (Expression) values.get(ctx.relationalExpression());
-        cur.rhs = (Expression) values.get(ctx.shiftExpression());
+        values.put(ctx, new BinaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.GreaterOrEqualThan;
+                lhs = (Expression) values.get(ctx.relationalExpression());
+                rhs = (Expression) values.get(ctx.shiftExpression());
+            }
+        });
+
     }
 
     @Override
     public void exitRelationalExpressionGreaterThan(MeowParser.RelationalExpressionGreaterThanContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.GreaterThan;
-        cur.lhs = (Expression) values.get(ctx.relationalExpression());
-        cur.rhs = (Expression) values.get(ctx.shiftExpression());
+        values.put(ctx, new BinaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.GreaterThan;
+                lhs = (Expression) values.get(ctx.relationalExpression());
+                rhs = (Expression) values.get(ctx.shiftExpression());
+            }
+        });
+
     }
 
     @Override
     public void exitRelationalExpressionLessOrEqualThan(MeowParser.RelationalExpressionLessOrEqualThanContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.LessOrEqualThan;
-        cur.lhs = (Expression) values.get(ctx.relationalExpression());
-        cur.rhs = (Expression) values.get(ctx.shiftExpression());
-    }
+        values.put(ctx, new BinaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.LessOrEqualThan;
+                lhs = (Expression) values.get(ctx.relationalExpression());
+                rhs = (Expression) values.get(ctx.shiftExpression());
+            }
+        });
 
+    }
     @Override
     public void exitRelationalExpressionLessThan(MeowParser.RelationalExpressionLessThanContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.LessThan;
-        cur.lhs = (Expression) values.get(ctx.relationalExpression());
-        cur.rhs = (Expression) values.get(ctx.shiftExpression());
+
+        values.put(ctx, new BinaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.LessThan;
+                lhs = (Expression) values.get(ctx.relationalExpression());
+                rhs = (Expression) values.get(ctx.shiftExpression());
+            }
+        });
+
     }
 
     @Override
@@ -327,20 +384,31 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitEqualityExpressionEqual(MeowParser.EqualityExpressionEqualContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.Equal;
-        cur.lhs = (Expression) values.get(ctx.equalityExpression());
-        cur.rhs = (Expression) values.get(ctx.relationalExpression());
+
+        values.put(ctx, new BinaryExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.Equal;
+                lhs = (Expression) values.get(ctx.equalityExpression());
+                rhs = (Expression) values.get(ctx.relationalExpression());
+            }
+        });
+
     }
 
     @Override
     public void exitEqualityExpressionNotEqual(MeowParser.EqualityExpressionNotEqualContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.NotEqual;
-        cur.lhs = (Expression) values.get(ctx.equalityExpression());
-        cur.rhs = (Expression) values.get(ctx.relationalExpression());
+        values.put(ctx, new BinaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.NotEqual;
+                lhs = (Expression) values.get(ctx.equalityExpression());
+                rhs = (Expression) values.get(ctx.relationalExpression());
+            }
+        });
+
     }
 
     @Override
@@ -350,11 +418,16 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitAndExpressionAnd(MeowParser.AndExpressionAndContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.BitwiseAnd;
-        cur.lhs = (Expression) values.get(ctx.andExpression());
-        cur.rhs = (Expression) values.get(ctx.equalityExpression());
+        values.put(ctx, new BinaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.BitwiseAnd;
+                lhs = (Expression) values.get(ctx.andExpression());
+                rhs = (Expression) values.get(ctx.equalityExpression());
+            }
+        });
+
     }
 
     @Override
@@ -364,11 +437,16 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitXorExpressionXor(MeowParser.XorExpressionXorContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.BitwiseXor;
-        cur.lhs = (Expression) values.get(ctx.xorExpression());
-        cur.rhs = (Expression) values.get(ctx.andExpression());
+        values.put(ctx, new BinaryExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.BitwiseXor;
+                lhs = (Expression) values.get(ctx.xorExpression());
+                rhs = (Expression) values.get(ctx.andExpression());
+            }
+        });
+
     }
 
     @Override
@@ -378,11 +456,16 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitOrExpressionOr(MeowParser.OrExpressionOrContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.BitwiseOr;
-        cur.lhs = (Expression) values.get(ctx.orExpression());
-        cur.rhs = (Expression) values.get(ctx.xorExpression());
+        values.put(ctx, new BinaryExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.BitwiseOr;
+                lhs = (Expression) values.get(ctx.orExpression());
+                rhs = (Expression) values.get(ctx.xorExpression());
+            }
+        });
+
     }
 
     @Override
@@ -392,11 +475,16 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitLogicalAndExpressionAnd(MeowParser.LogicalAndExpressionAndContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.LogicalAnd;
-        cur.lhs = (Expression) values.get(ctx.logicalAndExpression());
-        cur.rhs = (Expression) values.get(ctx.orExpression());
+        values.put(ctx, new BinaryExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.LogicalAnd;
+                lhs = (Expression) values.get(ctx.logicalAndExpression());
+                rhs = (Expression) values.get(ctx.orExpression());
+            }
+        });
+
     }
 
     @Override
@@ -406,11 +494,15 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitLogicalOrExpressionOr(MeowParser.LogicalOrExpressionOrContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.LogicalOr;
-        cur.lhs = (Expression) values.get(ctx.logicalOrExpression());
-        cur.rhs = (Expression) values.get(ctx.logicalAndExpression());
+        values.put(ctx, new BinaryExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.LogicalOr;
+                lhs = (Expression) values.get(ctx.logicalAndExpression());
+                rhs = (Expression) values.get(ctx.logicalAndExpression());
+            }
+        });
     }
 
     @Override
@@ -425,11 +517,15 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitAssignmentExpressionAssgin(MeowParser.AssignmentExpressionAssginContext ctx) {
-        BinaryExpression cur = new BinaryExpression();
-        values.put(ctx, cur);
-        cur.operator = BinaryExpression.Operator.Assign;
-        cur.lhs = (Expression) values.get(ctx.unaryExpression());
-        cur.rhs = (Expression) values.get(ctx.assignmentExpression());
+        values.put(ctx, new BinaryExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                operator = BinaryExpression.Operator.Assign;
+                lhs = (Expression) values.get(ctx.unaryExpression());
+                rhs = (Expression) values.get(ctx.assignmentExpression());
+            }
+        });
     }
 
     @Override
@@ -439,49 +535,66 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitArgumentExpressionCur(MeowParser.ArgumentExpressionCurContext ctx) {
-        ArrayList<Expression> cur = (ArrayList<Expression>) values.get(ctx.argumentExpression());
+        List<Expression> cur = (ArrayList<Expression>) values.get(ctx.argumentExpression());
         values.put(ctx, cur);
         cur.add((Expression) values.get(ctx.assignmentExpression()));
     }
 
     @Override
     public void exitArgumentExpressionPre(MeowParser.ArgumentExpressionPreContext ctx) {
-        ArrayList<Expression> cur = new ArrayList<Expression>();
+        ArrayList<Expression> cur = new ArrayList<>();
         values.put(ctx, cur);
         cur.add((Expression) values.get(ctx.assignmentExpression()));
     }
 
     @Override
     public void exitExpressionPre(MeowParser.ExpressionPreContext ctx) {
-
         values.put(ctx, values.get(ctx.assignmentExpression()));
 
     }
 
     @Override
     public void exitCreatorPrimitiveType(MeowParser.CreatorPrimitiveTypeContext ctx) {
-        CreatorExpression cur = new CreatorExpression();
-        values.put(ctx, cur);
-        cur.typeNodeName = (TypeNode) values.get(ctx.primitiveType());
-        cur.dimensionSize = new ArrayList<>();
+        values.put(ctx, new CreatorExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                typeNodeName = (TypeNode) values.get(ctx.primitiveType());
+                dimensionSize = new ArrayList<>();
+            }
+        });
+
     }
 
     @Override
     public void exitCreatorIdentifier(MeowParser.CreatorIdentifierContext ctx) {
-        CreatorExpression cur = new CreatorExpression();
-        values.put(ctx, cur);
-        ClassTypeNode tmp = new ClassTypeNode();
-        tmp.typeName = ctx.Identifier().getText();
-        cur.typeNodeName = tmp;
-        cur.dimensionSize = new ArrayList<>();
+        values.put(ctx, new CreatorExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                typeNodeName = new ClassTypeNode() {
+                    {
+                        row = ctx.getStart().getLine();
+                        column = ctx.getStart().getCharPositionInLine();
+                        typeName = ctx.Identifier().getText();
+                    }
+                };
+                dimensionSize = new ArrayList<>();
+            }
+        });
+
     }
 
     @Override
     public void exitCreatorArray(MeowParser.CreatorArrayContext ctx) {
         CreatorExpression cur = (CreatorExpression) values.get(ctx.creator());
         values.put(ctx, cur);
+        cur.row = ctx.getStart().getLine();
+        cur.column = ctx.getStart().getCharPositionInLine();
         cur.typeNodeName = new ArrayTypeNode(){
             {
+                row = cur.typeNodeName.row;
+                column = cur.typeNodeName.column;
                 bodyTypeNode = cur.typeNodeName;
             }
         };
@@ -495,40 +608,64 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitTypeNameprimitiveType(MeowParser.TypeNameprimitiveTypeContext ctx) {
-        PrimitiveTypeNode cur = new PrimitiveTypeNode();
-        values.put(ctx, cur);
-        cur.typeName = ctx.primitiveType().getText();
+        values.put(ctx,  new PrimitiveTypeNode(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                typeName = ctx.primitiveType().getText();
+            }
+        });
     }
 
     @Override
     public void exitTypeNameIdentifier(MeowParser.TypeNameIdentifierContext ctx) {
-        ClassTypeNode cur = new ClassTypeNode();
-        values.put(ctx, cur);
-        cur.typeName = ctx.Identifier().getText();
+        values.put(ctx, new ClassTypeNode(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                typeName = ctx.Identifier().getText();
+            }
+        });
     }
 
     @Override
     public void exitTypeNameArray(MeowParser.TypeNameArrayContext ctx) {
-        ArrayTypeNode cur = new ArrayTypeNode();
-        values.put(ctx,cur);
-        cur.bodyTypeNode = (TypeNode) values.get(ctx.typeName());
+
+        values.put(ctx,new ArrayTypeNode() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                bodyTypeNode = (TypeNode) values.get(ctx.typeName());
+            }
+        });
     }
 
     @Override
     public void exitPrimitiveType(MeowParser.PrimitiveTypeContext ctx) {
-        PrimitiveTypeNode cur = new PrimitiveTypeNode();
-        values.put(ctx, cur);
-        cur.typeName = ctx.name.getText();
+
+        values.put(ctx, new PrimitiveTypeNode() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                typeName = ctx.name.getText();
+            }
+        });
     }
 
     @Override
     public void exitBlock(MeowParser.BlockContext ctx) {
-        Block cur = new Block();
-        values.put(ctx, cur);
-        if(ctx.blockStatements() != null)
-            cur.list = (List<Statement>) values.get(ctx.blockStatements());
-        else
-            cur.list = new ArrayList<>();
+
+        values.put(ctx, new Block() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                if(ctx.blockStatements() != null)
+                    list = (List<Statement>) values.get(ctx.blockStatements());
+                else
+                    list = new ArrayList<>();
+            }
+        });
+
     }
 
     @Override
@@ -570,72 +707,105 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitStatementBreak(MeowParser.StatementBreakContext ctx) {
-        BreakStatement cur = new BreakStatement();
-        values.put(ctx, cur);
+        values.put(ctx, new BreakStatement() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+            }
+        });
     }
 
     @Override
     public void exitStatementcontinue(MeowParser.StatementcontinueContext ctx) {
-        ContinueStatement cur = new ContinueStatement();
-        values.put(ctx, cur);
+        values.put(ctx, new ContinueStatement() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+            }
+        });
     }
 
     @Override
     public void exitStatementEmpty(MeowParser.StatementEmptyContext ctx) {
-        EmptyExpression cur = new EmptyExpression();
-        values.put(ctx, cur);
+        values.put(ctx, new EmptyExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+            }
+        });
     }
 
     @Override
     public void exitStatementFor(MeowParser.StatementForContext ctx) {
-        ForStatement cur = new ForStatement();
-        values.put(ctx, cur);
-        if(ctx.forInit != null) {
-            cur.init = (Expression) values.get(ctx.forInit);
-        } else {
-            cur.init = new EmptyExpression();
-        }
-        if(ctx.forCondition != null) {
-            cur.condition = (Expression) values.get(ctx.forCondition);
-        } else {
-            cur.condition = new EmptyExpression();
-        }
-        if(ctx.forUpdate != null) {
-            cur.update = (Expression) values.get(ctx.forUpdate);
-        } else {
-            cur.update = new EmptyExpression();
-        }
-        cur.body = (Statement) values.get(ctx.statement());
+        values.put(ctx, new ForStatement() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                if(ctx.forInit != null) {
+                    init = (Expression) values.get(ctx.forInit);
+                } else {
+                    init = new EmptyExpression();
+                }
+                if(ctx.forCondition != null) {
+                    condition = (Expression) values.get(ctx.forCondition);
+                } else {
+                    condition = new EmptyExpression();
+                }
+                if(ctx.forUpdate != null) {
+                    update = (Expression) values.get(ctx.forUpdate);
+                } else {
+                    update = new EmptyExpression();
+                }
+                body = (Statement) values.get(ctx.statement());
+            }
+
+        });
+
     }
 
     @Override
     public void exitStatementIfElse(MeowParser.StatementIfElseContext ctx) {
-        IfStatement cur = new IfStatement();
-        values.put(ctx, cur);
-        cur.condition = (Expression) values.get(ctx.expression());
-        cur.bodyThen = (Statement) values.get(ctx.bodyThen);
-        if(ctx.bodyElse != null)
-            cur.bodyElse = (Statement) values.get(ctx.bodyElse);
-        else
-            cur.bodyElse = new EmptyExpression();
+        values.put(ctx, new IfStatement() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                condition = (Expression) values.get(ctx.expression());
+                bodyThen = (Statement) values.get(ctx.bodyThen);
+                if(ctx.bodyElse != null)
+                    bodyElse = (Statement) values.get(ctx.bodyElse);
+                else
+                    bodyElse = new EmptyExpression();
+            }
+        });
+
     }
 
     @Override
     public void exitStatementReturn(MeowParser.StatementReturnContext ctx) {
-        ReturnStatement cur = new ReturnStatement();
-        values.put(ctx, cur);
-        if(ctx.expression() != null)
-            cur.value = (Expression) values.get(ctx.expression());
-        else
-            cur.value = new EmptyExpression();
+        values.put(ctx, new ReturnStatement() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                if(ctx.expression() != null)
+                    value = (Expression) values.get(ctx.expression());
+                else
+                    value = new EmptyExpression();
+            }
+        });
+
     }
 
     @Override
     public void exitStatementWhile(MeowParser.StatementWhileContext ctx) {
-        WhileStatement cur = new WhileStatement();
-        values.put(ctx, cur);
-        cur.condition = (Expression) values.get(ctx.expression());
-        cur.body = (Statement) values.get(ctx.statement());
+        values.put(ctx, new WhileStatement() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                condition = (Expression) values.get(ctx.expression());
+                body = (Statement) values.get(ctx.statement());
+            }
+        });
+
     }
 
     @Override
@@ -645,16 +815,18 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitProgram(MeowParser.ProgramContext ctx) {
-        Program cur = new Program();
-        values.put(ctx, cur);
-        astRoot = cur;
-
-        if(ctx.translationUnits() != null) {
-            cur.list = (ArrayList<TranslationUnit>) values.get(ctx.translationUnits());
-        } else {
-            cur.list = new ArrayList<>();
-        }
-
+        values.put(ctx, new Program() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                if(ctx.translationUnits() != null) {
+                    list = (ArrayList<TranslationUnit>) values.get(ctx.translationUnits());
+                } else {
+                    list = new ArrayList<>();
+                }
+            }
+        });
+        astRoot = (AstNode) values.get(ctx);
     }
 
     @Override
@@ -698,17 +870,21 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitClassDeclaration(MeowParser.ClassDeclarationContext ctx) {
-        ClassDeclaration cur = new ClassDeclaration();
-        values.put(ctx, cur);
-        cur.id = ctx.Identifier().getText();
-        cur.fieldList = (ArrayList<VariableDeclarationStatement>) values.get(ctx.classBody());
+        values.put(ctx, new ClassDeclaration() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                id = ctx.Identifier().getText();
+                fieldList = (ArrayList<VariableDeclarationStatement>) values.get(ctx.classBody());
+            }
+
+        });
     }
 
     @Override
     public void exitClassBody(MeowParser.ClassBodyContext ctx) {
         List<VariableDeclarationStatement> cur = new ArrayList<>();
         values.put(ctx, cur);
-
         ctx.classBodyDeclaration().stream().map(values::get).forEachOrdered(x -> cur.addAll((List<VariableDeclarationStatement>)x));
     }
     @Override
@@ -749,24 +925,31 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitVariableDeclaratorID(MeowParser.VariableDeclaratorIDContext ctx) {
-        VariableDeclarationStatement cur = new VariableDeclarationStatement();
-        values.put(ctx, cur);
-        cur.declaration.id = ctx.Identifier().getText();
-
-
+        values.put(ctx, new VariableDeclarationStatement(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                declaration.id = ctx.Identifier().getText();
+            }
+        });
     }
 
     @Override
     public void exitFunctionDeclaration(MeowParser.FunctionDeclarationContext ctx) {
-        FunctionDeclaration cur = new FunctionDeclaration();
-        values.put(ctx, cur);
-        cur.typeNode = (TypeNode) values.get(ctx.typeName());
-        cur.id = ctx.Identifier().getText();
-        if(values.get(ctx.formalParameters()) != null)
-            cur.argumentlist = (List<VariableDeclarationStatement>) values.get(ctx.formalParameters());
-        else
-            cur.argumentlist = new ArrayList<>();
-        cur.body = (Block) values.get(ctx.block());
+        values.put(ctx, new FunctionDeclaration() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                typeNode = (TypeNode) values.get(ctx.typeName());
+                id = ctx.Identifier().getText();
+                if(values.get(ctx.formalParameters()) != null)
+                    argumentlist = (List<VariableDeclarationStatement>) values.get(ctx.formalParameters());
+                else
+                    argumentlist = new ArrayList<>();
+                body = (Block) values.get(ctx.block());
+                bodyStatements = body.list;
+            }
+        });
     }
 
     @Override
@@ -787,7 +970,12 @@ public class MeowASTListener extends MeowBaseListener{
     public void exitFormalParameter(MeowParser.FormalParameterContext ctx) {
         VariableDeclarationStatement cur = (VariableDeclarationStatement) values.get(ctx.variableDeclaratorID());
         values.put(ctx, cur);
-        cur.declaration.initValue = new EmptyExpression();
+        cur.declaration.initValue = new EmptyExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+            }
+        };
         cur.declaration.typeNode = (TypeNode) values.get(ctx.typeName());
     }
 
@@ -816,7 +1004,6 @@ public class MeowASTListener extends MeowBaseListener{
 
         VariableDeclarationStatement cur = (VariableDeclarationStatement) values.get(ctx.variableDeclaratorID());
         values.put(ctx, cur);
-
         if(ctx.expression() != null) {
             cur.declaration.initValue = (Expression) values.get(ctx.expression());
         } else {
@@ -827,25 +1014,41 @@ public class MeowASTListener extends MeowBaseListener{
 
     @Override
     public void exitConstantBooleanConstant(MeowParser.ConstantBooleanConstantContext ctx) {
-        BoolExpression cur = new BoolExpression();
-        values.put(ctx, cur);
-        if(ctx.BooleanConstant().getText().equals("true")) {
-            cur.value = true;
-        } else {
-            cur.value = false;
-        }
+        values.put(ctx, new BoolExpression(){
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                if(ctx.BooleanConstant().getText().equals("true")) {
+                    value = true;
+                } else {
+                    value = false;
+                }
+            }
+        });
+
     }
 
     @Override
     public void exitConstantIntegerConstant(MeowParser.ConstantIntegerConstantContext ctx) {
-        IntExpression cur = new IntExpression();
-        values.put(ctx, cur);
-        cur.value = Integer.valueOf(ctx.IntegerConstant().getText());
+        values.put(ctx, new IntExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+                //value = Integer.parseInt(ctx.IntegerConstant().getText());
+                value = Integer.valueOf(ctx.IntegerConstant().getText());
+
+            }
+        });
     }
 
     @Override
     public void exitConstantNullConstant(MeowParser.ConstantNullConstantContext ctx) {
-        NullExpression cur = new NullExpression();
-        values.put(ctx, cur);
+        values.put(ctx, new NullExpression() {
+            {
+                row = ctx.getStart().getLine();
+                column = ctx.getStart().getCharPositionInLine();
+            }
+        });
     }
+
 }

@@ -40,6 +40,9 @@ public class Phase2 extends SemanticChecker{
         ctx.scope = symbolTable.getCurrentScope();
         visit(ctx.typeNode);
         Symbol symbol = new VariableSymbol(ctx.id, ctx.typeNode.type);
+        if(ctx.typeNode.type.getName().equals(SymbolTable.VOID)) {
+            compilationError.add(ctx, "InvalidVariableType: " + ctx.typeNode.type.getName());
+        }
         if(!symbolTable.getCurrentScope().define(symbol)) {
             compilationError.add(ctx, "InvalidVariableDeclaration: " + ctx.id);
         }
@@ -56,7 +59,9 @@ public class Phase2 extends SemanticChecker{
     }
     @Override
     public void visit(FunctionDeclaration ctx) {
-        symbolTable.getCurrentScope().define(ctx.symbol =  new FunctionSymbol(ctx.id, null, symbolTable.getCurrentScope()));
+        if(!symbolTable.getCurrentScope().define(ctx.symbol =  new FunctionSymbol(ctx.id, null, symbolTable.getCurrentScope()))) {
+            compilationError.add(ctx, "InvalidFunctionName " + ctx.id);
+        }
         symbolTable.push((Scope) ctx.symbol);
         visit(ctx.typeNode);
         ctx.symbol.type = ctx.typeNode.type;
@@ -64,6 +69,7 @@ public class Phase2 extends SemanticChecker{
         ctx.argumentlist.stream().forEachOrdered(x -> ((FunctionSymbol)ctx.symbol).addArgument(x.declaration.typeNode.type));
         symbolTable.pop();
         ctx.scope = symbolTable.getCurrentScope();
+
     }
     @Override
     public void visit(ClassTypeNode ctx) {
@@ -78,7 +84,7 @@ public class Phase2 extends SemanticChecker{
     @Override
     public void visit(ArrayTypeNode ctx) {
         visit(ctx.bodyTypeNode);
-        ctx.type = new ArrayType(ctx.bodyTypeNode.type);
+        ctx.type = new ArrayType(ctx.bodyTypeNode.type, symbolTable.getGlobalScope());
     }
 
     @Override

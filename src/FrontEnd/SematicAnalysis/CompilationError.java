@@ -14,6 +14,7 @@ public class CompilationError {
         list = new ArrayList<>();
     }
     void add(AstNode ctx, String err) {
+        err = "(" + ctx.row + "," + ctx.column + ")" + err;
         list.add(err);
         System.out.print(err + '\n');
         throw new RuntimeException(err);

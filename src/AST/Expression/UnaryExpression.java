@@ -7,7 +7,7 @@ import FrontEnd.VisitorAST.Visitor;
  */
 public class UnaryExpression extends Expression {
     public enum Operator {
-        PlusPlus, MinusMinus, LogicalNot, BitwiseNot;
+        PlusPlus, MinusMinus, LogicalNot, BitwiseNot, Plus, Minus;
     }
     public Operator operator;
     public Expression expression;

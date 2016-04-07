@@ -23,8 +23,7 @@ public class Phase3 extends SemanticChecker{
     public boolean isValidLvalue(Expression ctx) {
         return (ctx instanceof BracketExpression
                 || ctx instanceof IdentifierExpression
-                || ctx instanceof MemberExpression
-                || ctx instanceof ParenExpression);
+                || ctx instanceof MemberExpression);
     }
     @Override
     public void visit(AstNode ctx) {
@@ -34,6 +33,13 @@ public class Phase3 extends SemanticChecker{
     @Override
     public void visit(Program ctx) {
         ctx.list.stream().forEachOrdered(this::visit);
+        Symbol symbol = symbolTable.getCurrentScope().resolve("main");
+        if(symbol == null || !(symbol instanceof FunctionSymbol)) {
+            compilationError.add(ctx, "NoMainFunction:");
+        } else {
+            if(((FunctionSymbol) symbol).argumentTypeList.size() != 0 || !symbol.type.getName().equals(SymbolTable.INT))
+                compilationError.add(ctx, "InvalidMainFunction:");
+        }
     }
 
     @Override
@@ -46,6 +52,10 @@ public class Phase3 extends SemanticChecker{
         switch (ctx.operator) {
             case Plus:
             case Minus:
+                ctx.type = ctx.lhs.type;
+                if(!ctx.type.getName().equals(SymbolTable.INT) && !ctx.type.getName().equals(SymbolTable.STRING))
+                    compilationError.add(ctx,"InvalidType: " + ctx.type + " vs " + ctx.operator.name());
+                break;
             case Multiply:
             case Divide:
             case Modulo:
@@ -61,7 +71,7 @@ public class Phase3 extends SemanticChecker{
             case LessOrEqualThan:
             case GreaterOrEqualThan:
                 ctx.type = (Type) symbolTable.getCurrentScope().resolve(SymbolTable.BOOL);
-                if(!ctx.lhs.type.getName().equals(SymbolTable.INT))
+                if(!ctx.lhs.type.getName().equals(SymbolTable.INT) && !ctx.lhs.type.getName().equals(SymbolTable.STRING))
                     compilationError.add(ctx,"InvalidType: " + ctx.lhs.type.getName() + " vs " + ctx.operator.name());
                 break;
 
@@ -128,6 +138,14 @@ public class Phase3 extends SemanticChecker{
         ctx.dimensionSize.stream().filter(cur -> !(cur.type.getName().equals(SymbolTable.INT)||cur.type.getName().equals(SymbolTable.VOID))).forEach(cur -> {
             compilationError.add(ctx, "InvalidSubscriptionType: " + cur.type.getName());
         });
+        boolean flag = false;
+        for (Expression cur : ctx.dimensionSize) {
+            if(cur.type.getName().equals(SymbolTable.VOID))
+                flag = true;
+            else if(flag) {
+                compilationError.add(ctx, "InvalidArrayCreator: ");
+            }
+        }
         ctx.scope = symbolTable.getCurrentScope();
         ctx.type = ctx.typeNodeName.type;
     }
@@ -158,12 +176,14 @@ public class Phase3 extends SemanticChecker{
     @Override
     public void visit(MemberExpression ctx) {
         ctx.scope = symbolTable.getCurrentScope();
+
         visit(ctx.parent);
-        if(ctx.parent.type instanceof ClassSymbol) {
-            Symbol symbol = ((ClassSymbol) ctx.parent.type).resolve(ctx.child);
+        if(ctx.parent.type instanceof Scope) {
+            Symbol symbol = ((Scope) ctx.parent.type).resolve(ctx.child);
             if(symbol == null)
                 compilationError.add(ctx, "NoSuchMember: " + ctx.child);
             ctx.type = symbol.type;
+            ctx.symbol = symbol;
         } else {
             compilationError.add(ctx, "InvalidMemberOperation: " + ctx.parent.type.getName());
         }
@@ -192,7 +212,7 @@ public class Phase3 extends SemanticChecker{
                 compilationError.add(ctx, "InvalidParameterList: ");
             }
         } else {
-            compilationError.add(ctx, "InvalidFucntionCall: " + ctx.functionId.type.getName());
+            compilationError.add(ctx, "InvalidFucntionCall: " + ctx.functionId.toString());
         }
     }
 
@@ -215,8 +235,19 @@ public class Phase3 extends SemanticChecker{
     public void visit(UnaryExpression ctx) {
         ctx.scope = symbolTable.getCurrentScope();
         visit(ctx.expression);
-        if(!ctx.expression.type.getName().equals(SymbolTable.INT))
-            compilationError.add(ctx, "InvalidUnaryExpression: " + ctx.expression.type.getName());
+        switch (ctx.operator) {
+            case PlusPlus:
+            case MinusMinus:
+            case BitwiseNot:
+            if(!ctx.expression.type.getName().equals(SymbolTable.INT))
+                compilationError.add(ctx, "InvalidUnaryExpression: " + ctx.expression.type.getName());
+                break;
+            case LogicalNot:
+            if(!ctx.expression.type.getName().equals(SymbolTable.BOOL))
+                compilationError.add(ctx, "InvalidUnaryExpression: " + ctx.expression.type.getName());
+                break;
+        }
+
         ctx.type = ctx.expression.type;
     }
 
@@ -246,7 +277,10 @@ public class Phase3 extends SemanticChecker{
             compilationError.add(ctx, "InvalidForStatement:");
         }
         visit(ctx.update);
+        insideLoop++;
         visit(ctx.body);
+        insideLoop--;
+
     }
 
     @Override
@@ -284,6 +318,9 @@ public class Phase3 extends SemanticChecker{
         visit(ctx.typeNode);
         visit(ctx.initValue);
         Symbol symbol = new VariableSymbol(ctx.id, ctx.typeNode.type);
+        if(ctx.typeNode.type.getName().equals(SymbolTable.VOID)) {
+            compilationError.add(ctx, "InvalidVariableType: " + ctx.typeNode.type.getName());
+        }
         if(!symbolTable.getCurrentScope().define(symbol)) {
             compilationError.add(ctx, "InvalidVariableDeclaration: " + ctx.id);
         }
@@ -307,9 +344,7 @@ public class Phase3 extends SemanticChecker{
 
     @Override
     public void visit(ClassDeclaration ctx) {
-        //symbolTable.push((Scope) ctx.symbol);
-        //ctx.fieldList.stream().forEachOrdered(this::visit);
-        //symbolTable.pop();
+
     }
 
     @Override
@@ -319,9 +354,8 @@ public class Phase3 extends SemanticChecker{
         visit(ctx.typeNode);
         currentReturnType = ctx.typeNode.type;
         ctx.symbol.type = ctx.typeNode.type;
-        //ctx.argumentlist.stream().forEachOrdered(this::visit);
-        //ctx.argumentlist.stream().forEachOrdered(x -> ((FunctionSymbol)ctx.symbol).addArgument(x.declaration.typeNode.type));
-        visit(ctx.body);
+
+        ctx.bodyStatements.stream().forEachOrdered(this::visit);
         currentReturnType = symbolTable.getCurrentScope().resolve(SymbolTable.NULL).type;
         insideFunction--;
         symbolTable.pop();
@@ -340,7 +374,7 @@ public class Phase3 extends SemanticChecker{
     @Override
     public void visit(ArrayTypeNode ctx) {
         visit(ctx.bodyTypeNode);
-        ctx.type = new ArrayType(ctx.bodyTypeNode.type);
+        ctx.type = new ArrayType(ctx.bodyTypeNode.type, symbolTable.getCurrentScope()) {};
     }
 
     @Override
