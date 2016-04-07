@@ -1,1 +1,5 @@
-*.iml
+/bin
+/out
+/ref
+/*testcases
+/sample
