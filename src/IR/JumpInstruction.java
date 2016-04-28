@@ -5,7 +5,7 @@ package IR;
  */
 public class JumpInstruction extends ControlInstruction{
     BasicBlock destination;
-    JumpInstruction(BasicBlock aDestination) {
+    public JumpInstruction(BasicBlock aDestination) {
         destination = aDestination;
     }
 }

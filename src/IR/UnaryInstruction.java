@@ -11,7 +11,7 @@ public class UnaryInstruction extends Instruction{
     OpCode opCode;
     Register destination;
     Value source;
-    UnaryInstruction(OpCode aOpCode, Register aDestination, Value aSource) {
+    public UnaryInstruction(OpCode aOpCode, Register aDestination, Value aSource) {
         opCode = aOpCode;
         destination = aDestination;
         source = aSource;

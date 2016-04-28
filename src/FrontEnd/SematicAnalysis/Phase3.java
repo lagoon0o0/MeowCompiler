@@ -51,11 +51,11 @@ public class Phase3 extends SemanticChecker{
             compilationError.add(ctx, "TypeNotCompatible: " + ctx.lhs.type.getName() + " vs " + ctx.rhs.type.getName());
         switch (ctx.operator) {
             case Plus:
-            case Minus:
                 ctx.type = ctx.lhs.type;
                 if(!ctx.type.getName().equals(SymbolTable.INT) && !ctx.type.getName().equals(SymbolTable.STRING))
                     compilationError.add(ctx,"InvalidType: " + ctx.type + " vs " + ctx.operator.name());
                 break;
+            case Minus:
             case Multiply:
             case Divide:
             case Modulo:

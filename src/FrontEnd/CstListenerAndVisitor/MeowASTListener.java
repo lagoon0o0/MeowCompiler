@@ -1034,7 +1034,7 @@ public class MeowASTListener extends MeowBaseListener {
             {
                 row = ctx.getStart().getLine();
                 column = ctx.getStart().getCharPositionInLine();
-                //value = Integer.parseInt(ctx.IntegerConstant().getText());
+                //valueIR = Integer.parseInt(ctx.IntegerConstant().getText());
                 value = Integer.valueOf(ctx.IntegerConstant().getText());
 
             }

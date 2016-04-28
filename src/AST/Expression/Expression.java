@@ -1,6 +1,7 @@
 package AST.Expression;
 
 import AST.Statement.Statement;
+import IR.Value;
 import SymbolTable.Type;
 
 /**
@@ -8,4 +9,5 @@ import SymbolTable.Type;
  */
 public abstract class Expression extends Statement {
     public Type type;
+    public Value valueIR;
 }

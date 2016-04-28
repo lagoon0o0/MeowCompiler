@@ -7,6 +7,7 @@ import FrontEnd.VisitorAST.Visitor;
  */
 public class BracketExpression extends Expression {
     public Expression name, subscript;
+
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

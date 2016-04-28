@@ -6,6 +6,7 @@ import AST.TypeNode.TypeNode;
 import AST.Statement.VariableDeclarationStatement;
 import FrontEnd.VisitorAST.Visitor;
 import AST.Expression.IdentifierExpression;
+import IR.FunctionBlock;
 import SymbolTable.Scope;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class FunctionDeclaration extends TranslationUnit {
     public List<Statement> bodyStatements;
     public Block body;
     public Scope scope;
+    public FunctionBlock functionBlock;
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

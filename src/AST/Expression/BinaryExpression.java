@@ -1,6 +1,7 @@
 package AST.Expression;
 
 import FrontEnd.VisitorAST.Visitor;
+import IR.Instruction;
 
 /**
  * Created by lagoon0o0 on 16/3/30.

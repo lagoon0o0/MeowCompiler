@@ -5,7 +5,7 @@ package IR;
  */
 public class ReturnInstruction extends ControlInstruction {
     Value value;
-    ReturnInstruction(Value aValue) {
+    public ReturnInstruction(Value aValue) {
         value = aValue;
     }
 }

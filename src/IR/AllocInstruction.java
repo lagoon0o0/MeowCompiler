@@ -6,7 +6,7 @@ package IR;
 public class AllocInstruction extends MemoryAccessInstruction{
     Register destination;
     Value size;
-    AllocInstruction(Register aDestination, Value aSize) {
+    public AllocInstruction(Register aDestination, Value aSize) {
         destination = aDestination;
         size = aSize;
     }

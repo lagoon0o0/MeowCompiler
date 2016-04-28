@@ -206,7 +206,7 @@ public class Printer implements Visitor {
     public void visit(ReturnStatement ctx) {
         depth++;
         print(ctx.toString());
-        print("value:");
+        print("valueIR:");
         if(ctx.value != null)
             visit(ctx.value);
         depth--;

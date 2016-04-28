@@ -14,6 +14,6 @@ public class BoolExpression extends ConstantExpression {
 
     @Override
     public String toString() {
-        return "BoolExpression: " + "value = " + value;
+        return "BoolExpression: " + "valueIR = " + value;
     }
 }

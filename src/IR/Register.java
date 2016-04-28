@@ -1,13 +1,17 @@
 package IR;
 
+import java.security.PublicKey;
+
 /**
  * Created by lagoon0o0 on 4/27/16.
  */
 public class Register extends Value{
-    public int index;
-    public int value;
-    Register(int aIndex, int aValue) {
-        index = aIndex;
-        value = aValue;
+    static int total = 0;
+    public int idx;
+    public String name;
+
+    public Register(String aName) {
+        idx = ++total;
+        name = aName;
     }
 }

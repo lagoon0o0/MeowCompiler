@@ -6,7 +6,7 @@ package IR;
 public class MoveInstruction extends Instruction{
     Register destination;
     Value source;
-    MoveInstruction(Register aDestination, Value aSource) {
+    public MoveInstruction(Register aDestination, Value aSource) {
         destination = aDestination;
         source = aSource;
     }

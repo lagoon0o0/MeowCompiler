@@ -1,5 +1,6 @@
 package SymbolTable;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Map;
  */
 public class ClassSymbol extends ScopedSymbol implements Type{
     public int size;
-    public Map<String,Integer> offset;
+    public Map<String,Integer> offset = new LinkedHashMap<>();
     public ClassSymbol(String name, Type type, Scope enclosingScope) {
         super(name, type, enclosingScope);
     }
@@ -19,7 +20,9 @@ public class ClassSymbol extends ScopedSymbol implements Type{
     public Symbol resolveMember(String name) {
         return field.get(name);
     }
-
+    public int getOffset(String name) {
+        return offset.get(name);
+    }
     @Override
     public boolean compatibleWith(Type ctx) {
         if(ctx.getName().equals(SymbolTable.NULL))

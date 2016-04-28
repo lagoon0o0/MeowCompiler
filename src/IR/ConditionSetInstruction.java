@@ -15,7 +15,7 @@ public class ConditionSetInstruction extends Instruction{
     OpCode opCode;
     Register destination;
     Value source1, source2;
-    ConditionSetInstruction(OpCode aOpCode, Register aDestination, Value aSource1, Value aSource2) {
+    public ConditionSetInstruction(OpCode aOpCode, Register aDestination, Value aSource1, Value aSource2) {
         opCode = aOpCode;
         destination = aDestination;
         source1 = aSource1;

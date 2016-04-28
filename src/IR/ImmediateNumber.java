@@ -5,7 +5,7 @@ package IR;
  */
 public class ImmediateNumber extends Value {
     public int value;
-    ImmediateNumber(int aValue) {
+    public ImmediateNumber(int aValue) {
         value = aValue;
     }
 }

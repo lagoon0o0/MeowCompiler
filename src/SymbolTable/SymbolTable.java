@@ -27,7 +27,7 @@ public class SymbolTable {
         };
         sizeTable.put(INT, 4);
         sizeTable.put(BOOL,1);
-        sizeTable.put(STRING,8);
+        sizeTable.put(STRING,4);
         for (String primitiveType : primitiveTypes) {
             currentScope.define(new PrimitiveType(primitiveType,currentScope));
         }

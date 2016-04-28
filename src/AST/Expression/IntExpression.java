@@ -14,6 +14,6 @@ public class IntExpression extends ConstantExpression {
 
     @Override
     public String toString() {
-        return "IntExpression: " + "value = " + value;
+        return "IntExpression: " + "valueIR = " + value;
     }
 }

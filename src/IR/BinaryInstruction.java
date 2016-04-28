@@ -19,7 +19,7 @@ public class BinaryInstruction extends Instruction{
     public OpCode opCode;
     public Register destination;
     public Value source1, source2;
-    BinaryInstruction(OpCode aOpCode, Register aDestination, Value aSource1, Value aSource2) {
+    public BinaryInstruction(OpCode aOpCode, Register aDestination, Value aSource1, Value aSource2) {
         opCode = aOpCode;
         destination = aDestination;
         source1 = aSource1;
