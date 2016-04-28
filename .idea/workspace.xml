@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4407b6ff-3995-47ae-88ad-41ee71786462" name="Default" comment="" />
+    <list default="true" id="4407b6ff-3995-47ae-88ad-41ee71786462" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/FrontEnd/IRGeneratorVisitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/AllocInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/BasicBlock.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/BinaryInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/BranchInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/ConditionSetInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/ControlInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/FunctionCallInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/ImmediateNumber.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/Instruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/JumpInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/LoadInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/MemoryAccessInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/MoveInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/Register.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/ReturnInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/StoreInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/UnaryInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/Value.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/Expression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/Expression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/ClassSymbol.java" afterPath="$PROJECT_DIR$/src/SymbolTable/ClassSymbol.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/SymbolTable.java" afterPath="$PROJECT_DIR$/src/SymbolTable/SymbolTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/VariableSymbol.java" afterPath="$PROJECT_DIR$/src/SymbolTable/VariableSymbol.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/SemanticCheckerTest.java" afterPath="$PROJECT_DIR$/test/SemanticCheckerTest.java" />
+    </list>
     <ignored path="MeowCompiler.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,54 +51,165 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <file leaf-file-name="SemanticChecker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/SemanticChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Makefile" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Makefile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+            <state relative-caret-position="153">
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="midtermvars.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/midtermvars.sh">
+      <file leaf-file-name="JAVA/IR" pinned="false" current-in-tab="false">
+        <entry file="uml://JAVA/IR">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>IR</OriginalElement>
+              <nodes>
+                <node x="105.0" y="325.0">IR.ImmediateNumber</node>
+                <node x="861.0" y="170.0">IR.ReturnInstruction</node>
+                <node x="1073.0068027210884" y="90.0">IR.MoveInstruction</node>
+                <node x="1229.0068027210884" y="90.0">IR.UnaryInstruction</node>
+                <node x="722.0" y="0.0">IR.Instruction</node>
+                <node x="869.0068027210884" y="90.0">IR.ConditionSetInstruction</node>
+                <node x="388.0" y="170.0">IR.LoadInstruction</node>
+                <node x="77.25" y="245.0">IR.Value</node>
+                <node x="202.0" y="90.0">IR.MemoryAccessInstruction</node>
+                <node x="0.0" y="90.0">IR.FunctionCallInstruction</node>
+                <node x="300.0" y="245.0">IR.BasicBlock</node>
+                <node x="0.0" y="325.0">IR.Register</node>
+                <node x="78.0" y="170.0">IR.AllocInstruction</node>
+                <node x="484.8579931972789" y="90.0">IR.BinaryInstruction</node>
+                <node x="233.0" y="170.0">IR.StoreInstruction</node>
+                <node x="706.0" y="170.0">IR.JumpInstruction</node>
+                <node x="541.0" y="170.0">IR.BranchInstruction</node>
+                <node x="699.0068027210884" y="90.0">IR.ControlInstruction</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="IR.ImmediateNumber" target="IR.Value">
+                  <point x="0.0" y="-15.0" />
+                  <point x="180.0" y="300.0" />
+                  <point x="128.25" y="300.0" />
+                  <point x="17.0" y="15.0" />
+                </edge>
+                <edge source="IR.ReturnInstruction" target="IR.ControlInstruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="933.0" y="145.0" />
+                  <point x="824.0068027210884" y="145.0" />
+                  <point x="50.0" y="15.0" />
+                </edge>
+                <edge source="IR.FunctionCallInstruction" target="IR.Instruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="91.0" y="50.0" />
+                  <point x="729.3571428571429" y="50.0" />
+                  <point x="-44.14285714285711" y="15.0" />
+                </edge>
+                <edge source="IR.LoadInstruction" target="IR.MemoryAccessInstruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="454.5" y="145.0" />
+                  <point x="366.1666666666667" y="145.0" />
+                  <point x="65.66666666666669" y="15.0" />
+                </edge>
+                <edge source="IR.StoreInstruction" target="IR.MemoryAccessInstruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="0.0" y="15.0" />
+                </edge>
+                <edge source="IR.UnaryInstruction" target="IR.Instruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="1298.5068027210884" y="50.0" />
+                  <point x="817.6428571428571" y="50.0" />
+                  <point x="44.14285714285711" y="15.0" />
+                </edge>
+                <edge source="IR.MoveInstruction" target="IR.Instruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="1141.0068027210884" y="60.0" />
+                  <point x="802.9285714285714" y="60.0" />
+                  <point x="29.428571428571445" y="15.0" />
+                </edge>
+                <edge source="IR.ControlInstruction" target="IR.Instruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="0.0" y="15.0" />
+                </edge>
+                <edge source="IR.AllocInstruction" target="IR.MemoryAccessInstruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="145.5" y="145.0" />
+                  <point x="234.83333333333331" y="145.0" />
+                  <point x="-65.66666666666669" y="15.0" />
+                </edge>
+                <edge source="IR.MemoryAccessInstruction" target="IR.Instruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="300.5" y="60.0" />
+                  <point x="744.0714285714286" y="60.0" />
+                  <point x="-29.428571428571445" y="15.0" />
+                </edge>
+                <edge source="IR.Register" target="IR.Value">
+                  <point x="0.0" y="-15.0" />
+                  <point x="42.5" y="300.0" />
+                  <point x="94.25" y="300.0" />
+                  <point x="-17.0" y="15.0" />
+                </edge>
+                <edge source="IR.BinaryInstruction" target="IR.Instruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="555.3579931972789" y="70.0" />
+                  <point x="758.7857142857143" y="70.0" />
+                  <point x="-14.714285714285666" y="15.0" />
+                </edge>
+                <edge source="IR.BranchInstruction" target="IR.ControlInstruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="613.5" y="145.0" />
+                  <point x="724.0068027210884" y="145.0" />
+                  <point x="-50.0" y="15.0" />
+                </edge>
+                <edge source="IR.ConditionSetInstruction" target="IR.Instruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="961.0068027210884" y="70.0" />
+                  <point x="788.2142857142858" y="70.0" />
+                  <point x="14.71428571428578" y="15.0" />
+                </edge>
+                <edge source="IR.JumpInstruction" target="IR.ControlInstruction">
+                  <point x="0.0" y="-15.0" />
+                  <point x="0.0" y="15.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="1.0" x="131.5" y="54.0" />
+              <SelectedNodes>
+                <node>IR.Register</node>
+              </SelectedNodes>
+              <Categories />
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Register.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IR/Register.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
+            <state relative-caret-position="102">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MeowASTListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FrontEnd/CstListenerAndVisitor/MeowASTListener.java">
+      <file leaf-file-name="IRGeneratorVisitor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/FrontEnd/IRGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+            <state relative-caret-position="136">
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Meow.g4" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/Meow.g4">
+      <file leaf-file-name="Phase1.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -105,8 +244,6 @@
         <option value="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/CompilationError.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/Meow.g4" />
         <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression.java" />
-        <option value="$PROJECT_DIR$/src/SymbolTable/SymbolTable.java" />
-        <option value="$PROJECT_DIR$/src/SymbolTable/ArrayType.java" />
         <option value="$PROJECT_DIR$/test/SematicChekerTest.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase1.java" />
         <option value="$PROJECT_DIR$/compiler2016-testcases/compile_error/_var-1" />
@@ -114,7 +251,6 @@
         <option value="$PROJECT_DIR$/src/SymbolTable/BaseScope.java" />
         <option value="$PROJECT_DIR$/compiler2016-testcases/compile_error/_var-1.mx" />
         <option value="$PROJECT_DIR$/src/SymbolTable/Scope.java" />
-        <option value="$PROJECT_DIR$/test/SemanticCheckerTest.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase2.java" />
         <option value="$PROJECT_DIR$/src/AST/TranslationUnit/FunctionDeclaration.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase3.java" />
@@ -125,6 +261,34 @@
         <option value="$PROJECT_DIR$/testing.sh" />
         <option value="$PROJECT_DIR$/src/midtermvars.sh" />
         <option value="$PROJECT_DIR$/Makefile" />
+        <option value="$PROJECT_DIR$/test/SemanticCheckerTest.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/Expression.java" />
+        <option value="$PROJECT_DIR$/src/IR/Value.java" />
+        <option value="$PROJECT_DIR$/src/IR/Register.java" />
+        <option value="$PROJECT_DIR$/src/IR/ImmediateNumber.java" />
+        <option value="$PROJECT_DIR$/src/IR/Type.java" />
+        <option value="$PROJECT_DIR$/src/SymbolTable/VariableSymbol.java" />
+        <option value="$PROJECT_DIR$/src/SymbolTable/ArrayType.java" />
+        <option value="$PROJECT_DIR$/src/SymbolTable/Type.java" />
+        <option value="$PROJECT_DIR$/src/SymbolTable/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/SymbolTable/ClassSymbol.java" />
+        <option value="$PROJECT_DIR$/src/IR/Instruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/Lable.java" />
+        <option value="$PROJECT_DIR$/src/IR/BasicBlock.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression.java" />
+        <option value="$PROJECT_DIR$/src/IR/BinaryInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/UnaryInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/ConditionSetInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/RegisterTransferInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/MemoryAccessInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/StoreInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/LoadInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/AllocInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/FunctionCallInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/ReturnInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/JumpInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/BranchInstruction.java" />
+        <option value="$PROJECT_DIR$/src/FrontEnd/IRGeneratorVisitor.java" />
       </list>
     </option>
   </component>
@@ -162,8 +326,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -186,8 +348,118 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SymbolTable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FrontEnd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FrontEnd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SematicAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AST" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -196,7 +468,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../compiler2016" />
     <property name="FullScreen" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="253" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -214,23 +486,23 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1056" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/FrontEnd/LexarAndPaser" />
-      <recent name="$PROJECT_DIR$/src/FrontEnd/CstListenerAndVisitor" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/FrontEnd/LexarAndPaser" />
       <recent name="$PROJECT_DIR$/src/FrontEnd" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/FrontEnd/LexarAndPaser" />
+      <recent name="$PROJECT_DIR$/src/FrontEnd/CstListenerAndVisitor" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.SemanticCheckerTest">
     <configuration default="false" name="SemanticCheckerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="MeowCompiler" />
@@ -751,8 +1023,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.SemanticCheckerTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.SemanticCheckerTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.SemanticCheckerTest.data" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.SemanticCheckerTest.testPass (1)" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.SemanticCheckerTest.testPass (2)" />
@@ -780,14 +1052,20 @@
       <workItem from="1459950275358" duration="420000" />
       <workItem from="1459958364298" duration="524000" />
       <workItem from="1460013131399" duration="905000" />
-      <workItem from="1460014186825" duration="193000" />
+      <workItem from="1460014186825" duration="309000" />
+      <workItem from="1460181906425" duration="219000" />
+      <workItem from="1460300154829" duration="779000" />
+      <workItem from="1460362135572" duration="158000" />
+      <workItem from="1460365034729" duration="120000" />
+      <workItem from="1460723585502" duration="225000" />
+      <workItem from="1461672089524" duration="2114000" />
+      <workItem from="1461679279703" duration="130000" />
+      <workItem from="1461679422445" duration="9161000" />
+      <workItem from="1461811550248" duration="5439000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SemanticCheckerTest - 2016.04.06 at 16h 54m 07s.xml">
-      <configuration name="SemanticCheckerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SemanticCheckerTest - 2016.04.06 at 16h 58m 18s.xml">
       <configuration name="SemanticCheckerTest" configurationId="JUnit" />
     </history-entry>
@@ -809,6 +1087,9 @@
     <history-entry file="SemanticCheckerTest - 2016.04.06 at 18h 30m 57s.xml">
       <configuration name="SemanticCheckerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SemanticCheckerTest - 2016.04.26 at 21h 04m 50s.xml">
+      <configuration name="SemanticCheckerTest" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="SemanticCheckerTest_data - 2016.04.06 at 16h 53m 20s.xml">
       <configuration name="SemanticCheckerTest.data" configurationId="JUnit" />
     </history-entry>
@@ -817,7 +1098,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38422000" />
+    <option name="totallyTimeSpent" value="56883000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -830,65 +1111,36 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13168317" sideWeight="0.5021299" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11386139" sideWeight="0.49574015" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973376" sideWeight="0.48989898" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34851485" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33547926" sideWeight="0.510101" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.4968051" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22574258" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5881188" sideWeight="0.5021299" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22574258" sideWeight="0.5021299" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11386139" sideWeight="0.49574015" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15548456" sideWeight="0.48989898" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34851485" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34851485" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33547926" sideWeight="0.510101" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.4946752" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11445783" sideWeight="0.4978701" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43465346" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.48989898" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33547926" sideWeight="0.510101" order="5" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22574258" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -912,211 +1164,710 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/var-4-5140309552-wancheng.mx" />
-    <entry file="file://$PROJECT_DIR$/src/AST/TypeNode/FunctionTypeNode.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/IfStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="136">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable/FunctionSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable/LocalScope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable/Scope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/internal/requests/FilterRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable/ScopedSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/src.zip!/java/lang/NumberFormatException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="586" column="0" selection-start-line="586" selection-start-column="0" selection-end-line="586" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/asiop-2-5100379071-puyouer.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/biop-1-5100379071-puyouer.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/fldop-1-5120309049-liaochao.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/func-5-5100309127-hetianxing.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/compile_error/func-2-5120309049-liaochao.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/basicopt1-5100309127-hetianxing.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/builtin-5140519064-youyurong.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/bulgarian-5110379024-wuhang.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/hanoi-5100379110-daibo.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/heapsort-5100379110-daibo.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse2-5100309153-yanghuan.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse3-5100309153-yanghuan.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/lvalue2-5110379024-wuhang.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/magic-5100309153-yanghuan.mx" />
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/hashmap-5100309127-hetianxing.mx" />
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/SemanticChecker.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/CompilationError.java">
+    <entry file="uml://JAVA/AST.Expression">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>AST.Expression</OriginalElement>
+          <nodes>
+            <node x="" y="">AST.Expression.MemberExpression</node>
+            <node x="" y="">AST.Expression.IntExpression</node>
+            <node x="" y="">AST.Expression.BoolExpression</node>
+            <node x="" y="">AST.Expression.BinaryExpression</node>
+            <node x="" y="">AST.Expression.StringLiteralExpression</node>
+            <node x="" y="">AST.Expression.ConstantExpression</node>
+            <node x="" y="">AST.Expression.Expression</node>
+            <node x="" y="">AST.Expression.PostfixExpression</node>
+            <node x="" y="">AST.Expression.UnaryExpression</node>
+            <node x="" y="">AST.Expression.BracketExpression</node>
+            <node x="" y="">AST.Expression.EmptyExpression</node>
+            <node x="" y="">AST.Expression.ParenExpression</node>
+            <node x="" y="">AST.Expression.NullExpression</node>
+            <node x="" y="">AST.Expression.CreatorExpression</node>
+            <node x="" y="">AST.Expression.IdentifierExpression</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.8457389428263214" x="917.0" y="105.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/PrimitiveType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Type.java" />
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/Type.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse-5100309153-yanghuan.mx" />
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase2.java">
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/ScopedSymbol.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/TranslationUnit/FunctionDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5882">
-          <caret line="356" column="0" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/SemanticCheckerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample/sample0.meow" />
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowLexer.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.java" />
-    <entry file="file://$PROJECT_DIR$/gen/Meow.tokens" />
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/expr-5110309085-jintianxing.mx" />
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/Meow.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowBaseVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3281">
-          <caret line="194" column="7" selection-start-line="194" selection-start-column="7" selection-end-line="194" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/MeowBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/MeowListener.java" />
-    <entry file="file://$PROJECT_DIR$/gen/MeowBaseListener.java" />
-    <entry file="file://$PROJECT_DIR$/testing.sh" />
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        <state relative-caret-position="136">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/midtermvars.sh">
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/Symbol.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="102">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/CreatorExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/CstListenerAndVisitor/MeowASTListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+        <state relative-caret-position="182">
+          <caret line="677" column="27" selection-start-line="677" selection-start-column="19" selection-end-line="677" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/BaseScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="60" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/LexarAndPaser/Meow.g4">
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/ArrayType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="204">
+          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/ClassSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/IntExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/TypeNode/ArrayTypeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/SymbolTable">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>SymbolTable</OriginalElement>
+          <nodes>
+            <node x="336.25" y="0.0">SymbolTable.Scope</node>
+            <node x="532.6979166666667" y="80.0">SymbolTable.ScopedSymbol</node>
+            <node x="645.0" y="160.0">SymbolTable.FunctionSymbol</node>
+            <node x="255.0" y="160.0">SymbolTable.ArrayType</node>
+            <node x="0.0" y="235.0">SymbolTable.SymbolTable</node>
+            <node x="0.0" y="160.0">SymbolTable.LocalScope</node>
+            <node x="382.53819444444446" y="80.0">SymbolTable.Type</node>
+            <node x="677.6979166666667" y="80.0">SymbolTable.VariableSymbol</node>
+            <node x="124.0" y="160.0">SymbolTable.GlobalScope</node>
+            <node x="644.625" y="0.0">SymbolTable.Symbol</node>
+            <node x="372.0" y="160.0">SymbolTable.ClassSymbol</node>
+            <node x="125.53125" y="80.0">SymbolTable.BaseScope</node>
+            <node x="506.0" y="160.0">SymbolTable.PrimitiveType</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="SymbolTable.BaseScope" target="SymbolTable.Scope">
+              <point x="0.0" y="-15.0" />
+              <point x="175.03125" y="55.0" />
+              <point x="354.0" y="55.0" />
+              <point x="-17.75" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.PrimitiveType" target="SymbolTable.Type">
+              <point x="-29.75" y="-15.0" />
+              <point x="535.75" y="130.0" />
+              <point x="435.87152777777777" y="130.0" />
+              <point x="21.333333333333314" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.PrimitiveType" target="SymbolTable.ScopedSymbol">
+              <point x="29.75" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.ScopedSymbol" target="SymbolTable.Symbol">
+              <point x="31.25" y="-15.0" />
+              <point x="626.4479166666667" y="55.0" />
+              <point x="664.625" y="55.0" />
+              <point x="-20.0" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.LocalScope" target="SymbolTable.BaseScope">
+              <point x="0.0" y="-15.0" />
+              <point x="52.0" y="140.0" />
+              <point x="142.03125" y="140.0" />
+              <point x="-33.0" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.FunctionSymbol" target="SymbolTable.ScopedSymbol">
+              <point x="0.0" y="-15.0" />
+              <point x="712.5" y="140.0" />
+              <point x="636.8645833333333" y="140.0" />
+              <point x="41.66666666666663" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.ArrayType" target="SymbolTable.BaseScope">
+              <point x="-24.25" y="-15.0" />
+              <point x="279.25" y="140.0" />
+              <point x="208.03125" y="140.0" />
+              <point x="33.0" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.ScopedSymbol" target="SymbolTable.Scope">
+              <point x="-31.25" y="-15.0" />
+              <point x="563.9479166666667" y="55.0" />
+              <point x="389.5" y="55.0" />
+              <point x="17.75" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.ArrayType" target="SymbolTable.Type">
+              <point x="24.25" y="-15.0" />
+              <point x="327.75" y="140.0" />
+              <point x="393.20486111111114" y="140.0" />
+              <point x="-21.333333333333314" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.ClassSymbol" target="SymbolTable.Type">
+              <point x="-28.5" y="-15.0" />
+              <point x="400.5" y="140.0" />
+              <point x="414.53819444444446" y="140.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.GlobalScope" target="SymbolTable.BaseScope">
+              <point x="0.0" y="-15.0" />
+              <point x="179.5" y="140.0" />
+              <point x="175.03125" y="140.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.ClassSymbol" target="SymbolTable.ScopedSymbol">
+              <point x="28.5" y="-15.0" />
+              <point x="457.5" y="140.0" />
+              <point x="553.53125" y="140.0" />
+              <point x="-41.66666666666663" y="15.0" />
+            </edge>
+            <edge source="SymbolTable.VariableSymbol" target="SymbolTable.Symbol">
+              <point x="0.0" y="-15.0" />
+              <point x="742.6979166666667" y="55.0" />
+              <point x="704.625" y="55.0" />
+              <point x="20.0" y="15.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="91.0" y="99.0" />
+          <SelectedNodes>
+            <node>SymbolTable.BaseScope</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/AST">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>AST</OriginalElement>
+          <nodes>
+            <node x="3.0" y="80.0">AST.Statement</node>
+            <node x="281.0" y="80.0">AST.TypeNode</node>
+            <node x="452.99999999999994" y="80.0">AST.TranslationUnit</node>
+            <node x="175.0" y="80.0">AST.Program</node>
+            <node x="243.5" y="0.0">AST.AstNode</node>
+            <node x="0.0" y="160.0">AST.Expression</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="AST.Expression" target="AST.Statement">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="AST.TranslationUnit" target="AST.AstNode">
+              <point x="0.0" y="-15.0" />
+              <point x="546.0" y="50.0" />
+              <point x="320.5" y="50.0" />
+              <point x="33.0" y="15.0" />
+            </edge>
+            <edge source="AST.TypeNode" target="AST.AstNode">
+              <point x="0.0" y="-15.0" />
+              <point x="357.0" y="60.0" />
+              <point x="298.5" y="60.0" />
+              <point x="11.0" y="15.0" />
+            </edge>
+            <edge source="AST.Statement" target="AST.AstNode">
+              <point x="0.0" y="-15.0" />
+              <point x="79.0" y="50.0" />
+              <point x="254.5" y="50.0" />
+              <point x="-33.0" y="15.0" />
+            </edge>
+            <edge source="AST.Program" target="AST.AstNode">
+              <point x="0.0" y="-15.0" />
+              <point x="218.0" y="60.0" />
+              <point x="276.5" y="60.0" />
+              <point x="-11.0" y="15.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="7.0" y="62.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/TranslationUnit/ClassDeclaration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#469#470#0" expanded="false" />
+            <element signature="e#504#505#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#320#321#0" expanded="false" />
+            <element signature="e#355#356#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#463#464#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ForStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#313#314#0" expanded="false" />
+            <element signature="e#348#349#0" expanded="false" />
+            <element signature="e#394#395#0" expanded="false" />
+            <element signature="e#432#433#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/VisitorAST/Visitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/VisitorAST/ASTBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-39">
+          <caret line="141" column="39" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/VariableSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Value.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/BasicBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/ImmediateNumber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding>
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#186#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/AstNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/BinaryInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable/FunctionSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/LoadInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/StoreInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/MemoryAccessInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/ReturnInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding>
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#200#201#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/ControlInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/FunctionCallInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/BranchInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/JumpInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <element signature="e#187#188#0" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/AllocInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/UnaryInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/ConditionSetInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/MoveInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/IR">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>IR</OriginalElement>
+          <nodes>
+            <node x="105.0" y="325.0">IR.ImmediateNumber</node>
+            <node x="861.0" y="170.0">IR.ReturnInstruction</node>
+            <node x="1073.0068027210884" y="90.0">IR.MoveInstruction</node>
+            <node x="1229.0068027210884" y="90.0">IR.UnaryInstruction</node>
+            <node x="722.0" y="0.0">IR.Instruction</node>
+            <node x="869.0068027210884" y="90.0">IR.ConditionSetInstruction</node>
+            <node x="388.0" y="170.0">IR.LoadInstruction</node>
+            <node x="77.25" y="245.0">IR.Value</node>
+            <node x="202.0" y="90.0">IR.MemoryAccessInstruction</node>
+            <node x="0.0" y="90.0">IR.FunctionCallInstruction</node>
+            <node x="300.0" y="245.0">IR.BasicBlock</node>
+            <node x="0.0" y="325.0">IR.Register</node>
+            <node x="78.0" y="170.0">IR.AllocInstruction</node>
+            <node x="484.8579931972789" y="90.0">IR.BinaryInstruction</node>
+            <node x="233.0" y="170.0">IR.StoreInstruction</node>
+            <node x="706.0" y="170.0">IR.JumpInstruction</node>
+            <node x="541.0" y="170.0">IR.BranchInstruction</node>
+            <node x="699.0068027210884" y="90.0">IR.ControlInstruction</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="IR.ImmediateNumber" target="IR.Value">
+              <point x="0.0" y="-15.0" />
+              <point x="180.0" y="300.0" />
+              <point x="128.25" y="300.0" />
+              <point x="17.0" y="15.0" />
+            </edge>
+            <edge source="IR.ReturnInstruction" target="IR.ControlInstruction">
+              <point x="0.0" y="-15.0" />
+              <point x="933.0" y="145.0" />
+              <point x="824.0068027210884" y="145.0" />
+              <point x="50.0" y="15.0" />
+            </edge>
+            <edge source="IR.FunctionCallInstruction" target="IR.Instruction">
+              <point x="0.0" y="-15.0" />
+              <point x="91.0" y="50.0" />
+              <point x="729.3571428571429" y="50.0" />
+              <point x="-44.14285714285711" y="15.0" />
+            </edge>
+            <edge source="IR.LoadInstruction" target="IR.MemoryAccessInstruction">
+              <point x="0.0" y="-15.0" />
+              <point x="454.5" y="145.0" />
+              <point x="366.1666666666667" y="145.0" />
+              <point x="65.66666666666669" y="15.0" />
+            </edge>
+            <edge source="IR.StoreInstruction" target="IR.MemoryAccessInstruction">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="IR.UnaryInstruction" target="IR.Instruction">
+              <point x="0.0" y="-15.0" />
+              <point x="1298.5068027210884" y="50.0" />
+              <point x="817.6428571428571" y="50.0" />
+              <point x="44.14285714285711" y="15.0" />
+            </edge>
+            <edge source="IR.MoveInstruction" target="IR.Instruction">
+              <point x="0.0" y="-15.0" />
+              <point x="1141.0068027210884" y="60.0" />
+              <point x="802.9285714285714" y="60.0" />
+              <point x="29.428571428571445" y="15.0" />
+            </edge>
+            <edge source="IR.ControlInstruction" target="IR.Instruction">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="IR.AllocInstruction" target="IR.MemoryAccessInstruction">
+              <point x="0.0" y="-15.0" />
+              <point x="145.5" y="145.0" />
+              <point x="234.83333333333331" y="145.0" />
+              <point x="-65.66666666666669" y="15.0" />
+            </edge>
+            <edge source="IR.MemoryAccessInstruction" target="IR.Instruction">
+              <point x="0.0" y="-15.0" />
+              <point x="300.5" y="60.0" />
+              <point x="744.0714285714286" y="60.0" />
+              <point x="-29.428571428571445" y="15.0" />
+            </edge>
+            <edge source="IR.Register" target="IR.Value">
+              <point x="0.0" y="-15.0" />
+              <point x="42.5" y="300.0" />
+              <point x="94.25" y="300.0" />
+              <point x="-17.0" y="15.0" />
+            </edge>
+            <edge source="IR.BinaryInstruction" target="IR.Instruction">
+              <point x="0.0" y="-15.0" />
+              <point x="555.3579931972789" y="70.0" />
+              <point x="758.7857142857143" y="70.0" />
+              <point x="-14.714285714285666" y="15.0" />
+            </edge>
+            <edge source="IR.BranchInstruction" target="IR.ControlInstruction">
+              <point x="0.0" y="-15.0" />
+              <point x="613.5" y="145.0" />
+              <point x="724.0068027210884" y="145.0" />
+              <point x="-50.0" y="15.0" />
+            </edge>
+            <edge source="IR.ConditionSetInstruction" target="IR.Instruction">
+              <point x="0.0" y="-15.0" />
+              <point x="961.0068027210884" y="70.0" />
+              <point x="788.2142857142858" y="70.0" />
+              <point x="14.71428571428578" y="15.0" />
+            </edge>
+            <edge source="IR.JumpInstruction" target="IR.ControlInstruction">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="131.5" y="54.0" />
+          <SelectedNodes>
+            <node>IR.Register</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Register.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/Phase1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/SemanticChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/IRGeneratorVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1178,7 +1929,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

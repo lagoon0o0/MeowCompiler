@@ -1,7 +1,6 @@
 package AST.Expression;
 
 import AST.Statement.Statement;
-import AST.TypeNode.TypeNode;
 import SymbolTable.Type;
 
 /**

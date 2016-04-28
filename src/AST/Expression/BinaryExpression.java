@@ -6,7 +6,7 @@ import FrontEnd.VisitorAST.Visitor;
  * Created by lagoon0o0 on 16/3/30.
  */
 public class BinaryExpression extends Expression {
-    public enum Operator {
+    public static enum Operator {
         Plus,
         Minus,
         Multiply,

@@ -1,6 +1,9 @@
 package SymbolTable;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Created by lagoon0o0 on 16/4/3.
@@ -11,15 +14,20 @@ public class SymbolTable {
     public static final String STRING = "string";
     public static final String VOID = "void";
     public static final String NULL = "null";
+    Map<String,Integer> sizeTable;
     Scope currentScope, globalScope;
     public SymbolTable() {
 
         currentScope = new GlobalScope(null);
         globalScope = currentScope;
+        sizeTable = new LinkedHashMap<>();
         // Define primitive types
         final String[] primitiveTypes = {
                 INT, BOOL, STRING, VOID, NULL
         };
+        sizeTable.put(INT, 4);
+        sizeTable.put(BOOL,1);
+        sizeTable.put(STRING,8);
         for (String primitiveType : primitiveTypes) {
             currentScope.define(new PrimitiveType(primitiveType,currentScope));
         }

@@ -1,9 +1,13 @@
 package SymbolTable;
 
+import java.util.Map;
+
 /**
  * Created by lagoon0o0 on 16/4/3.
  */
 public class ClassSymbol extends ScopedSymbol implements Type{
+    public int size;
+    public Map<String,Integer> offset;
     public ClassSymbol(String name, Type type, Scope enclosingScope) {
         super(name, type, enclosingScope);
     }

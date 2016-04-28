@@ -1,5 +1,7 @@
 import AST.AstNode;
 import FrontEnd.CstListenerAndVisitor.MeowASTListener;
+import FrontEnd.LexarAndPaser.MeowLexer;
+import FrontEnd.LexarAndPaser.MeowParser;
 import FrontEnd.SematicAnalysis.CompilationError;
 import FrontEnd.SematicAnalysis.Phase1;
 import FrontEnd.SematicAnalysis.Phase2;
