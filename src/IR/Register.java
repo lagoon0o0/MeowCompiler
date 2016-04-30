@@ -14,4 +14,7 @@ public class Register extends Value{
         idx = ++total;
         name = aName;
     }
+    public String toString() {
+        return "$" + name + "(" + idx + ")";
+    }
 }

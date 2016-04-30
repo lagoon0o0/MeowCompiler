@@ -8,4 +8,7 @@ public class JumpInstruction extends ControlInstruction{
     public JumpInstruction(BasicBlock aDestination) {
         destination = aDestination;
     }
+    public String toString() {
+        return "jump" + " " + destination.getName();
+    }
 }

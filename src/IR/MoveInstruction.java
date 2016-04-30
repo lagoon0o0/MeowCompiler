@@ -10,4 +10,7 @@ public class MoveInstruction extends Instruction{
         destination = aDestination;
         source = aSource;
     }
+    public String toString() {
+        return destination.toString() + " = " + "move" + " "+ source.toString();
+    }
 }

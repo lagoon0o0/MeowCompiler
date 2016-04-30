@@ -39,11 +39,11 @@ public class Phase2 extends SemanticChecker{
     public void visit(VariableDeclarationStatement.VariableDeclaration ctx) {
         ctx.scope = symbolTable.getCurrentScope();
         visit(ctx.typeNode);
-        Symbol symbol = new VariableSymbol(ctx.id, ctx.typeNode.type);
+        ctx.symbol = new VariableSymbol(ctx.id, ctx.typeNode.type);
         if(ctx.typeNode.type.getName().equals(SymbolTable.VOID)) {
             compilationError.add(ctx, "InvalidVariableType: " + ctx.typeNode.type.getName());
         }
-        if(!symbolTable.getCurrentScope().define(symbol)) {
+        if(!symbolTable.getCurrentScope().define(ctx.symbol)) {
             compilationError.add(ctx, "InvalidVariableDeclaration: " + ctx.id);
         }
         if(!(ctx.initValue instanceof EmptyExpression)

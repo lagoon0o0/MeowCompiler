@@ -8,4 +8,7 @@ public class ImmediateNumber extends Value {
     public ImmediateNumber(int aValue) {
         value = aValue;
     }
+    public String toString() {
+        return String.valueOf(value);
+    }
 }

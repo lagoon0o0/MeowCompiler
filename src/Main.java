@@ -2,11 +2,13 @@
  * Created by lagoon0o0 on 16/3/28.
  */
 import FrontEnd.CstListenerAndVisitor.MeowASTListener;
+import FrontEnd.IRGeneratorVisitor;
 import FrontEnd.LexarAndPaser.*;
 import FrontEnd.SematicAnalysis.CompilationError;
 import FrontEnd.SematicAnalysis.Phase1;
 import FrontEnd.SematicAnalysis.Phase2;
 import FrontEnd.SematicAnalysis.Phase3;
+import FrontEnd.VisitorAST.Printer.Printer;
 import SymbolTable.SymbolTable;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
@@ -15,9 +17,9 @@ import AST.AstNode;
 import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
-        //InputStream is = new FileInputStream("sample/sample0.meow"); // or System.in;
-        InputStream is = System.in;
-        try {
+        InputStream is = new FileInputStream("sample/sample0.mx"); // or System.in;
+        //InputStream is = System.in;
+        //try {
                 ANTLRInputStream input = new ANTLRInputStream(is);
                 MeowLexer lexer = new MeowLexer(input);
                 CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -48,11 +50,17 @@ public class Main {
                 phase2.visit(root);
                 Phase3 phase3 = new Phase3(symbolTable, compilationError);
                 phase3.visit(root);
+                IRGeneratorVisitor irGeneratorVisitor = new IRGeneratorVisitor();
+                irGeneratorVisitor.visit(root);
+                irGeneratorVisitor.functionBlockList.stream().forEachOrdered(x -> x.print());
                 System.out.print("Passed!\n");
-        } catch (Exception e) {
+        //}
+        /*catch (Exception e) {
+
             System.out.print("Compilation Error!\n");
+
             System.exit(1);
-        }
+        }*/
 
     }
 }

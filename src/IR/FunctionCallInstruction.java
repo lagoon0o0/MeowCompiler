@@ -20,4 +20,14 @@ public class FunctionCallInstruction extends Instruction{
         function = aFunction;
         argumentList = anArgumentList;
     }
+    public String toString() {
+        String ret = "call" + " " + function.getName() + " ";
+        for (Value x : argumentList) {
+            ret += x.toString() + " ";
+        }
+        if(destination == null)
+            return ret;
+        else
+            return destination.toString() + " = " + ret;
+    }
 }

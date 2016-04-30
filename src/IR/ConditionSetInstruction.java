@@ -21,4 +21,7 @@ public class ConditionSetInstruction extends Instruction{
         source1 = aSource1;
         source2 = aSource2;
     }
+    public String toString() {
+        return destination.toString() + " " + "=" + " " + opCode.toString() + " " + source1.toString() + " " + source2.toString();
+    }
 }

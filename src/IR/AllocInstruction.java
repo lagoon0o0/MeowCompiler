@@ -10,4 +10,7 @@ public class AllocInstruction extends MemoryAccessInstruction{
         destination = aDestination;
         size = aSize;
     }
+    public String toString() {
+        return destination.toString() + " " + "=" + " " + "alloc" + " "+ size.toString();
+    }
 }

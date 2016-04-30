@@ -8,4 +8,7 @@ public class ReturnInstruction extends ControlInstruction {
     public ReturnInstruction(Value aValue) {
         value = aValue;
     }
+    public String toString() {
+        return "ret" + " " + value.toString();
+    }
 }

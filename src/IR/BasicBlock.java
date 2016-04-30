@@ -19,4 +19,12 @@ public class BasicBlock {
     public void add(Instruction x) {
         list.add(x);
     }
+    public void print() {
+        System.out.print( getName() + ": \n");
+        list.stream().map(x -> "\t" + x.toString() + "\n").forEachOrdered(System.out::print);
+        System.out.print("\n");
+    }
+    public String getName() {
+        return "%" + name + "(" + index + ")" ;
+    }
 }
