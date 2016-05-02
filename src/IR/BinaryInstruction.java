@@ -1,9 +1,11 @@
 package IR;
 
+import IRVisitor.Visitor;
+
 /**
  * Created by lagoon0o0 on 4/28/16.
  */
-public class BinaryInstruction extends Instruction{
+public class BinaryInstruction extends Instruction {
     public static enum OpCode {
         add,
         sub,
@@ -27,5 +29,9 @@ public class BinaryInstruction extends Instruction{
     }
     public String toString() {
         return destination.toString() + " " + "=" + " " + opCode.toString() + " " + source1.toString() + " " + source2.toString();
+    }
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

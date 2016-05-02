@@ -1,5 +1,6 @@
 package IR;
 
+import IRVisitor.Visitor;
 import SymbolTable.FunctionSymbol;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * Created by lagoon0o0 on 4/28/16.
  */
-public class FunctionCallInstruction extends Instruction{
+public class FunctionCallInstruction extends Instruction {
     public Register destination;
     public FunctionSymbol function;
     public List<Value> argumentList;
@@ -29,5 +30,9 @@ public class FunctionCallInstruction extends Instruction{
             return ret;
         else
             return destination.toString() + " = " + ret;
+    }
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

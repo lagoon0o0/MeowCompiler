@@ -6,7 +6,7 @@ import FrontEnd.SematicAnalysis.CompilationError;
 import FrontEnd.SematicAnalysis.Phase1;
 import FrontEnd.SematicAnalysis.Phase2;
 import FrontEnd.SematicAnalysis.Phase3;
-import FrontEnd.VisitorAST.Printer.Printer;
+import FrontEnd.VisitorAST.ASTPrinter;
 import SymbolTable.SymbolTable;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -77,7 +77,7 @@ public class SemanticCheckerTest {
             MeowASTListener Listener = new MeowASTListener();
             walker.walk(Listener, tree);
             AstNode root =  Listener.astRoot;
-            Printer printer = new Printer();
+            ASTPrinter printer = new ASTPrinter();
             printer.visit(root);
 
             SymbolTable symbolTable = new SymbolTable();

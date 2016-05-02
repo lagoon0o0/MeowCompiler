@@ -62,7 +62,7 @@ public class LLIRInterpreter {
     private Instruction curInst = null;
     private boolean isSSAMode = true;
 
-    //====== read text IR
+    //====== read text Instruction
 
     // instructions that have no destination
     static private final Set<String> opnames1 = new HashSet<>(Arrays.asList(
@@ -219,7 +219,7 @@ public class LLIRInterpreter {
         }
     }
 
-    //====== run IR
+    //====== run Instruction
 
     private Map<String, Register> registers;
     private Map<String, Integer> tmpRegister = new HashMap<>(); // for phi node

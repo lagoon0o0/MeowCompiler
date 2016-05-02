@@ -1,5 +1,7 @@
 package IR;
 
+import IRVisitor.Visitor;
+
 /**
  * Created by lagoon0o0 on 4/28/16.
  */
@@ -14,5 +16,9 @@ public class StoreInstruction extends MemoryAccessInstruction {
     }
     public String toString() {
         return "store" + " " + size.toString() + " " + address.toString() + " " + source.toString() + " " + offset.toString();
+    }
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

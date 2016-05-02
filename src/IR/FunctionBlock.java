@@ -1,16 +1,41 @@
 package IR;
 
+import IRVisitor.Visitor;
 import SymbolTable.FunctionSymbol;
-import com.sun.xml.internal.rngom.parse.host.Base;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lagoon0o0 on 4/28/16.
  */
-public class FunctionBlock {
+public class FunctionBlock extends IR{
+    public class Frame {
+        private int size = 0;
+        Map<Register, FrameAddr> hash = new Hashtable<>();
+        public FrameAddr get(Register reg) {
+            if(hash.containsKey(reg)) {
+                return hash.get(reg);
+            } else {
+                FrameAddr ret = new FrameAddr(size);
+                hash.put(reg,ret);
+                size += 4;
+                return ret;
+            }
+        }
+        public int getSize() {
+            if(size % 8 != 0) {
+                return size + 8;
+            } else {
+                return size;
+            }
+        }
+    }
+    public Frame frame = new Frame();
     public FunctionSymbol function;
+    public String name;
     public List<Register> argumentList = new ArrayList<>();
     public List<BasicBlock> basicBlockList = new ArrayList<>();
     public BasicBlock entryBlock;
@@ -22,12 +47,8 @@ public class FunctionBlock {
     public FunctionBlock(FunctionSymbol aFunction) {
         function = aFunction;
     }
-    public void print() {
-        System.out.print("func " + function.getName() + " ");
-        argumentList.stream().map(x -> x.toString() + " ").forEachOrdered(System.out :: print);
-        System.out.print("{\n");
-        basicBlockList.stream().forEachOrdered(x -> x.print());
-        System.out.print("}\n");
-
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

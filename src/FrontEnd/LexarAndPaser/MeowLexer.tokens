@@ -67,6 +67,7 @@ Newline=66
 Identifier=67
 IdentifierNonDigit=68
 LineComment=69
+BlockComment=70
 'for'=1
 '('=2
 ')'=3

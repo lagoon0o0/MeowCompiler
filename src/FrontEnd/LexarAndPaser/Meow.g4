@@ -310,6 +310,10 @@ IdentifierNonDigit
 LineComment
     :   '//' ~[\r\n]* -> skip
     ;
+BlockComment
+    :   '/*' .*? '*/'
+        -> skip
+    ;
 fragment
 Char
     : ~["\\\n]

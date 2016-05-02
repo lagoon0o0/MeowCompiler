@@ -1,4 +1,4 @@
-package FrontEnd.VisitorAST.Printer;
+package FrontEnd.VisitorAST;
 
 import AST.*;
 import AST.Expression.*;
@@ -11,7 +11,7 @@ import FrontEnd.VisitorAST.Visitor;
 /**
  * Created by lagoon0o0 on 16/3/30.
  */
-public class Printer implements Visitor {
+public class ASTPrinter implements Visitor {
     public  int depth = -1;
     void indent(int length) {
         for(int i = 1; i <= length; ++i)

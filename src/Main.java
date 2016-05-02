@@ -8,7 +8,8 @@ import FrontEnd.SematicAnalysis.CompilationError;
 import FrontEnd.SematicAnalysis.Phase1;
 import FrontEnd.SematicAnalysis.Phase2;
 import FrontEnd.SematicAnalysis.Phase3;
-import FrontEnd.VisitorAST.Printer.Printer;
+import IR.IRRoot;
+import IRVisitor.IRPrinter;
 import SymbolTable.SymbolTable;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
@@ -39,7 +40,7 @@ public class Main {
                 MeowASTListener Listener = new MeowASTListener();
                 walker.walk(Listener, tree);
                 AstNode root =  Listener.astRoot;
-                //Printer printer = new Printer();
+                //ASTPrinter printer = new ASTPrinter();
                 //printer.visit(root);
 
                 SymbolTable symbolTable = new SymbolTable();
@@ -50,9 +51,12 @@ public class Main {
                 phase2.visit(root);
                 Phase3 phase3 = new Phase3(symbolTable, compilationError);
                 phase3.visit(root);
-                IRGeneratorVisitor irGeneratorVisitor = new IRGeneratorVisitor();
+                IRGeneratorVisitor irGeneratorVisitor = new IRGeneratorVisitor(symbolTable);
+
                 irGeneratorVisitor.visit(root);
-                irGeneratorVisitor.functionBlockList.stream().forEachOrdered(x -> x.print());
+                IRRoot irRoot = irGeneratorVisitor.irRoot;
+                IRPrinter irPrinter = new IRPrinter(System.out);
+                irPrinter.visit(irRoot);
                 System.out.print("Passed!\n");
         //}
         /*catch (Exception e) {

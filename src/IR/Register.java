@@ -1,20 +1,9 @@
 package IR;
 
-import java.security.PublicKey;
+import IRVisitor.Visitor;
 
 /**
- * Created by lagoon0o0 on 4/27/16.
+ * Created by lagoon0o0 on 5/2/16.
  */
-public class Register extends Value{
-    static int total = 0;
-    public int idx;
-    public String name;
-
-    public Register(String aName) {
-        idx = ++total;
-        name = aName;
-    }
-    public String toString() {
-        return "$" + name + "(" + idx + ")";
-    }
+public abstract class Register extends Value{
 }
