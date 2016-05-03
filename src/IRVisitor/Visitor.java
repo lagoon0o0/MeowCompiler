@@ -27,6 +27,8 @@ public interface Visitor {
     public void visit(StoreInstruction ctx);
     public void visit(UnaryInstruction ctx);
     public void visit(IRRoot ctx);
+    public void visit(StaticSpace ctx);
+    public void visit(StaticString ctx);
     //public void visit(Value ctx);
 
 }

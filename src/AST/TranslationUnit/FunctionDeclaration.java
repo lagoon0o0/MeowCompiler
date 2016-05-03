@@ -9,6 +9,7 @@ import AST.Expression.IdentifierExpression;
 import IR.FunctionBlock;
 import SymbolTable.Scope;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,10 +18,9 @@ import java.util.List;
 public class FunctionDeclaration extends TranslationUnit {
     public TypeNode typeNode;
     public String id;
-    public List<VariableDeclarationStatement> argumentlist;
-    public List<Statement> bodyStatements;
+    public List<VariableDeclarationStatement> argumentlist = new ArrayList<>();
+    public List<Statement> bodyStatements = new ArrayList<>();
     public Block body;
-    public Scope scope;
     public FunctionBlock functionBlock;
     @Override
     public void accept(Visitor visitor) {

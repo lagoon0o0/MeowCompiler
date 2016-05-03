@@ -24,7 +24,7 @@ public class BasicBlock extends IR{
         list.add(x);
     }
     public String getName() {
-        return "%" + name + "(" + index + ")" ;
+        return "__" + name + "_" + index + "_" ;
     }
     @Override
     public void accept(Visitor visitor) {

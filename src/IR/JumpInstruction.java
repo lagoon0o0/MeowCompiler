@@ -6,7 +6,7 @@ import IRVisitor.Visitor;
  * Created by lagoon0o0 on 4/28/16.
  */
 public class JumpInstruction extends ControlInstruction{
-    BasicBlock destination;
+    public BasicBlock destination;
     public JumpInstruction(BasicBlock aDestination) {
         destination = aDestination;
     }

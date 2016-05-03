@@ -1,5 +1,7 @@
 package SymbolTable;
 
+import AST.TypeNode.TypeNode;
+
 import java.util.ArrayList;
 
 /**
@@ -7,12 +9,17 @@ import java.util.ArrayList;
  */
 public class ArrayType extends BaseScope implements Type {
     public Type bodyType;
-
     public ArrayType(Type aBodyType, Scope enclosingScope) {
         super("ArrayType", enclosingScope);
         bodyType = aBodyType;
-        define(new FunctionSymbol("size", resolve(SymbolTable.INT).type, this));
+        Type aType = this;
+        define(new FunctionSymbol("_array" + "." + "size",resolve(SymbolTable.INT).type, this){
+            {
+                addArgument(aType);
+            }
+        });
     }
+
 
     @Override
     public boolean compatibleWith(Type ctx) {

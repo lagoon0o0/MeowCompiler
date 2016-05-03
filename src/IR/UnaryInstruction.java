@@ -10,7 +10,7 @@ public class UnaryInstruction extends Instruction {
         neg,
         not
     }
-    OpCode opCode;
+    public OpCode opCode;
     public Register destination;
     public Value source;
     public UnaryInstruction(OpCode aOpCode, Register aDestination, Value aSource) {

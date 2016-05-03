@@ -40,7 +40,7 @@ public class MeowASTListener extends MeowBaseListener {
             {
                 row = ctx.getStart().getLine();
                 column = ctx.getStart().getCharPositionInLine();
-                content = ctx.getText();
+                content = ctx.getText().substring(1,ctx.getText().length()-1);
             }
         });
     }

@@ -97,6 +97,16 @@ public class GetVRegisterUsage implements Visitor{
     }
 
     @Override
+    public void visit(StaticString ctx) {
+
+    }
+
+    @Override
+    public void visit(StaticSpace ctx) {
+
+    }
+
+    @Override
     public void visit(UnaryInstruction ctx) {
         visit(ctx.destination);
             visit(ctx.source);

@@ -27,7 +27,7 @@ public class FunctionBlock extends IR{
         }
         public int getSize() {
             if(size % 8 != 0) {
-                return size + 8;
+                return size + 8 - size % 8;
             } else {
                 return size;
             }

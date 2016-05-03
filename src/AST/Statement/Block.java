@@ -3,6 +3,7 @@ package AST.Statement;
 import FrontEnd.VisitorAST.Visitor;
 import SymbolTable.LocalScope;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public class Block extends Statement {
     public LocalScope localScope;
-    public List<Statement> list;
+    public List<Statement> list = new ArrayList<>();
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

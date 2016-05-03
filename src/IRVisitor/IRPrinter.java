@@ -28,7 +28,7 @@ public class IRPrinter implements Visitor{
 
     @Override
     public void visit(BasicBlock ctx) {
-        print( ctx.getName() + ":");
+        print( "%" +ctx.getName() + ":");
         depth++;
         ctx.list.stream().forEachOrdered(this::visit);
         depth--;
@@ -120,6 +120,16 @@ public class IRPrinter implements Visitor{
     @Override
     public void visit(IRRoot ctx) {
         ctx.func.stream().forEachOrdered(this::visit);
+    }
+
+    @Override
+    public void visit(StaticString ctx) {
+
+    }
+
+    @Override
+    public void visit(StaticSpace ctx) {
+
     }
 
 }

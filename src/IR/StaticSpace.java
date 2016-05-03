@@ -8,9 +8,9 @@ import IRVisitor.Visitor;
 public class StaticSpace extends StaticData{
     int idx;
     String name;
-    ImmediateNumber size;
+    public ImmediateNumber size;
     public String toString() {
-        return "&" + name + "(" + idx + ")";
+        return "_" + name + "_" + idx + "_";
     }
     public StaticSpace(String aName,ImmediateNumber aSize) {
         idx = ++total;

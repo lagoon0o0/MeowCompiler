@@ -1,9 +1,12 @@
 package SymbolTable;
 
+import AST.TypeNode.TypeNode;
+
 /**
  * Created by lagoon0o0 on 16/4/3.
  */
 public class PrimitiveType extends ScopedSymbol implements Type{
+
     PrimitiveType(String name, Type type, Scope enclosingScope) {
         super(name,type,enclosingScope);
     }

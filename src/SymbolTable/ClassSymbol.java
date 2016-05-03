@@ -1,5 +1,7 @@
 package SymbolTable;
 
+import AST.TypeNode.TypeNode;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -27,6 +29,8 @@ public class ClassSymbol extends ScopedSymbol implements Type{
         offset.put(name,size);
         size += s;
     }
+
+
     @Override
     public boolean compatibleWith(Type ctx) {
         if(ctx.getName().equals(SymbolTable.NULL))

@@ -6,10 +6,10 @@ import IRVisitor.Visitor;
  * Created by lagoon0o0 on 5/1/16.
  */
 public class StaticString extends StaticData {
-    int idx;
-    String name,content;
+    public int idx;
+    public String name,content;
     public String toString() {
-        return "&" + name + "(" + idx + ")";
+        return "_" + name + "_" + idx + "_";
     }
     public StaticString(String aName, String aContent) {
         idx = ++total;

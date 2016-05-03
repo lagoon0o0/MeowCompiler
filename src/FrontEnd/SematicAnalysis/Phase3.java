@@ -180,8 +180,18 @@ public class Phase3 extends SemanticChecker{
         visit(ctx.parent);
         if(ctx.parent.type instanceof Scope) {
             Symbol symbol = ((Scope) ctx.parent.type).resolve(ctx.child);
-            if(symbol == null)
-                compilationError.add(ctx, "NoSuchMember: " + ctx.child);
+            if(symbol == null) {
+                if(ctx.parent.type instanceof ArrayType)
+                    symbol = ((Scope) ctx.parent.type).resolve("_array"+ "." + ctx.child);
+                else
+                    symbol = ((Scope) ctx.parent.type).resolve(ctx.parent.type.getName() + "." + ctx.child);
+
+                if(symbol == null)
+                    compilationError.add(ctx, "NoSuchMember: " + ctx.child);
+                else {
+                    ctx.child = ctx.parent.type.getName() + "." + ctx.child;
+                }
+            }
             ctx.type = symbol.type;
             ctx.symbol = symbol;
         } else {
@@ -203,12 +213,17 @@ public class Phase3 extends SemanticChecker{
         ctx.type = ctx.functionId.type;
         ctx.argumentList.stream().forEachOrdered(this::visit);
         if(ctx.functionId.symbol instanceof FunctionSymbol) {
+            if(ctx.functionId instanceof MemberExpression) {
+                ctx.argumentList.add(0,((MemberExpression) ctx.functionId).parent);
+            }
             if(((FunctionSymbol) ctx.functionId.symbol).argumentTypeList.size() == ctx.argumentList.size()){
                 for(int i = 0; i < ctx.argumentList.size(); ++i) {
                     if(!ctx.argumentList.get(i).type.compatibleWith(((FunctionSymbol) ctx.functionId.symbol).argumentTypeList.get(i)))
                         compilationError.add(ctx, "InvalidParameterList: ");
                 }
             } else {
+                System.out.print(((FunctionSymbol) ctx.functionId.symbol).getName());
+                System.out.print(ctx.argumentList.size() + "vs" + ((FunctionSymbol) ctx.functionId.symbol).argumentTypeList.size() + "\n");
                 compilationError.add(ctx, "InvalidParameterList: ");
             }
         } else {
