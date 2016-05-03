@@ -1,13 +1,12 @@
 # Built by Ficos 16/5/2
+# Modified by lagoon0o0 16/5/3
 # All rights reserved.
 #
 #
 # All test passed.
 #
 # Attention:
-# 1. to use the built-in functions, you need to call "_buffer_init" function without any args before entering the source main function
-# 	(jal _buffer_init)
-# 2. just paste all of this in front of your MIPS code
+# 1. just paste all of this in front of your MIPS code
 #
 # All supported functions:
 # 		FunctionName	    args
@@ -33,7 +32,7 @@
 #
 # Conventions in using string:
 # 1. string object is simply a register contains the initial address of the string
-# 2. front of every initial address of a string are a word containing the length of the string
+# 2. after of every initial address of a string are a word containing the length of the string
 #    e.g.
 #    .data
 #  		  .word 6
@@ -42,7 +41,7 @@
 # 3. every string ends with '\0', which is not counted in the length
 #
 # Conventions in using array:
-# 1. front of every initial address of a array are a word containing the size of the array
+# 1. after of every initial address of a array are a word containing the size of the array
 
 .data
 _end: .asciiz "\n"
