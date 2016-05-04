@@ -1,13 +1,14 @@
-package MIPS;
+package LivenessAnalysis;
 
 import IR.*;
 import IRVisitor.Visitor;
+import SymbolTable.Symbol;
 
 /**
- * Created by lagoon0o0 on 5/2/16.
+ * Created by lagoon0o0 on 5/4/16.
  */
-public class CalcFrame extends Translator{
-    FunctionBlock curFunction;
+public class CalcVirtualRegisterIndex implements Visitor{
+    FunctionBlock curFunc;
     @Override
     public void visit(AllocInstruction ctx) {
         visit(ctx.destination);
@@ -34,16 +35,17 @@ public class CalcFrame extends Translator{
     @Override
     public void visit(ConditionSetInstruction ctx) {
         visit(ctx.destination);
-        visit(ctx.destination);
-    }
-
-    @Override
-    public void visit(StaticString ctx) {
-
+        visit(ctx.source1);
+        visit(ctx.source2);
     }
 
     @Override
     public void visit(VoidValue ctx) {
+
+    }
+
+    @Override
+    public void visit(StaticString ctx) {
 
     }
 
@@ -59,8 +61,8 @@ public class CalcFrame extends Translator{
 
     @Override
     public void visit(UnaryInstruction ctx) {
-        visit(ctx.destination);
         visit(ctx.source);
+        visit(ctx.destination);
     }
 
     @Override
@@ -71,34 +73,32 @@ public class CalcFrame extends Translator{
 
     @Override
     public void visit(ReturnInstruction ctx) {
-            visit(ctx.value);
+        visit(ctx.value);
     }
 
     @Override
     public void visit(PhysicalRegister ctx) {
-
     }
 
     @Override
     public void visit(VirtualRegister ctx) {
-        curFunction.frame.get(ctx);
+        curFunc.insertVirtual(ctx);
     }
 
     @Override
     public void visit(MoveInstruction ctx) {
-        visit(ctx.source);
         visit(ctx.destination);
+        visit(ctx.source);
     }
 
     @Override
     public void visit(LoadInstruction ctx) {
-        visit(ctx.address);
         visit(ctx.destination);
+        visit(ctx.address);
     }
 
     @Override
     public void visit(JumpInstruction ctx) {
-
     }
 
     @Override
@@ -113,23 +113,16 @@ public class CalcFrame extends Translator{
 
     @Override
     public void visit(FunctionCallInstruction ctx) {
-        if(ctx.destination != null)
-                visit(ctx.destination);
         ctx.argumentList.stream().forEachOrdered(this::visit);
+        if(ctx.destination != null)
+            visit(ctx.destination);
     }
 
     @Override
     public void visit(FunctionBlock ctx) {
-        curFunction = ctx;
+        curFunc = ctx;
         ctx.argumentList.stream().forEachOrdered(this::visit);
         ctx.basicBlockList.stream().forEachOrdered(this::visit);
-        ctx.frame.get(ra);
-        ctx.frame.get(fp);
-        for(int i = 0; i < 3; ++i)
-            ctx.frame.get(t[i]);
-        for(int i = 0; i < 2; ++i)
-            ctx.frame.get(v[i]);
-        for(int i = 0; i < 3; ++i)
-            ctx.frame.get(a[i]);
+
     }
 }

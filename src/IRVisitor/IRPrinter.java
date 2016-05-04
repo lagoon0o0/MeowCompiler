@@ -124,7 +124,10 @@ public class IRPrinter implements Visitor{
 
     @Override
     public void visit(StaticString ctx) {
+    }
 
+    @Override
+    public void visit(VoidValue ctx) {
     }
 
     @Override

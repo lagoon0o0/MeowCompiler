@@ -235,7 +235,7 @@ public class Phase3 extends SemanticChecker{
     public void visit(PostfixExpression ctx) {
         ctx.scope = symbolTable.getCurrentScope();
         visit(ctx.expression);
-        if(!ctx.expression.type.getName().equals(SymbolTable.INT))
+        if(!ctx.expression.type.getName().equals(SymbolTable.INT) || !isValidLvalue(ctx.expression))
             compilationError.add(ctx, "InvalidPostfixExpression: " + ctx.expression.type.getName());
         ctx.type = ctx.expression.type;
     }
@@ -253,6 +253,9 @@ public class Phase3 extends SemanticChecker{
         switch (ctx.operator) {
             case PlusPlus:
             case MinusMinus:
+            if(!ctx.expression.type.getName().equals(SymbolTable.INT) || !isValidLvalue(ctx.expression))
+                compilationError.add(ctx, "InvalidUnaryExpression: " + ctx.expression.type.getName());
+            break;
             case BitwiseNot:
             if(!ctx.expression.type.getName().equals(SymbolTable.INT))
                 compilationError.add(ctx, "InvalidUnaryExpression: " + ctx.expression.type.getName());

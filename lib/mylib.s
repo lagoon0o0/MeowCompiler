@@ -10,19 +10,19 @@
 #
 # All supported functions:
 # 		FunctionName	    args
-# 1.	print 				$a0: the string
-# 2.	println			    $a0: the string
-# 3.	getString			---
-# 4.	getInt				---
-# 5.	toString			$a0: the integer
-# 6.	string.length 		$a0: the string
-# 7.	string.substring    $a0: the string,  $a1: left pos(int), $a2: right pos(int)
-# 8.	string.parseInt 	$a0: the string
-# 9.	string.ord 		    $a0: the string,  $a1: pos(int)
-# 10.	_array.size 		$a0: the array
-# 11.	stringConcatenate 	$a0: left string, $a1: right string
-# 12.	stringIsEqual 		$a0: left string, $a1: right string
-# 13.	stringLess 		    $a0: left string, $a1: right string
+# 1.	func_print 				$a0: the string
+# 2.	func_println			    $a0: the string
+# 3.	func_getString			---
+# 4.	func_getInt				---
+# 5.	func_toString			$a0: the integer
+# 6.	func_string.length 		$a0: the string
+# 7.	func_string.substring    $a0: the string,  $a1: left pos(int), $a2: right pos(int)
+# 8.	func_string.parseInt 	$a0: the string
+# 9.	func_string.ord 		    $a0: the string,  $a1: pos(int)
+# 10.	func__array.size 		$a0: the array
+# 11.	func_stringConcatenate 	$a0: left string, $a1: right string
+# 12.	func_func_stringIsEqual 		$a0: left string, $a1: right string
+# 13.	func_stringLess 		    $a0: left string, $a1: right string
 #
 # Calling Conventions:
 # 1. args placed in $a0, $a1, $a2
@@ -61,52 +61,52 @@ _buffer: .space 256
 	# sw $ra, 0($sp)
 	# jal _buffer_init
 
-	# Test print/println
+	# Test func_print/func_println
 	# la $a0, str
-	# jal println
+	# jal func_println
 	# la $a0, str2
-	# jal print
+	# jal func_print
 
-	# Test getString, string_copy
-	# jal getString
+	# Test func_getString, string_copy
+	# jal func_getString
 	# move $s0, $v0
 	# move $a0, $s0
-	# jal print
+	# jal func_print
 	# move $a0, $s0
-	# jal string.length
+	# jal func_string.length
 
 
-	# Test string.length
+	# Test func_string.length
 	# la $a0, str2
-	# jal string.length
+	# jal func_string.length
 	# move $a0, $v0
 	# li $v0, 1
 	# syscall
 
-	# Test getInt
-	# jal getInt
+	# Test func_getInt
+	# jal func_getInt
 	# move $a0, $v0
 	# li $v0, 1
 	# syscall
 
-	# Test toString
+	# Test func_toString
 	# li $a0, 232312312
-	# jal toString
+	# jal func_toString
 	# move $a0, $v0
-	# jal println
+	# jal func_println
 
 	# Test subString
 	# la $a0 str
 	# li $a1 1
 	# li $a2 9
-	# jal string.substring
+	# jal func_string.substring
 	# move $a0, $v0
 	# li $v0, 4
 	# syscall
 
 	# Test parseInt
 	# la $a0 str
-	# jal string.parseInt
+	# jal func_string.parseInt
 	# move $a0, $v0
 	# li $v0, 1
 	# syscall
@@ -122,23 +122,23 @@ _buffer: .space 256
 	# Test stringconcatinate
 	# la $a0 str
 	# la $a1 str2
-	# jal stringConcatenate
+	# jal func_stringConcatenate
 	# move $a0, $v0
-	# jal print
+	# jal func_print
 
 
-	# Test StringIsEqual
+	# Test func_stringIsEqual
 	# la $a0 str
 	# la $a1 str2
-	# jal stringIsEqual
+	# jal func_stringIsEqual
 	# move $a0, $v0
 	# li $v0, 1
 	# syscall
 
-	# Test StringLess
+	# Test func_stringLess
 	# la $a0 str
 	# la $a1 str2
-	# jal stringLess
+	# jal func_stringLess
 	# move $a0, $v0
 	# li $v0, 1
 	# syscall
@@ -171,7 +171,7 @@ _string_copy:
 
 # string arg in $a0
 ###### Checked ###### modified
-print:
+func_print:
 	add $a0,$a0,4 #added
 	li $v0, 4
 	syscall
@@ -179,7 +179,7 @@ print:
 
 # string arg in $a0
 ###### Checked ###### modified
-println: 
+func_println:
 	add $a0,$a0,4 #added
 	li $v0, 4
 	syscall
@@ -206,7 +206,7 @@ _count_string_length:
 # non arg, string in $v0
 ###### Checked ###### modified
 # used $a0, $a1, $v0, $t0
-getString:
+func_getString:
 	subu $sp, $sp, 4
 	sw $ra, 0($sp)
 
@@ -229,7 +229,7 @@ getString:
 	move $t0, $v0
 	jal _string_copy
 	move $v0, $t0
-	
+
 	lw $ra, 0($sp)
 	addu $sp, $sp, 4
 	sub $v0 $v0 4 #added
@@ -237,7 +237,7 @@ getString:
 
 # non arg, int in $v0
 ###### Checked ######
-getInt:
+func_getInt:
 	li $v0, 5
 	syscall
 	jr $ra
@@ -246,7 +246,7 @@ getInt:
 ###### Checked ###### modified
 # Bug fixed(5/2): when the arg is a neg number
 # used $a0, $t0, $t1, $t2, $t3, $t5, $v0, $v1
-toString:
+func_toString:
 	# subu $sp, $sp, 4
 	# sw $ra, 0($sp)
 	# first count the #digits
@@ -287,15 +287,15 @@ toString:
 	sb $zero, 0($t1)
 	sub $t1, $t1, 1
 
-	_continue_toString:
+	_continue_func_toString:
 	div $t3, $t5
 	mfhi $v1
 	add $v1, $v1, 48	# in ascii 48 = '0'
 	sb $v1, 0($t1)
 	sub $t1, $t1, 1
 	mflo $t3
-	# bge $t1, $v0, _continue_toString
-	bnez $t3, _continue_toString
+	# bge $t1, $v0, _continue_func_toString
+	bnez $t3, _continue_func_toString
 
 	beqz $t0, _skip_place_neg
 	li $v1, 45
@@ -322,18 +322,18 @@ toString:
 # string arg in $a0
 # the zero in the end of the string will not be counted
 ###### Checked ###### modified
-string.length:
+func_string.length:
 	lw $v0, 0($a0)
 	jr $ra
 
 # string arg in $a0, left in $a1, right in $a2
 ###### Checked ###### modified
 # used $a0, $a1, $t0, $t1, $t2, $t3, $t4, $v0,
-string.substring:
+func_string.substring:
 	add $a0,$a0,4 #added
 	subu $sp, $sp, 4
 	sw $ra, 0($sp)
-	
+
 
 	move $t0, $a0
 
@@ -363,7 +363,7 @@ string.substring:
 # string arg in $a0
 ###### Checked ###### modified
 # used $t0, $t1, $t2, $v0
-string.parseInt:
+func_string.parseInt:
 
 	add $a0 $a0 4
 	li $v0, 0
@@ -396,7 +396,7 @@ string.parseInt:
 # string arg in $a0, pos in $a1
 ###### Checked ###### modified
 # used $a0, $v0
-string.ord:
+func_string.ord:
 	add $a0 $a0 4
 	add $a0, $a0, $a1
 	lb $v0, 0($a0)
@@ -404,14 +404,14 @@ string.ord:
 
 # array arg in $a0   modified
 # used $v0
-_array.size:
+func__array.size:
 	lw $v0, 0($a0)
 	jr $ra
 
 # string1 in $a0, string2 in $a1
 ###### Checked ###### modified
 # used $a0, $a1, $t0, $t1, $t2, $t3, $t4, $t5, $v0
-stringConcatenate:
+func_stringConcatenate:
 	add $a0, $a0, 4 #added
 	add $a1, $a1, 4 #added
 	subu $sp, $sp, 4
@@ -448,7 +448,7 @@ stringConcatenate:
 # string1 in $a0, string2 in $a1
 ###### Checked ###### modified
 # used $a0, $a1, $t0, $t1, $v0
-stringIsEqual:
+func_stringIsEqual:
 	add $a0, $a0, 4 #added
 	add $a1, $a1, 4 #added
 
@@ -479,7 +479,7 @@ stringIsEqual:
 # string1 in $a0, string2 in $a1
 ###### Checked ###### modified
 # used $a0, $a1, $t0, $t1, $v0
-stringLess:
+func_stringLess:
 	add $a0, $a0, 4 #added
 	add $a1, $a1, 4 #added
 	_begin_compare_less:
@@ -501,3 +501,4 @@ stringLess:
 
 	_less_compare_final:
 	jr $ra
+################################################END##########################################################

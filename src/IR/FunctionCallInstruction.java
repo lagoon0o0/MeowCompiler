@@ -16,10 +16,12 @@ public class FunctionCallInstruction extends Instruction {
         destination = aDestination;
         function = aFunction;
         argumentList = anArgumentList;
+        index = ++total;
     }
      public FunctionCallInstruction( FunctionSymbol aFunction, List<Value> anArgumentList) {
         function = aFunction;
         argumentList = anArgumentList;
+        index = ++total;
     }
     public String toString() {
         String ret = "call" + " " + function.getName() + " ";

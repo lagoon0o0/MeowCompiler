@@ -17,6 +17,7 @@ public class UnaryInstruction extends Instruction {
         opCode = aOpCode;
         destination = aDestination;
         source = aSource;
+        index = ++total;
     }
     public String toString() {
         return destination.toString() + " " + "=" + " " + opCode.toString() + " " + source.toString();

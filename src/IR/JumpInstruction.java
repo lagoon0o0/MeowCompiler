@@ -9,6 +9,7 @@ public class JumpInstruction extends ControlInstruction{
     public BasicBlock destination;
     public JumpInstruction(BasicBlock aDestination) {
         destination = aDestination;
+        index = ++total;
     }
     public String toString() {
         return "jump" + " " + destination.getName();

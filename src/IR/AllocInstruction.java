@@ -9,6 +9,7 @@ public class AllocInstruction extends MemoryAccessInstruction{
     public Register destination;
     public Value size;
     public AllocInstruction(Register aDestination, Value aSize) {
+        index = ++total;
         destination = aDestination;
         size = aSize;
     }

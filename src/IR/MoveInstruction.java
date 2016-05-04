@@ -11,6 +11,7 @@ public class MoveInstruction extends Instruction {
     public MoveInstruction(Register aDestination, Value aSource) {
         destination = aDestination;
         source = aSource;
+        index = ++total;
     }
     public String toString() {
         return destination.toString() + " = " + "move" + " "+ source.toString();

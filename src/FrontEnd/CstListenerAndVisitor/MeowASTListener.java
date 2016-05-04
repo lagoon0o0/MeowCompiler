@@ -499,7 +499,7 @@ public class MeowASTListener extends MeowBaseListener {
                 row = ctx.getStart().getLine();
                 column = ctx.getStart().getCharPositionInLine();
                 operator = BinaryExpression.Operator.LogicalOr;
-                lhs = (Expression) values.get(ctx.logicalAndExpression());
+                lhs = (Expression) values.get(ctx.logicalOrExpression());
                 rhs = (Expression) values.get(ctx.logicalAndExpression());
             }
         });

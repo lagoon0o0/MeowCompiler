@@ -30,5 +30,6 @@ public interface Visitor {
     public void visit(StaticSpace ctx);
     public void visit(StaticString ctx);
     //public void visit(Value ctx);
+    public void visit(VoidValue ctx);
 
 }

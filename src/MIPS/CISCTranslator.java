@@ -60,9 +60,14 @@ public class CISCTranslator extends Translator{
         Value dest =  curValue;
 
         curValue = t[1];
-        visit(ctx.size);
+        if(ctx.size instanceof ImmediateNumber) {
+            printInst("li",curValue,ctx.size);
+        } else if(ctx.size instanceof StaticData) {
+            printInst("la",curValue,ctx.size);
+        } else {
+            visit(ctx.size);
+        }
         Value size = curValue;
-
         printInst("li",v[0],new ImmediateNumber(9));
         printInst("move",a[0],size);
 
@@ -188,6 +193,11 @@ public class CISCTranslator extends Translator{
     }
 
     @Override
+    public void visit(VoidValue ctx) {
+
+    }
+
+    @Override
     public void visit(StaticSpace ctx) {
         if(global) {
             print(".data");
@@ -208,7 +218,13 @@ public class CISCTranslator extends Translator{
         Value dest = curValue;
 
         curValue = t[1];
-        visit(ctx.source);
+        if(ctx.source instanceof ImmediateNumber) {
+            printInst("li",curValue,ctx.source);
+        } else if (ctx.source instanceof StaticData){
+            printInst("la",curValue,ctx.source);
+        } else {
+            visit(ctx.source);
+        }
         Value src = curValue;
 
         printInst(ctx.opCode.toString(),dest,src);
@@ -375,7 +391,11 @@ public class CISCTranslator extends Translator{
         for(int i = 0; i < 3; ++i) {
             printInst("sw",t[i], curFunction.frame.get(t[i]));
         }
-        printInst("jal",ctx.function.getName());
+        if(ctx.function.getName().equals("main")) {
+            printInst("jal", ctx.function.getName());
+        } else {
+            printInst("jal","func_" + ctx.function.getName());
+        }
         if(ctx.destination != null) {
             printInst("sw",v[0],curFunction.frame.get(ctx.destination));
         }
@@ -389,8 +409,11 @@ public class CISCTranslator extends Translator{
         print(".text");
         if(ctx.function.getName().equals("main")) {
             print(".globl main");
+            print(ctx.function.getName() + ":");
+        } else {
+
+            print("func_" + ctx.function.getName() + ":");
         }
-        print(ctx.function.getName() + ":");
         curFunction = ctx;
         depth++;
 
@@ -401,13 +424,14 @@ public class CISCTranslator extends Translator{
         ctx.basicBlockList.stream().forEachOrdered(this::visit);
 
         print("__" + ctx.function.getName() + "_return_:");
-        if(ctx.function.getName().equals("main")) {
+        /*if(ctx.function.getName().equals("main")) {
             print("move $t3 $v0");
             print("li $v0, 1");
             print("move $a0, $t3");
             print("syscall");
             print("move $v0 $t3");
         }
+        */
         printInst("lw",ra, ctx.frame.get(ra));
         printInst("lw",fp, ctx.frame.get(fp));
 

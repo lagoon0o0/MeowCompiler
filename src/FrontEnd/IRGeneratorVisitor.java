@@ -188,6 +188,8 @@ public class IRGeneratorVisitor implements Visitor{
                             argumentList.add(ctx.rhs.valueIR);
                         }
                     });
+                } else {
+                    curBlock.add(new ConditionSetInstruction(ConditionSetInstruction.OpCode.seq, (VirtualRegister)(ctx.valueIR = new VirtualRegister("seq_dest")),ctx.lhs.valueIR, ctx.rhs.valueIR));
                 }
                 break;
             case NotEqual:
@@ -276,7 +278,6 @@ public class IRGeneratorVisitor implements Visitor{
                 }
                 break;
             case Assign:
-                // to be done
                 if(ctx.lhs instanceof IdentifierExpression) {
                     // global
                     if(((VariableSymbol)((IdentifierExpression) ctx.lhs).symbol).isStatic) {
@@ -430,7 +431,7 @@ public class IRGeneratorVisitor implements Visitor{
 
     @Override
     public void visit(EmptyExpression ctx) {
-
+        ctx.valueIR = new VoidValue();
     }
 
     @Override
@@ -480,12 +481,15 @@ public class IRGeneratorVisitor implements Visitor{
             if(ctx.type.getName().equals(SymbolTable.INT) || ctx.type.getName().equals(SymbolTable.BOOL)) {
                 //对于int bool 类型返回值
                 VirtualRegister addr;
-                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,addr = new VirtualRegister("bracket_dest"),ctx.parent.valueIR, new ImmediateNumber(offset)));
+                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,addr = new VirtualRegister("member_dest"),ctx.parent.valueIR, new ImmediateNumber(offset)));
                 curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("load_dest")),addr,new ImmediateNumber(0),new ImmediateNumber(sizeTable.get(ctx.type.getName()))));
 
             } else {
                 //对于class string array返回引用
-                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add, (VirtualRegister) (ctx.valueIR = new VirtualRegister("member_dest")), ctx.parent.valueIR, new ImmediateNumber(offset)));
+                VirtualRegister addr;
+                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add, addr = new VirtualRegister("member_dest"), ctx.parent.valueIR, new ImmediateNumber(offset)));
+                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("load_dest")),addr,new ImmediateNumber(0),new ImmediateNumber(4)));
+
             }
         } else {
             // 调用系统内建方法
@@ -529,18 +533,43 @@ public class IRGeneratorVisitor implements Visitor{
     @Override
     public void visit(PostfixExpression ctx) {
         visit(ctx.expression);
-        VirtualRegister temp = new VirtualRegister("postfix_value");
-        curBlock.add(new MoveInstruction(temp,ctx.expression.valueIR));
-        ctx.valueIR = temp;
+        VirtualRegister oriVal = new VirtualRegister("ori_value");
+        VirtualRegister curVal = new VirtualRegister("cur_val");
+        curBlock.add(new MoveInstruction(oriVal,ctx.expression.valueIR));
+        ctx.valueIR = oriVal;
         switch (ctx.operator) {
             case PlusPlus:
-                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,(VirtualRegister) ctx.expression.valueIR,ctx.expression.valueIR,new ImmediateNumber(1)));
+                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,curVal,ctx.expression.valueIR,new ImmediateNumber(1)));
                 break;
             case MinusMinus:
-                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.sub,(VirtualRegister) ctx.expression.valueIR,ctx.expression.valueIR,new ImmediateNumber(1)));
+                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.sub,curVal,ctx.expression.valueIR,new ImmediateNumber(1)));
                 break;
         }
-
+        if(ctx.expression instanceof IdentifierExpression)
+            visitLeft((IdentifierExpression) ctx.expression);
+        else if(ctx.expression instanceof BracketExpression)
+            visitLeft((BracketExpression) ctx.expression);
+        else if(ctx.expression instanceof MemberExpression)
+            visitLeft((MemberExpression) ctx.expression);
+        if(ctx.expression instanceof IdentifierExpression) {
+            // global
+            if(((VariableSymbol)((IdentifierExpression) ctx.expression).symbol).isStatic) {
+                if(ctx.expression.type.getName().equals(SymbolTable.BOOL)) {
+                    curBlock.add(new StoreInstruction(ctx.expression.valueIR,new ImmediateNumber(0),new ImmediateNumber(1),curVal));
+                } else {
+                    curBlock.add(new StoreInstruction(ctx.expression.valueIR,new ImmediateNumber(0),new ImmediateNumber(4),curVal));
+                }
+            } else { // local
+                curBlock.add(new MoveInstruction((VirtualRegister) ctx.expression.valueIR, curVal));
+            }
+            // global
+        } else {
+            if(ctx.expression.type.getName().equals(SymbolTable.BOOL)) {
+                curBlock.add(new StoreInstruction(ctx.expression.valueIR,new ImmediateNumber(0),new ImmediateNumber(1),curVal));
+            } else {
+                curBlock.add(new StoreInstruction(ctx.expression.valueIR,new ImmediateNumber(0),new ImmediateNumber(4),curVal));
+            }
+        }
     }
 
     @Override
@@ -556,10 +585,42 @@ public class IRGeneratorVisitor implements Visitor{
         visit(ctx.expression);
         switch (ctx.operator) {
             case PlusPlus:
-                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add, (VirtualRegister)(ctx.valueIR = ctx.expression.valueIR),ctx.expression.valueIR,new ImmediateNumber(1)));
-                break;
             case MinusMinus:
-                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.sub, (VirtualRegister)(ctx.valueIR = ctx.expression.valueIR),ctx.expression.valueIR,new ImmediateNumber(1)));
+                VirtualRegister curVal = new VirtualRegister("cur_val");
+                ctx.valueIR = curVal;
+                switch (ctx.operator) {
+                    case PlusPlus:
+                        curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,curVal,ctx.expression.valueIR,new ImmediateNumber(1)));
+                        break;
+                    case MinusMinus:
+                        curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.sub,curVal,ctx.expression.valueIR,new ImmediateNumber(1)));
+                        break;
+                }
+                if(ctx.expression instanceof IdentifierExpression)
+                    visitLeft((IdentifierExpression) ctx.expression);
+                else if(ctx.expression instanceof BracketExpression)
+                    visitLeft((BracketExpression) ctx.expression);
+                else if(ctx.expression instanceof MemberExpression)
+                    visitLeft((MemberExpression) ctx.expression);
+                if(ctx.expression instanceof IdentifierExpression) {
+                    // global
+                    if(((VariableSymbol)((IdentifierExpression) ctx.expression).symbol).isStatic) {
+                        if(ctx.expression.type.getName().equals(SymbolTable.BOOL)) {
+                            curBlock.add(new StoreInstruction(ctx.expression.valueIR,new ImmediateNumber(0),new ImmediateNumber(1),curVal));
+                        } else {
+                            curBlock.add(new StoreInstruction(ctx.expression.valueIR,new ImmediateNumber(0),new ImmediateNumber(4),curVal));
+                        }
+                    } else { // local
+                        curBlock.add(new MoveInstruction((VirtualRegister) ctx.expression.valueIR, curVal));
+                    }
+                    // global
+                } else {
+                    if(ctx.expression.type.getName().equals(SymbolTable.BOOL)) {
+                        curBlock.add(new StoreInstruction(ctx.expression.valueIR,new ImmediateNumber(0),new ImmediateNumber(1),curVal));
+                    } else {
+                        curBlock.add(new StoreInstruction(ctx.expression.valueIR,new ImmediateNumber(0),new ImmediateNumber(4),curVal));
+                    }
+                }
                 break;
             case LogicalNot:
                 curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.xor,(VirtualRegister)(ctx.valueIR = new VirtualRegister("logicalNot_dest")),ctx.expression.valueIR,new ImmediateNumber(1)));
@@ -614,8 +675,13 @@ public class IRGeneratorVisitor implements Visitor{
         curBlock.add(new JumpInstruction(loopCondition));
 
         curBlock = loopCondition;
-        visit(ctx.condition);
-        curBlock.add(new BranchInstruction(ctx.condition.valueIR, loopBody,loopAfter));
+        if(ctx.condition instanceof EmptyExpression) {
+            curBlock.add(new JumpInstruction(loopBody));
+        } else {
+            visit(ctx.condition);
+            curBlock.add(new BranchInstruction(ctx.condition.valueIR, loopBody,loopAfter));
+        }
+
 
 
         curBlock = loopBody;
@@ -785,6 +851,7 @@ public class IRGeneratorVisitor implements Visitor{
         curFunc.add(entryBlock);
         curBlock = entryBlock;
         ctx.bodyStatements.stream().forEachOrdered(this::visit);
+        curBlock.add(new ReturnInstruction(new VoidValue()));
     }
 
     @Override

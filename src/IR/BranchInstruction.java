@@ -12,6 +12,7 @@ public class BranchInstruction extends ControlInstruction{
         condition = aCondition;
         ifTrue = anIfTrue;
         ifFalse = anIfFalse;
+        index = ++total;
     }
     public String toString() {
         return "br" + " " + condition.toString() + " " + ifTrue.getName() + " " + ifFalse.getName();

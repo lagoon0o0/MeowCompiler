@@ -13,6 +13,7 @@ public class StoreInstruction extends MemoryAccessInstruction {
         offset = anOffset;
         size = aSize;
         source = aSource;
+        index = ++total;
     }
     public String toString() {
         return "store" + " " + size.toString() + " " + address.toString() + " " + source.toString() + " " + offset.toString();

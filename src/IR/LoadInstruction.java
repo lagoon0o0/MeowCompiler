@@ -14,6 +14,7 @@ public class LoadInstruction extends MemoryAccessInstruction {
         address = anAddress;
         offset = anOffset;
         size = aSize;
+        index = ++total;
     }
     public String toString() {
         return destination.toString() + " " + "=" + " " + "load"+ " " + size.toString() + "  " + address.toString() + " " + offset.toString();

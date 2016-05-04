@@ -12,16 +12,21 @@ public class BasicBlock extends IR{
     static int total = 0;
     int index;
     String name;
-    public List<Instruction> list;
+    public List<Instruction> list = new ArrayList<>();
     public BasicBlock(String aName) {
         index = ++total;
         name = aName;
-        list = new ArrayList<>();
     }
     public void add(Instruction x) {
         if(!list.isEmpty() && list.get(list.size() - 1) instanceof ControlInstruction)
             return;
         list.add(x);
+    }
+    public Instruction getFirst() {
+        if(list.size() == 0) {
+            throw new RuntimeException("Empty Blcok!");
+        }
+        return list.get(0);
     }
     public String getName() {
         return "__" + name + "_" + index + "_" ;
