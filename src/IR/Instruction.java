@@ -11,11 +11,11 @@ import java.util.Set;
 public abstract class Instruction extends IR{
     static int total = 0;
     public int index = 0;
-    public List<Instruction> successor = new ArrayList<>();
-    public List<Integer> in = new ArrayList<>()
-            ,out = new ArrayList<>()
-            ,use = new ArrayList<>()
-            ,def = new ArrayList<>();
+    public Set<Instruction> successor = new HashSet<>();
+    public Set<Integer> in = new HashSet<>()
+            ,out = new HashSet<>()
+            ,use = new HashSet<>()
+            ,def = new HashSet<>();
     public boolean addUse(int x) {
         return use.add(x);
     }

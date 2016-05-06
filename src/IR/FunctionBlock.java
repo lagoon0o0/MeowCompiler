@@ -9,19 +9,19 @@ import java.util.*;
  * Created by lagoon0o0 on 4/28/16.
  */
 public class FunctionBlock extends IR{
-    static final PhysicalRegister zero = new PhysicalRegister(0,"zero");
-    static final PhysicalRegister at = new PhysicalRegister(1,"at");
-    static final PhysicalRegister[] v  = {
+    public static final PhysicalRegister zero = new PhysicalRegister(0,"zero");
+    public static final PhysicalRegister at = new PhysicalRegister(1,"at");
+    public static final PhysicalRegister[] v  = {
             new PhysicalRegister(2,"v0")
             ,new PhysicalRegister(3,"v1")
     };
-    static final PhysicalRegister[] a = {
+    public static final PhysicalRegister[] a = {
             new PhysicalRegister(4,"a0")
             ,new PhysicalRegister(5,"a1")
             ,new PhysicalRegister(6,"a2")
             ,new PhysicalRegister(7,"a3")
     };
-    static final PhysicalRegister[] t = {
+    public static final PhysicalRegister[] t = {
             new PhysicalRegister(8,"t0")
             ,new PhysicalRegister(9,"t1")
             ,new PhysicalRegister(10,"t2")
@@ -33,7 +33,7 @@ public class FunctionBlock extends IR{
             ,new PhysicalRegister(24,"t8")
             ,new PhysicalRegister(25,"t9")
     };
-    static final PhysicalRegister[] s = {
+    public static final PhysicalRegister[] s = {
             new PhysicalRegister(16,"s0")
             ,new PhysicalRegister(17,"s1")
             ,new PhysicalRegister(18,"s2")
@@ -43,15 +43,31 @@ public class FunctionBlock extends IR{
             ,new PhysicalRegister(22,"s6")
             ,new PhysicalRegister(23,"s7")
     };
-    static final PhysicalRegister[] k= {
+    public static final PhysicalRegister[] k= {
             new PhysicalRegister(26,"k0")
             ,new PhysicalRegister(27,"k1")
     };
-    static final PhysicalRegister gp = new PhysicalRegister(28,"gp");
-    static final PhysicalRegister sp = new PhysicalRegister(29,"sp");
-    static final PhysicalRegister fp = new PhysicalRegister(30,"fp");
-    static final PhysicalRegister ra = new PhysicalRegister(31,"ra");
-
+    public static final PhysicalRegister gp = new PhysicalRegister(28,"gp");
+    public static final PhysicalRegister sp = new PhysicalRegister(29,"sp");
+    public static final PhysicalRegister fp = new PhysicalRegister(30,"fp");
+    public static final PhysicalRegister ra = new PhysicalRegister(31,"ra");
+    public static final Set<PhysicalRegister> avaReg = new LinkedHashSet<PhysicalRegister>() {
+        {
+            for(int i = 0; i <= 1; ++i) {
+                add(v[i]);
+            }
+            for(int i = 0; i <= 3; ++i) {
+                add(a[i]);
+            }
+            for(int i = 2; i <= 9; ++i) {
+                add(t[i]);
+            }
+            for(int i = 0; i <= 7; ++i) {
+                add(s[i]);
+            }
+            add(fp);
+        }
+    };
     public class Frame {
         private int size = 0;
         Map<Register, FrameAddr> hash = new Hashtable<>();
@@ -76,11 +92,12 @@ public class FunctionBlock extends IR{
 
 
     public int virtualTotal = 0;
-    public Map<Register,PhysicalRegister> virtualToPhysical = new Hashtable<>();
-    Map<VirtualRegister,Integer> getIndex = new Hashtable<>();
-    Map<Integer,VirtualRegister> getRegister = new Hashtable<>();
-    public List<Set<Integer>> edge = new ArrayList<>();
+    public int numberOfSpill = 0;
+    public Map<Register,Register> virtualToPhysical = new Hashtable<>();
+    public Map<VirtualRegister,Integer> getIndex = new Hashtable<>();
+    public Map<Integer,VirtualRegister> getRegister = new Hashtable<>();
     public List<Set<Integer>> contraSet = new ArrayList<>();
+    public List<Set<Integer>> linkedSet = new ArrayList<>();
 
 
 
@@ -88,6 +105,7 @@ public class FunctionBlock extends IR{
     public FunctionSymbol function;
     public List<Register> argumentList = new ArrayList<>();
     public List<BasicBlock> basicBlockList = new ArrayList<>();
+
     public BasicBlock entryBlock;
     public void add(BasicBlock x) {
         if(basicBlockList.size() == 0)
@@ -132,8 +150,8 @@ public class FunctionBlock extends IR{
         if(!getIndex.containsKey(register)) {
             getIndex.put(register,virtualTotal);
             getRegister.put(virtualTotal, register);
-            edge.add(new HashSet<>());
             contraSet.add(new HashSet<>());
+            linkedSet.add(new HashSet<>());
             virtualTotal++;
             return true;
         } else {
@@ -156,29 +174,95 @@ public class FunctionBlock extends IR{
             throw new RuntimeException("No such register:" + x);
         }
     }
-    public void addEdge(int x, int y) {
+    public void addContra(int x, int y) {
         if(x == y)
             return;
         //throw new RuntimeException("Invalid Edge");
-        edge.get(x).add(y);
-        edge.get(y).add(x);
+        contraSet.get(x).add(y);
+        contraSet.get(y).add(x);
     }
-    public boolean delEdge(int x, int y) {
-        return (edge.get(x).remove(y) && edge.get(y).remove(x));
+    public boolean delContra(int x, int y) {
+        return (contraSet.get(x).remove(y) && contraSet.get(y).remove(x));
     }
-    public void addEdge(VirtualRegister vx, VirtualRegister vy) {
+    public void addContra(VirtualRegister vx, VirtualRegister vy) {
         int x = getVirtualIndex(vx);
         int y = getVirtualIndex(vy);
         if(x == y)
             return;
-            //throw new RuntimeException("Invalid Edge");
-        edge.get(x).add(y);
-        edge.get(y).add(x);
+        contraSet.get(x).add(y);
+        contraSet.get(y).add(x);
     }
-    public boolean delEdge(VirtualRegister vx, VirtualRegister vy) {
+    public boolean delContra(VirtualRegister vx, VirtualRegister vy) {
         int x = getVirtualIndex(vx);
         int y = getVirtualIndex(vy);
-        return (edge.get(x).remove(y) && edge.get(y).remove(x));
+        return (contraSet.get(x).remove(y) && contraSet.get(y).remove(x));
     }
 
+
+    public void addLink(int x, int y) {
+        if(x == y)
+            return;
+        linkedSet.get(x).add(y);
+        linkedSet.get(y).add(x);
+    }
+    public boolean delLink(int x, int y) {
+        return (linkedSet.get(x).remove(y) && linkedSet.get(y).remove(x));
+    }
+    public void addLink(VirtualRegister vx, VirtualRegister vy) {
+        int x = getVirtualIndex(vx);
+        int y = getVirtualIndex(vy);
+        if(x == y)
+            return;
+        linkedSet.get(x).add(y);
+        linkedSet.get(y).add(x);
+    }
+    public boolean delLink(VirtualRegister vx, VirtualRegister vy) {
+        int x = getVirtualIndex(vx);
+        int y = getVirtualIndex(vy);
+        return (linkedSet.get(x).remove(y) && linkedSet.get(y).remove(x));
+    }
+
+    public void delVirtualReg(int x) {
+        Set<Integer> copy = new HashSet<Integer>(contraSet.get(x));
+        for (Integer y : copy) {
+            delContra(x,y);
+        }
+    }
+    public void delVirtualReg(VirtualRegister vx) {
+        int x = getVirtualIndex(vx);
+        Set<Integer> copy = new HashSet<Integer>(contraSet.get(x));
+        for (Integer y : copy) {
+            delContra(x,y);
+        }
+    }
+
+    public void mapTo(Register x,Register y) {
+        if(virtualToPhysical.containsKey(x))
+            throw new RuntimeException("invalid vReg " + x.toString() + "->" + getPhysicalRegister(x).toString());
+        if(y instanceof PhysicalRegister && !avaReg.contains(y))
+            throw new RuntimeException("invalid pReg");
+        virtualToPhysical.put(x,y);
+    }
+    public void mapTo(int vx,Register y) {
+        Register x = getVirtualRegister(vx);
+        if(virtualToPhysical.containsKey(x))
+            throw new RuntimeException("invalid vReg");
+        if(y instanceof PhysicalRegister && !avaReg.contains(y))
+            throw new RuntimeException("invalid pReg");
+        virtualToPhysical.put(x,y);
+    }
+    public Register getPhysicalRegister(Register x) {
+        if(virtualToPhysical.containsKey(x)) {
+            return virtualToPhysical.get(x);
+        } else {
+            return null;
+        }
+    }
+
+    public int getDeg(VirtualRegister x) {
+        return contraSet.get(getVirtualIndex(x)).size();
+    }
+    public int getDeg(int x) {
+        return contraSet.get(x).size();
+    }
 }

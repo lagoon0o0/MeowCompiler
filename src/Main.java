@@ -11,9 +11,8 @@ import FrontEnd.SematicAnalysis.Phase3;
 import FrontEnd.VisitorAST.ASTPrinter;
 import IR.IRRoot;
 import IRVisitor.IRPrinter;
-import LivenessAnalysis.*;
-import MIPS.CISCTranslator;
-import MIPS.CalcFrame;
+import MIPS.*;
+import RegisterAllocation.*;
 import SymbolTable.SymbolTable;
 import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import org.antlr.v4.runtime.*;
@@ -25,7 +24,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         boolean CISC = false;
         InputStream is = new FileInputStream("sample/sample0.mx"); // or System.in;
-        PrintStream src = new PrintStream(new FileOutputStream("out/src.s"));
+        PrintStream srcfile = new PrintStream(new FileOutputStream("out/src.s"));
+        PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
 
         //InputStream is = System.in;
         //try {
@@ -66,11 +66,11 @@ public class Main {
 
         irGeneratorVisitor.visit(root);
         IRRoot irRoot = irGeneratorVisitor.irRoot;
-        IRPrinter irPrinter = new IRPrinter(System.out);
+        IRPrinter irPrinter = new IRPrinter(debug);
 
         //System.out.print("------ir--------\n");
 
-        //irPrinter.visit(irRoot);
+        irPrinter.visit(irRoot);
 
         if(!CISC) {
             // Liveness Analysis
@@ -81,21 +81,35 @@ public class Main {
             BuildGraph buildGraph = new BuildGraph();
             buildGraph.visit(irRoot);
 
-            CalcLiveness calcLiveness = new CalcLiveness();
+            CalcLiveness calcLiveness = new CalcLiveness(debug);
             calcLiveness.visit(irRoot);
 
-            BuildInterferenceGraph buildInterferenceGraph = new BuildInterferenceGraph();
+            BuildInterferenceGraph buildInterferenceGraph = new BuildInterferenceGraph(debug);
             buildInterferenceGraph.visit(irRoot);
 
+            GraphColoring graphColoring = new GraphColoring(debug);
+            graphColoring.visit(irRoot);
 
-            PrintLiveness printLiveness = new PrintLiveness(System.out);
+
+            ReplaceRegister replaceRegister = new ReplaceRegister();
+            replaceRegister.visit(irRoot);
+
+            RISCCalcFrame riscCalcFrame = new RISCCalcFrame();
+            riscCalcFrame.visit(irRoot);
+
+            RISCTranslator riscTranslator = new RISCTranslator(mySrcPrint);
+            riscTranslator.visit(irRoot);
+
+
+            PrintLiveness printLiveness = new PrintLiveness(debug);
             printLiveness.visit(irRoot);
 
 
+            //irPrinter.visit(irRoot);
 
         } else {
             // CISC Translation
-            CalcFrame calcFrame = new CalcFrame();
+            CISCCalcFrame calcFrame = new CISCCalcFrame();
             calcFrame.visit(irRoot);
 
 
@@ -103,17 +117,18 @@ public class Main {
             //System.out.print("------mips--------\n");
             ciscTranslator.visit(irRoot);
 
-            BufferedReader lib = new BufferedReader(new FileReader("lib/mylib.s"));
-            for(String line = lib.readLine();line != null ; line = lib.readLine()) {
-                src.println(line);
-            }
-            byte[] mySrcText = mySrcTextOut.toByteArray();
-            BufferedReader my = new BufferedReader(new InputStreamReader(new ByteInputStream(mySrcText,mySrcText.length)));
-            for(String line = my.readLine();line != null ; line = my.readLine()) {
-                src.println(line);
-            }
+
         }
 
+        BufferedReader lib = new BufferedReader(new FileReader("lib/mylib.s"));
+        for(String line = lib.readLine();line != null ; line = lib.readLine()) {
+            srcfile.println(line);
+        }
+        byte[] mySrcText = mySrcTextOut.toByteArray();
+        BufferedReader my = new BufferedReader(new InputStreamReader(new ByteInputStream(mySrcText,mySrcText.length)));
+        for(String line = my.readLine();line != null ; line = my.readLine()) {
+            srcfile.println(line);
+        }
         /*
         Process process = Runtime.getRuntime().exec("out/spim -ldata 10000000000 -stat -file out/src.s");
         OutputStream tmp = process.getOutputStream();

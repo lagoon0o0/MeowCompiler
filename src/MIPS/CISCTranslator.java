@@ -12,8 +12,6 @@ import java.util.List;
  */
 public class CISCTranslator extends Translator{
     boolean global = true;
-    List<String> output = new LinkedList<>();
-    BasicBlock curBlock;
     PrintStream out;
     FunctionBlock curFunction;
     Value curValue;
@@ -28,8 +26,7 @@ public class CISCTranslator extends Translator{
         return ret;
     }
     void print(String content) {
-        //out.print(content + "\n");
-        output.add(indent(depth) + content + "\n");
+        out.print(content + "\n");
     }
     void printInst(String opcode, Value dest, Value src1, Value src2) {
         print(opcode + " " + dest.toString() + ", " + src1.toString() + ", " + src2.toString());
@@ -78,7 +75,6 @@ public class CISCTranslator extends Translator{
     @Override
     public void visit(BasicBlock ctx) {
         print(ctx.getName() + ":");
-        curBlock = ctx;
         depth++;
         ctx.list.stream().forEachOrdered(this::visit);
         depth--;
@@ -110,6 +106,7 @@ public class CISCTranslator extends Translator{
             opcode = "sll";
         else if(opcode.equals("shr"))
             opcode = "sra";
+
         printInst(opcode,dest,src1,src2);
         printInst("sw",dest,curFunction.frame.get(ctx.destination));
     }
@@ -154,7 +151,6 @@ public class CISCTranslator extends Translator{
         global = false;
         ctx.func.stream().forEachOrdered(this::visit);
         global = true;
-        output.stream().forEachOrdered(out::print);
     }
     private String unescape(String s) {
         StringBuilder sb = new StringBuilder();
@@ -411,7 +407,6 @@ public class CISCTranslator extends Translator{
             print(".globl main");
             print(ctx.function.getName() + ":");
         } else {
-
             print("func_" + ctx.function.getName() + ":");
         }
         curFunction = ctx;

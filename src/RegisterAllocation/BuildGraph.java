@@ -1,4 +1,4 @@
-package LivenessAnalysis;
+package RegisterAllocation;
 
 import IR.*;
 import IRVisitor.Visitor;

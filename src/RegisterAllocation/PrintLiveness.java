@@ -1,5 +1,4 @@
-package LivenessAnalysis;
-
+package RegisterAllocation;
 import IR.*;
 import IRVisitor.Visitor;
 
@@ -177,11 +176,18 @@ public class PrintLiveness implements Visitor{
     public void visit(FunctionBlock ctx) {
         curFunc = ctx;
         print("function : " + ctx.function.getName());
-
+        print("number of spill = " + ctx.numberOfSpill);
+        print("size of frame = " + ctx.frame.getSize());
         print("list of reg:");
         depth++;
         for(int i = 0; i < ctx.virtualTotal; ++i) {
-            print(i + ": " + ctx.getVirtualRegister(i).toString() + "deg = "  + ctx.edge.get(i).size());
+            print(i + ": " + ctx.getVirtualRegister(i).toString()
+                    + "\tContra = "  + ctx.contraSet.get(i).size()
+                    + "\tLink = " + ctx.linkedSet.get(i).size()
+                    + "\tUse = "  + ctx.getVirtualRegister(i).numberOfRef
+                    + "\tPhy = " + ctx.getPhysicalRegister(ctx.getVirtualRegister(i)).toString()
+            );
+
         }
         depth--;
         ctx.basicBlockList.stream().forEachOrdered(this::visit);

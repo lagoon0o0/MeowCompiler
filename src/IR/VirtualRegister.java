@@ -9,6 +9,7 @@ import IRVisitor.Visitor;
 public class VirtualRegister extends Register{
     static int total = 0;
     public int idx;
+    public int numberOfRef = 0;
     public String name;
 
     public VirtualRegister(String aName) {

@@ -1,29 +1,36 @@
-package LivenessAnalysis;
+package RegisterAllocation;
 
 import IR.*;
 import IRVisitor.Visitor;
+
+import java.io.PrintStream;
 
 /**
  * Created by lagoon0o0 on 5/4/16.
  */
 public class BuildInterferenceGraph implements Visitor{
     FunctionBlock curFunc;
-
+    PrintStream debug;
+    public BuildInterferenceGraph(PrintStream debug){this.debug=debug;}
     public void visit(Instruction ctx) {
         if(ctx instanceof MoveInstruction) {
             for (Integer x : ctx.def) {
+                for (Integer y : ctx.use) {
+                  if(((MoveInstruction) ctx).source instanceof VirtualRegister)
+                      curFunc.addLink(x,y);
+                }
                 for (Integer y : ctx.out) {
                     if(((MoveInstruction) ctx).source instanceof VirtualRegister
                             && y == curFunc.getVirtualIndex((VirtualRegister) ((MoveInstruction) ctx).source)) {
                         continue;
                     }
-                    curFunc.addEdge(x,y);
+                    curFunc.addContra(x,y);
                 }
             }
         } else {
             for (Integer x : ctx.def) {
                 for (Integer y : ctx.out) {
-                    curFunc.addEdge(x,y);
+                    curFunc.addContra(x,y);
                 }
             }
         }
@@ -132,6 +139,12 @@ public class BuildInterferenceGraph implements Visitor{
     @Override
     public void visit(FunctionBlock ctx) {
         curFunc = ctx;
+        // different args are contra
+        for (Register x : ctx.argumentList) {
+            for (Register y : ctx.argumentList) {
+                curFunc.addContra((VirtualRegister) x, (VirtualRegister) y);
+            }
+        }
         ctx.basicBlockList.stream().forEachOrdered(this::visit);
 
 

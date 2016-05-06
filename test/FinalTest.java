@@ -1,5 +1,4 @@
 import AST.AstNode;
-import AST.Expression.Expression;
 import FrontEnd.CstListenerAndVisitor.MeowASTListener;
 import FrontEnd.IRGeneratorVisitor;
 import FrontEnd.LexarAndPaser.MeowLexer;
@@ -11,8 +10,8 @@ import FrontEnd.SematicAnalysis.Phase3;
 import FrontEnd.VisitorAST.ASTPrinter;
 import IR.IRRoot;
 import IRVisitor.IRPrinter;
-import MIPS.CISCTranslator;
-import MIPS.CalcFrame;
+import MIPS.*;
+import RegisterAllocation.*;
 import SymbolTable.SymbolTable;
 import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -23,7 +22,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import javax.management.relation.RoleUnresolved;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -55,11 +53,13 @@ public class FinalTest {
     }
     @Test
     public void testPass() throws IOException, InterruptedException {
+        boolean CISC = false;
         System.out.println(filename);
         InputStream is = new FileInputStream(filename);
         PrintStream srcfile = new PrintStream(new FileOutputStream("out/src.s"));
         ByteArrayOutputStream mipsTextOut = new ByteArrayOutputStream(); // out put your mips code into mipsTextOut
         PrintStream out = new PrintStream(mipsTextOut);
+        PrintStream debug = new PrintStream(new FileOutputStream("out/test_bug.R"));
 
         // run compiler
         ByteArrayOutputStream mySrcTextOut = new ByteArrayOutputStream();
@@ -85,7 +85,6 @@ public class FinalTest {
         AstNode root =  Listener.astRoot;
         ASTPrinter printer = new ASTPrinter();
         //printer.visit(root);
-
         SymbolTable symbolTable = new SymbolTable();
         CompilationError compilationError = new CompilationError();
         Phase1 phase1 = new Phase1(symbolTable, compilationError);
@@ -99,17 +98,53 @@ public class FinalTest {
 
         irGeneratorVisitor.visit(root);
         IRRoot irRoot = irGeneratorVisitor.irRoot;
-        //IRPrinter irPrinter = new IRPrinter(System.out);
+
+        IRPrinter irPrinter = new IRPrinter(debug);
 
         //System.out.print("------ir--------\n");
+        irPrinter.visit(irRoot);
 
-        //irPrinter.visit(irRoot);
-        CalcFrame calcFrame = new CalcFrame();
-        calcFrame.visit(irRoot);
+        if(CISC) {
+            CISCCalcFrame calcFrame = new CISCCalcFrame();
+            calcFrame.visit(irRoot);
 
-        CISCTranslator ciscTranslator = new CISCTranslator(mySrcPrint);
-        //System.out.print("------mips--------\n");
-        ciscTranslator.visit(irRoot);
+            CISCTranslator ciscTranslator = new CISCTranslator(mySrcPrint);
+            //System.out.print("------mips--------\n");
+
+            ciscTranslator.visit(irRoot);
+
+        } else {
+            CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
+            calcVirtualRegisterIndex.visit(irRoot);
+
+            BuildGraph buildGraph = new BuildGraph();
+            buildGraph.visit(irRoot);
+
+            CalcLiveness calcLiveness = new CalcLiveness(debug);
+            calcLiveness.visit(irRoot);
+
+            BuildInterferenceGraph buildInterferenceGraph = new BuildInterferenceGraph(debug);
+            buildInterferenceGraph.visit(irRoot);
+
+            GraphColoring graphColoring = new GraphColoring(debug);
+            graphColoring.visit(irRoot);
+
+
+            ReplaceRegister replaceRegister = new ReplaceRegister();
+            replaceRegister.visit(irRoot);
+
+            RISCCalcFrame riscCalcFrame = new RISCCalcFrame();
+            riscCalcFrame.visit(irRoot);
+
+            RISCTranslator riscTranslator = new RISCTranslator(mySrcPrint);
+            riscTranslator.visit(irRoot);
+
+
+
+
+            PrintLiveness printLiveness = new PrintLiveness(debug);
+            printLiveness.visit(irRoot);
+        }
 
         BufferedReader lib = new BufferedReader(new FileReader("lib/mylib.s"));
         for(String line = lib.readLine();line != null ; line = lib.readLine()) {
@@ -169,7 +204,8 @@ public class FinalTest {
             }
             System.out.println("Yes!");
         } else {
-            System.out.println("No std output, usr out put:");
+            throw new RuntimeException("No std out");
+            /*System.out.println("No std output, usr out put:");
             BufferedReader usrOut = new BufferedReader(usr);
             String usrLine;
             for(int i = 1;; ++i) {
@@ -177,7 +213,7 @@ public class FinalTest {
                 if(usrLine == null)
                     break;
                 System.out.println(usrLine);
-            }
+            }*/
         }
 
 
