@@ -6,40 +6,12 @@ import IRVisitor.Visitor;
 import java.io.PrintStream;
 
 /**
- * Created by lagoon0o0 on 5/4/16.
+ * Created by lagoon0o0 on 5/7/16.
  */
-public class BuildInterferenceGraph implements Visitor{
+public class BuildCallingGraph implements Visitor{
     FunctionBlock curFunc;
     PrintStream debug;
-    public BuildInterferenceGraph(PrintStream debug){this.debug=debug;}
-    public void visit(Instruction ctx) {
-        for (Integer x : ctx.use) {
-            curFunc.getVirtualRegister(x).useful = true;
-        }
-        if(ctx instanceof MoveInstruction) {
-            for (Integer x : ctx.def) {
-                for (Integer y : ctx.use) {
-
-                  if(((MoveInstruction) ctx).source instanceof VirtualRegister)
-                      curFunc.addLink(x,y);
-                }
-                for (Integer y : ctx.out) {
-                    if(((MoveInstruction) ctx).source instanceof VirtualRegister
-                            && y == curFunc.getVirtualIndex((VirtualRegister) ((MoveInstruction) ctx).source)) {
-                        continue;
-                    }
-                    curFunc.addContra(x,y);
-                }
-            }
-        } else {
-            for (Integer x : ctx.def) {
-                for (Integer y : ctx.out) {
-                    curFunc.addContra(x,y);
-                }
-            }
-        }
-
-    }
+    BuildCallingGraph(PrintStream debug) {this.debug = debug;}
     @Override
     public void visit(AllocInstruction ctx) {
         
@@ -137,20 +109,14 @@ public class BuildInterferenceGraph implements Visitor{
 
     @Override
     public void visit(FunctionCallInstruction ctx) {
-
+        if(ctx.function.functionBlock == null) // system call
+            ctx.function.functionBlock = new FunctionBlock(ctx.function);
+        curFunc.succ.add(ctx.function.functionBlock);
     }
 
     @Override
     public void visit(FunctionBlock ctx) {
         curFunc = ctx;
-        // different args are contra
-        for (Register x : ctx.argumentList) {
-            for (Register y : ctx.argumentList) {
-                curFunc.addContra((VirtualRegister) x, (VirtualRegister) y);
-            }
-        }
         ctx.basicBlockList.stream().forEachOrdered(this::visit);
-
-
     }
 }

@@ -11,6 +11,7 @@ public class VirtualRegister extends Register{
     public int idx;
     public int numberOfRef = 0;
     public String name;
+    public boolean useful = false;
 
     public VirtualRegister(String aName) {
         idx = ++total;

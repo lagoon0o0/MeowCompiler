@@ -34,6 +34,8 @@ public class IRGeneratorVisitor implements Visitor{
     BasicBlock loopBody;
     BasicBlock loopAfter;
     BasicBlock loopUpdate;
+    BasicBlock jumpTargetTrue, jumpTargetFalse;
+    boolean jumpShortCut = false;
     public IRGeneratorVisitor(SymbolTable aSymbolTable) {
         symbolTable = aSymbolTable;
     }
@@ -219,62 +221,98 @@ public class IRGeneratorVisitor implements Visitor{
                 break;
             case LogicalAnd:
                 {
-                    visit(ctx.lhs);
-                    BasicBlock next = new BasicBlock("lhs_is_true");
-                    BasicBlock targetFalse = new BasicBlock("target_false");
-                    BasicBlock targetTrue = new BasicBlock("target_true");
-                    BasicBlock targetAfter = new BasicBlock("target_after");
-                    curFunc.add(next);
-                    curFunc.add(targetFalse);
-                    curFunc.add(targetTrue);
-                    curFunc.add(targetAfter);
-                    curBlock.add(new BranchInstruction(ctx.lhs.valueIR,next,targetFalse));
+                    if(jumpShortCut) {
+                        BasicBlock next = new BasicBlock("lhs_is_true");
+                        BasicBlock targetFalse = jumpTargetFalse;
+                        BasicBlock targetTrue = jumpTargetTrue;
+                        BasicBlock temp = jumpTargetTrue;
+                        jumpTargetTrue = next;
+                        visit(ctx.lhs);
+                        jumpTargetTrue = temp;
 
-                    curBlock = next;
-                    visit(ctx.rhs);
-                    curBlock.add(new BranchInstruction(ctx.rhs.valueIR,targetTrue,targetFalse));
+                        curFunc.add(next);
+                        curBlock.add(new BranchInstruction(ctx.lhs.valueIR,next,targetFalse));
 
-                    ctx.valueIR = new VirtualRegister("and_dest");
+                        curBlock = next;
+                        visit(ctx.rhs);
+                        curBlock.add(new BranchInstruction(ctx.rhs.valueIR,targetTrue,targetFalse));
+                    } else {
+                        visit(ctx.lhs);
+                        BasicBlock next = new BasicBlock("lhs_is_true");
+                        BasicBlock targetFalse = new BasicBlock("target_false");
+                        BasicBlock targetTrue = new BasicBlock("target_true");
+                        BasicBlock targetAfter = new BasicBlock("target_after");
+                        curFunc.add(next);
+                        curFunc.add(targetFalse);
+                        curFunc.add(targetTrue);
+                        curFunc.add(targetAfter);
+                        curBlock.add(new BranchInstruction(ctx.lhs.valueIR,next,targetFalse));
 
-                    curBlock = targetFalse;
-                    curBlock.add(new MoveInstruction(((VirtualRegister)(ctx.valueIR)), new ImmediateNumber(0)));
-                    curBlock.add(new JumpInstruction(targetAfter));
+                        curBlock = next;
+                        visit(ctx.rhs);
+                        curBlock.add(new BranchInstruction(ctx.rhs.valueIR,targetTrue,targetFalse));
 
-                    curBlock = targetTrue;
-                    curBlock.add(new MoveInstruction(((VirtualRegister)(ctx.valueIR)), new ImmediateNumber(1)));
-                    curBlock.add(new JumpInstruction(targetAfter));
+                        ctx.valueIR = new VirtualRegister("and_dest");
 
-                    curBlock = targetAfter;
+                        curBlock = targetFalse;
+                        curBlock.add(new MoveInstruction(((VirtualRegister)(ctx.valueIR)), new ImmediateNumber(0)));
+                        curBlock.add(new JumpInstruction(targetAfter));
+
+                        curBlock = targetTrue;
+                        curBlock.add(new MoveInstruction(((VirtualRegister)(ctx.valueIR)), new ImmediateNumber(1)));
+                        curBlock.add(new JumpInstruction(targetAfter));
+
+                        curBlock = targetAfter;
+                    }
 
                 }
                 break;
             case LogicalOr:
                 {
-                    visit(ctx.lhs);
-                    BasicBlock next = new BasicBlock("lhs_is_true");
-                    BasicBlock targetFalse = new BasicBlock("target_false");
-                    BasicBlock targetTrue = new BasicBlock("target_true");
-                    BasicBlock targetAfter = new BasicBlock("target_after");
-                    curFunc.add(next);
-                    curFunc.add(targetFalse);
-                    curFunc.add(targetTrue);
-                    curFunc.add(targetAfter);
-                    curBlock.add(new BranchInstruction(ctx.lhs.valueIR,targetTrue,next));
+                    if(jumpShortCut) {
+                        BasicBlock next = new BasicBlock("lhs_is_false");
+                        BasicBlock targetFalse = jumpTargetFalse;
+                        BasicBlock targetTrue = jumpTargetTrue;
+                        BasicBlock temp = jumpTargetFalse;
+                        jumpTargetFalse = next;
+                        visit(ctx.lhs);
+                        jumpTargetFalse = temp;
 
-                    curBlock = next;
-                    visit(ctx.rhs);
-                    curBlock.add(new BranchInstruction(ctx.rhs.valueIR,targetTrue,targetFalse));
+                        curFunc.add(next);
+                        curBlock.add(new BranchInstruction(ctx.lhs.valueIR,targetTrue,next));
 
-                    ctx.valueIR = new VirtualRegister("or_dest");
-                    curBlock = targetFalse;
-                    curBlock.add(new MoveInstruction(((VirtualRegister)(ctx.valueIR)), new ImmediateNumber(0)));
-                    curBlock.add(new JumpInstruction(targetAfter));
+                        curBlock = next;
+                        visit(ctx.rhs);
+                        curBlock.add(new BranchInstruction(ctx.rhs.valueIR,targetTrue,targetFalse));
 
-                    curBlock = targetTrue;
-                    curBlock.add(new MoveInstruction(((VirtualRegister)(ctx.valueIR)), new ImmediateNumber(1)));
-                    curBlock.add(new JumpInstruction(targetAfter));
+                    } else {
+                        visit(ctx.lhs);
+                        BasicBlock next = new BasicBlock("lhs_is_true");
+                        BasicBlock targetFalse = new BasicBlock("target_false");
+                        BasicBlock targetTrue = new BasicBlock("target_true");
+                        BasicBlock targetAfter = new BasicBlock("target_after");
+                        curFunc.add(next);
+                        curFunc.add(targetFalse);
+                        curFunc.add(targetTrue);
+                        curFunc.add(targetAfter);
+                        curBlock.add(new BranchInstruction(ctx.lhs.valueIR,targetTrue,next));
 
-                    curBlock = targetAfter;
+                        curBlock = next;
+                        visit(ctx.rhs);
+                        curBlock.add(new BranchInstruction(ctx.rhs.valueIR,targetTrue,targetFalse));
+
+                        ctx.valueIR = new VirtualRegister("or_dest");
+                        curBlock = targetFalse;
+                        curBlock.add(new MoveInstruction(((VirtualRegister)(ctx.valueIR)), new ImmediateNumber(0)));
+                        curBlock.add(new JumpInstruction(targetAfter));
+
+                        curBlock = targetTrue;
+                        curBlock.add(new MoveInstruction(((VirtualRegister)(ctx.valueIR)), new ImmediateNumber(1)));
+                        curBlock.add(new JumpInstruction(targetAfter));
+
+                        curBlock = targetAfter;
+                    }
+
                 }
                 break;
             case Assign:
@@ -474,8 +512,8 @@ public class IRGeneratorVisitor implements Visitor{
 
     @Override
     public void visit(MemberExpression ctx) {
-        visit(ctx.parent);
         if(ctx.parent.type instanceof ClassSymbol) {
+            visit(ctx.parent);
             //访问类成员
             int offset = ((ClassSymbol) ctx.parent.type).getOffset(ctx.child);
             if(ctx.type.getName().equals(SymbolTable.INT) || ctx.type.getName().equals(SymbolTable.BOOL)) {
@@ -493,7 +531,7 @@ public class IRGeneratorVisitor implements Visitor{
             }
         } else {
             // 调用系统内建方法
-            // to be done
+            // do nothing
 
         }
     }
@@ -519,6 +557,7 @@ public class IRGeneratorVisitor implements Visitor{
 
     @Override
     public void visit(ParenExpression ctx) {
+        //System.out.println("calling :" + ctx.functionId.toString() + "hash = "+ctx.hashCode());
         visit(ctx.functionId);
         ctx.argumentList.stream().forEachOrdered(this::visit);
         List<Value> list = new ArrayList<>();
@@ -658,14 +697,14 @@ public class IRGeneratorVisitor implements Visitor{
         BasicBlock loopInit = new BasicBlock("forInit");
         loopCondition = new BasicBlock("forCondition");
         loopBody = new BasicBlock("forBody");
-        loopAfter = new BasicBlock("forAfter");
         loopUpdate = new BasicBlock("forUpdate");
+        loopAfter = new BasicBlock("forAfter");
 
         curFunc.add(loopInit);
-        curFunc.add(loopAfter);
         curFunc.add(loopCondition);
         curFunc.add(loopBody);
         curFunc.add(loopUpdate);
+        curFunc.add(loopAfter);
 
 
         curBlock.add(new JumpInstruction(loopInit));
@@ -678,8 +717,14 @@ public class IRGeneratorVisitor implements Visitor{
         if(ctx.condition instanceof EmptyExpression) {
             curBlock.add(new JumpInstruction(loopBody));
         } else {
+            jumpTargetTrue = loopBody;
+            jumpTargetFalse = loopAfter;
+            jumpShortCut = true;
             visit(ctx.condition);
-            curBlock.add(new BranchInstruction(ctx.condition.valueIR, loopBody,loopAfter));
+            jumpShortCut = false;
+
+            if(ctx.condition.valueIR != null)
+                curBlock.add(new BranchInstruction(ctx.condition.valueIR, loopBody,loopAfter));
         }
 
 
@@ -720,8 +765,13 @@ public class IRGeneratorVisitor implements Visitor{
             curBlock.add(new JumpInstruction(ifCondition));
 
             curBlock = ifCondition;
+            jumpTargetTrue = ifTrue;
+            jumpTargetFalse = ifAfter;
+            jumpShortCut = true;
             visit(ctx.condition);
-            curBlock.add(new BranchInstruction(ctx.condition.valueIR,ifTrue,ifAfter));
+            jumpShortCut = false;
+            if(ctx.condition.valueIR != null)
+                curBlock.add(new BranchInstruction(ctx.condition.valueIR, ifTrue,ifAfter));
 
             curBlock = ifTrue;
             visit(ctx.bodyThen);
@@ -742,8 +792,13 @@ public class IRGeneratorVisitor implements Visitor{
             curBlock.add(new JumpInstruction(ifCondition));
 
             curBlock = ifCondition;
+            jumpTargetTrue = ifTrue;
+            jumpTargetFalse = ifFalse;
+            jumpShortCut = true;
             visit(ctx.condition);
-            curBlock.add(new BranchInstruction(ctx.condition.valueIR,ifTrue,ifFalse));
+            jumpShortCut = false;
+            if(ctx.condition.valueIR != null)
+                curBlock.add(new BranchInstruction(ctx.condition.valueIR,ifTrue,ifFalse));
 
             curBlock = ifTrue;
             visit(ctx.bodyThen);
@@ -765,6 +820,7 @@ public class IRGeneratorVisitor implements Visitor{
 
     @Override
     public void visit(VariableDeclarationStatement.VariableDeclaration ctx) {
+        //System.out.println("dec: " + ctx.toString());
         if(global) {
             //visit(ctx.typeNode);
             visit(ctx.initValue);
@@ -807,11 +863,20 @@ public class IRGeneratorVisitor implements Visitor{
         curFunc.add(loopBody);
         curFunc.add(loopAfter);
 
-
         curBlock.add(new JumpInstruction(loopCondition));
+
+
+
+
         curBlock = loopCondition;
+        jumpTargetTrue = loopBody;
+        jumpTargetFalse = loopAfter;
+        jumpShortCut = true;
         visit(ctx.condition);
-        curBlock.add(new BranchInstruction(ctx.condition.valueIR,loopBody,loopAfter));
+        jumpShortCut = false;
+
+        if(ctx.condition.valueIR != null)
+            curBlock.add(new BranchInstruction(ctx.condition.valueIR, loopBody,loopAfter));
 
         curBlock = loopBody;
         visit(ctx.body);

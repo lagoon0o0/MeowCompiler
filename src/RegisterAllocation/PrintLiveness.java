@@ -186,6 +186,7 @@ public class PrintLiveness implements Visitor{
                     + "\tLink = " + ctx.linkedSet.get(i).size()
                     + "\tUse = "  + ctx.getVirtualRegister(i).numberOfRef
                     + "\tPhy = " + ctx.getPhysicalRegister(ctx.getVirtualRegister(i)).toString()
+                    + "\tuse = " + ctx.getVirtualRegister(i).useful
             );
 
         }

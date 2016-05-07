@@ -77,7 +77,7 @@ public class SemanticCheckerTest {
             MeowASTListener Listener = new MeowASTListener();
             walker.walk(Listener, tree);
             AstNode root =  Listener.astRoot;
-            ASTPrinter printer = new ASTPrinter();
+            ASTPrinter printer = new ASTPrinter(System.out);
             printer.visit(root);
 
             SymbolTable symbolTable = new SymbolTable();

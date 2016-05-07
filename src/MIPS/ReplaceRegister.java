@@ -13,12 +13,25 @@ public class ReplaceRegister implements Visitor{
     FunctionBlock curFunction;
 
     public Value calc(Value ctx) {
-        if(ctx instanceof Register)
-            return curFunction.getPhysicalRegister((Register) ctx);
+        if(ctx instanceof Register) {
+            if(ctx instanceof VirtualRegister) {
+                if(((VirtualRegister) ctx).useful)
+                    return curFunction.getPhysicalRegister((Register) ctx);
+                return FunctionBlock.useless;  // useless register
+            } else {
+                return curFunction.getPhysicalRegister((Register) ctx);
+            }
+        }
         return ctx;
     }
     public Register calc(Register ctx) {
-        return curFunction.getPhysicalRegister( ctx);
+        if(ctx instanceof VirtualRegister) {
+            if(((VirtualRegister) ctx).useful)
+                return curFunction.getPhysicalRegister((Register) ctx);
+            return FunctionBlock.useless;  // useless register
+        } else {
+            return curFunction.getPhysicalRegister((Register) ctx);
+        }
     }
     @Override
     public void visit(AllocInstruction ctx) {

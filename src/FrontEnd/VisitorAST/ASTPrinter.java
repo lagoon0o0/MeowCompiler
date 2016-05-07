@@ -8,18 +8,22 @@ import AST.TranslationUnit.FunctionDeclaration;
 import AST.TypeNode.*;
 import FrontEnd.VisitorAST.Visitor;
 
+import java.io.PrintStream;
+
 /**
  * Created by lagoon0o0 on 16/3/30.
  */
 public class ASTPrinter implements Visitor {
+    PrintStream out;
+    public ASTPrinter(PrintStream out){this.out =out;}
     public  int depth = -1;
     void indent(int length) {
         for(int i = 1; i <= length; ++i)
-            System.out.printf("\t");
+            out.printf("\t");
     }
     void print(String content) {
         indent(depth);
-        System.out.print(content + "\n");
+        out.print(content + "\n");
     }
     @Override
     public void visit(AstNode ctx) {

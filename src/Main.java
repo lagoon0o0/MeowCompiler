@@ -21,38 +21,30 @@ import AST.AstNode;
 
 import java.io.*;
 public class Main {
-    public static void main(String[] args) throws IOException {
-        boolean CISC = false;
-        InputStream is = new FileInputStream("sample/sample0.mx"); // or System.in;
-        PrintStream srcfile = new PrintStream(new FileOutputStream("out/src.s"));
-        PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
 
-        //InputStream is = System.in;
-        //try {
-        ByteArrayOutputStream mySrcTextOut = new ByteArrayOutputStream();
-        PrintStream mySrcPrint = new PrintStream(mySrcTextOut);
+    public static void runRISC(InputStream is,PrintStream out, PrintStream debug, boolean Debuging) throws IOException {
+        final boolean PrintAST = Debuging;
+        final boolean PrintIR = Debuging;
+        final boolean PrintLiveness = Debuging;
+
         ANTLRInputStream input = new ANTLRInputStream(is);
+
+        // run lexer and parser
         MeowLexer lexer = new MeowLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         MeowParser parser = new  MeowParser(tokens);
         ParseTree tree = parser.program(); // calc is the starting rule
-        /*
-        System.out.println("LISP:");
-        System.out.println(tree.toStringTree(parser));
-        System.out.println();
-        System.out.println("FrontEnd.VisitorAST.Visitor:");
-        MeowBaseVisitor evalByVisitor = new  MeowBaseVisitor();
-        evalByVisitor.visit(tree);
-        System.out.println();
-        */
-        //System.out.println("Listener:");
+
+        // build ast
         ParseTreeWalker walker = new ParseTreeWalker();
         MeowASTListener Listener = new MeowASTListener();
         walker.walk(Listener, tree);
         AstNode root =  Listener.astRoot;
-        ASTPrinter printer = new ASTPrinter();
-        //printer.visit(root);
-
+        if(PrintAST) {
+            ASTPrinter printer = new ASTPrinter(debug);
+            printer.visit(root);
+        }
+        //semantic check
         SymbolTable symbolTable = new SymbolTable();
         CompilationError compilationError = new CompilationError();
         Phase1 phase1 = new Phase1(symbolTable, compilationError);
@@ -62,64 +54,116 @@ public class Main {
         Phase3 phase3 = new Phase3(symbolTable, compilationError);
         phase3.visit(root);
 
+        // generate IR
         IRGeneratorVisitor irGeneratorVisitor = new IRGeneratorVisitor(symbolTable);
 
         irGeneratorVisitor.visit(root);
         IRRoot irRoot = irGeneratorVisitor.irRoot;
-        IRPrinter irPrinter = new IRPrinter(debug);
 
-        //System.out.print("------ir--------\n");
-
-        irPrinter.visit(irRoot);
-
-        if(!CISC) {
-            // Liveness Analysis
-
-            CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
-            calcVirtualRegisterIndex.visit(irRoot);
-
-            BuildGraph buildGraph = new BuildGraph();
-            buildGraph.visit(irRoot);
-
-            CalcLiveness calcLiveness = new CalcLiveness(debug);
-            calcLiveness.visit(irRoot);
-
-            BuildInterferenceGraph buildInterferenceGraph = new BuildInterferenceGraph(debug);
-            buildInterferenceGraph.visit(irRoot);
-
-            GraphColoring graphColoring = new GraphColoring(debug);
-            graphColoring.visit(irRoot);
+        if(PrintIR) {
+            IRPrinter irPrinter = new IRPrinter(debug);
+            irPrinter.visit(irRoot);
+        }
+        // Liveness Analysis
 
 
-            ReplaceRegister replaceRegister = new ReplaceRegister();
-            replaceRegister.visit(irRoot);
+        CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
+        calcVirtualRegisterIndex.visit(irRoot);
 
-            RISCCalcFrame riscCalcFrame = new RISCCalcFrame();
-            riscCalcFrame.visit(irRoot);
+        BuildGraph buildGraph = new BuildGraph();
+        buildGraph.visit(irRoot);
 
-            RISCTranslator riscTranslator = new RISCTranslator(mySrcPrint);
-            riscTranslator.visit(irRoot);
+        CalcLiveness calcLiveness = new CalcLiveness(debug);
+        calcLiveness.visit(irRoot);
+
+        BuildInterferenceGraph buildInterferenceGraph = new BuildInterferenceGraph(debug);
+        buildInterferenceGraph.visit(irRoot);
+
+        GraphColoring graphColoring = new GraphColoring(debug);
+        graphColoring.visit(irRoot);
 
 
+        ReplaceRegister replaceRegister = new ReplaceRegister();
+        replaceRegister.visit(irRoot);
+
+        RISCCalcFrame riscCalcFrame = new RISCCalcFrame();
+        riscCalcFrame.visit(irRoot);
+
+        RISCTranslator riscTranslator = new RISCTranslator(out);
+        riscTranslator.visit(irRoot);
+        if(PrintLiveness) {
             PrintLiveness printLiveness = new PrintLiveness(debug);
             printLiveness.visit(irRoot);
+        }
+    }
+    public static void runCISC(InputStream is,PrintStream out, PrintStream debug,boolean Debuging) throws IOException {
+        final boolean PrintAST = Debuging;
+        final boolean PrintIR = Debuging;
+        final boolean PrintLiveness = Debuging;
 
+        ANTLRInputStream input = new ANTLRInputStream(is);
 
-            //irPrinter.visit(irRoot);
+        // run lexer and parser
+        MeowLexer lexer = new MeowLexer(input);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        MeowParser parser = new  MeowParser(tokens);
+        ParseTree tree = parser.program(); // calc is the starting rule
 
-        } else {
-            // CISC Translation
-            CISCCalcFrame calcFrame = new CISCCalcFrame();
-            calcFrame.visit(irRoot);
+        // build ast
+        ParseTreeWalker walker = new ParseTreeWalker();
+        MeowASTListener Listener = new MeowASTListener();
+        walker.walk(Listener, tree);
+        AstNode root =  Listener.astRoot;
+        if(PrintAST) {
+            ASTPrinter printer = new ASTPrinter(debug);
+            printer.visit(root);
+        }
+        //semantic check
+        SymbolTable symbolTable = new SymbolTable();
+        CompilationError compilationError = new CompilationError();
+        Phase1 phase1 = new Phase1(symbolTable, compilationError);
+        phase1.visit(root);
+        Phase2 phase2 = new Phase2(symbolTable, compilationError);
+        phase2.visit(root);
+        Phase3 phase3 = new Phase3(symbolTable, compilationError);
+        phase3.visit(root);
 
+        // generate IR
+        IRGeneratorVisitor irGeneratorVisitor = new IRGeneratorVisitor(symbolTable);
 
-            CISCTranslator ciscTranslator = new CISCTranslator(mySrcPrint);
-            //System.out.print("------mips--------\n");
-            ciscTranslator.visit(irRoot);
+        irGeneratorVisitor.visit(root);
+        IRRoot irRoot = irGeneratorVisitor.irRoot;
 
-
+        if(PrintIR) {
+            IRPrinter irPrinter = new IRPrinter(debug);
+            irPrinter.visit(irRoot);
         }
 
+        // CISC Translation
+        CISCCalcFrame calcFrame = new CISCCalcFrame();
+        calcFrame.visit(irRoot);
+
+
+        CISCTranslator ciscTranslator = new CISCTranslator(out);
+        //System.out.print("------mips--------\n");
+        ciscTranslator.visit(irRoot);
+    }
+
+    public static void main(String[] args) throws IOException {
+        boolean CISC = false;
+        InputStream is = new FileInputStream("sample/sample0.mx"); // or System.in;
+        PrintStream srcfile = new PrintStream(new FileOutputStream("out/src.s"));
+        PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
+        ByteArrayOutputStream mySrcTextOut = new ByteArrayOutputStream();
+        PrintStream mySrcPrint = new PrintStream(mySrcTextOut);
+
+        if(CISC) {
+            runCISC(is,mySrcPrint,debug,true);
+        } else {
+            runCISC(is,mySrcPrint,debug,true);
+        }
+
+        // link and output
         BufferedReader lib = new BufferedReader(new FileReader("lib/mylib.s"));
         for(String line = lib.readLine();line != null ; line = lib.readLine()) {
             srcfile.println(line);

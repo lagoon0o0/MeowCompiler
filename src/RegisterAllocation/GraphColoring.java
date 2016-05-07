@@ -135,10 +135,12 @@ public class GraphColoring implements Visitor{
 
         // build the coloring order
         List<VirtualRegister> order = new ArrayList<>();
-        List<VirtualRegister> registerSet = new ArrayList<>();
-        registerSet.addAll(ctx.getRegister.values());
-
-        for(int times = 0; times < ctx.virtualTotal; ++times) {
+        Set<VirtualRegister> registerSet = new HashSet<>();
+        ctx.getRegister.values().stream().filter(x -> x.useful).forEachOrdered(registerSet::add); // ????
+        ctx.getRegister.values().stream().filter(x -> !x.useful).forEachOrdered(x->ctx.virtualToPhysical.put(x,FunctionBlock.useless));
+        //registerSet.addAll(ctx.getRegister.values());
+        int tot = registerSet.size();
+        for(int times = 0; times < tot; ++times) {
             int maxRef = 0;
             int maxDeg = 0;
             VirtualRegister target = null;

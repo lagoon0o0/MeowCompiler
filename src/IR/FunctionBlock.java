@@ -9,6 +9,7 @@ import java.util.*;
  * Created by lagoon0o0 on 4/28/16.
  */
 public class FunctionBlock extends IR{
+    public static final PhysicalRegister useless = new PhysicalRegister(0,"useless");
     public static final PhysicalRegister zero = new PhysicalRegister(0,"zero");
     public static final PhysicalRegister at = new PhysicalRegister(1,"at");
     public static final PhysicalRegister[] v  = {
@@ -107,13 +108,10 @@ public class FunctionBlock extends IR{
     public List<BasicBlock> basicBlockList = new ArrayList<>();
 
     public BasicBlock entryBlock;
-    public void add(BasicBlock x) {
-        if(basicBlockList.size() == 0)
-            entryBlock = x;
-        basicBlockList.add(x);
-    }
+    public Set<FunctionBlock> succ = new HashSet<>();
     // previously map PhyReg to itself
     {
+        virtualToPhysical.put(useless,useless);
         virtualToPhysical.put(zero,zero);
         virtualToPhysical.put(at,at);
         for(int i = 0; i <= 1; ++i) {
@@ -137,9 +135,13 @@ public class FunctionBlock extends IR{
         virtualToPhysical.put(ra,ra);
     }
 
-
     public FunctionBlock(FunctionSymbol aFunction) {
         function = aFunction;
+    }
+    public void add(BasicBlock x) {
+        if(basicBlockList.size() == 0)
+            entryBlock = x;
+        basicBlockList.add(x);
     }
     @Override
     public void accept(Visitor visitor) {

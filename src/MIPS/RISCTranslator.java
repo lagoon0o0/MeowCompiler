@@ -25,7 +25,7 @@ public class RISCTranslator implements Visitor{
         return ret;
     }
     void print(String content) {
-        out.print(content + "\n");
+        out.print(indent(depth)+content + "\n");
     }
     void printInst(String opcode, Value dest, Value src1, Value src2) {
         print(opcode + " " + dest.toString() + ", " + src1.toString() + ", " + src2.toString());
@@ -79,14 +79,15 @@ public class RISCTranslator implements Visitor{
     }
     // get the corresponding physicalregister
     public void getPhyRegister(Value ctx) {
-        if(ctx instanceof PhysicalRegister)
-            curVal = ctx;
-        else if(ctx instanceof StaticData) {
+        if(ctx instanceof PhysicalRegister) {
+            if (ctx != FunctionBlock.useless)
+                curVal = ctx;
+        } else if(ctx instanceof StaticData) {
 
         } else if(ctx instanceof FrameAddr) {
 
         } else  {
-            throw new RuntimeException("invalid PhysicalRegister");
+            throw new RuntimeException("invalid PhysicalRegister"+ctx.toString());
         }
     }
 
@@ -105,7 +106,8 @@ public class RISCTranslator implements Visitor{
     // move src to dest using temp
     public void moveValue(Value dest, PhysicalRegister src) {
         if(dest instanceof PhysicalRegister) {
-            printInst("move",dest,src);
+            if(dest != FunctionBlock.useless)
+                printInst("move",dest,src);
         } else if(dest instanceof  StaticData) {
             storeValue(src,dest);
         } else if (dest instanceof FrameAddr) {
@@ -388,18 +390,27 @@ public class RISCTranslator implements Visitor{
     @Override
     public void visit(MoveInstruction ctx) {
         print("#" + ctx.toString());
-        // source has to be a PhysicalRegister
-        curVal = FunctionBlock.t[0];
-        getValue(ctx.source, PhyRegOnly);
-        PhysicalRegister src = (PhysicalRegister) curVal;
 
+        if(ctx.destination == FunctionBlock.useless) {
+            return;
+        }
         //get destination
         curVal = FunctionBlock.t[0];
         getPhyRegister(ctx.destination);
         PhysicalRegister dest = (PhysicalRegister) curVal;
 
         //print instruction
-        printInst("move",dest,src);
+        if(ctx.source instanceof ImmediateNumber) {
+            printInst("li",dest,ctx.source);
+        } else if(ctx.source instanceof StaticData) {
+            printInst("la",dest,ctx.source);
+        } else if(ctx.source instanceof FrameAddr) {
+            printInst("lw",dest,ctx.source);
+        } else if(ctx.source instanceof PhysicalRegister){
+            printInst("move",dest,ctx.source);
+        } else {
+            throw new RuntimeException("Invalid move");
+        }
 
         //move dest to destination
         moveValue(ctx.destination,dest);

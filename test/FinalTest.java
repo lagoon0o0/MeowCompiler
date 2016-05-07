@@ -40,16 +40,18 @@ public class FinalTest {
                 String filename = prefix + ".mx";
                 String inputname = prefix + ".in";
                 String outputname = prefix + ".out";
-                params.add(new Object[] {filename,inputname,outputname});
+                String limitname = prefix + ".limit";
+                params.add(new Object[] {filename,inputname,outputname,limitname});
             }
         }
         return params;
     }
-    private String filename,inputname,outputname;
-    public FinalTest(String filename, String inputname, String outputname) {
+    private String filename,inputname,outputname,limitname;
+    public FinalTest(String filename, String inputname, String outputname, String limitname) {
         this.filename = filename;
         this.inputname = inputname;
         this.outputname = outputname;
+        this.limitname = limitname;
     }
     @Test
     public void testPass() throws IOException, InterruptedException {
@@ -64,88 +66,10 @@ public class FinalTest {
         // run compiler
         ByteArrayOutputStream mySrcTextOut = new ByteArrayOutputStream();
         PrintStream mySrcPrint = new PrintStream(mySrcTextOut);
-        ANTLRInputStream input = new ANTLRInputStream(is);
-        MeowLexer lexer = new MeowLexer(input);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        MeowParser parser = new  MeowParser(tokens);
-        ParseTree tree = parser.program(); // calc is the starting rule
-            /*
-            System.out.println("LISP:");
-            System.out.println(tree.toStringTree(parser));
-            System.out.println();
-            System.out.println("FrontEnd.VisitorAST.Visitor:");
-            MeowBaseVisitor evalByVisitor = new  MeowBaseVisitor();
-            evalByVisitor.visit(tree);
-            System.out.println();
-            */
-        //System.out.println("Listener:");
-        ParseTreeWalker walker = new ParseTreeWalker();
-        MeowASTListener Listener = new MeowASTListener();
-        walker.walk(Listener, tree);
-        AstNode root =  Listener.astRoot;
-        ASTPrinter printer = new ASTPrinter();
-        //printer.visit(root);
-        SymbolTable symbolTable = new SymbolTable();
-        CompilationError compilationError = new CompilationError();
-        Phase1 phase1 = new Phase1(symbolTable, compilationError);
-        phase1.visit(root);
-        Phase2 phase2 = new Phase2(symbolTable, compilationError);
-        phase2.visit(root);
-        Phase3 phase3 = new Phase3(symbolTable, compilationError);
-        phase3.visit(root);
-
-        IRGeneratorVisitor irGeneratorVisitor = new IRGeneratorVisitor(symbolTable);
-
-        irGeneratorVisitor.visit(root);
-        IRRoot irRoot = irGeneratorVisitor.irRoot;
-
-        IRPrinter irPrinter = new IRPrinter(debug);
-
-        //System.out.print("------ir--------\n");
-        irPrinter.visit(irRoot);
-
-        if(CISC) {
-            CISCCalcFrame calcFrame = new CISCCalcFrame();
-            calcFrame.visit(irRoot);
-
-            CISCTranslator ciscTranslator = new CISCTranslator(mySrcPrint);
-            //System.out.print("------mips--------\n");
-
-            ciscTranslator.visit(irRoot);
-
-        } else {
-            CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
-            calcVirtualRegisterIndex.visit(irRoot);
-
-            BuildGraph buildGraph = new BuildGraph();
-            buildGraph.visit(irRoot);
-
-            CalcLiveness calcLiveness = new CalcLiveness(debug);
-            calcLiveness.visit(irRoot);
-
-            BuildInterferenceGraph buildInterferenceGraph = new BuildInterferenceGraph(debug);
-            buildInterferenceGraph.visit(irRoot);
-
-            GraphColoring graphColoring = new GraphColoring(debug);
-            graphColoring.visit(irRoot);
-
-
-            ReplaceRegister replaceRegister = new ReplaceRegister();
-            replaceRegister.visit(irRoot);
-
-            RISCCalcFrame riscCalcFrame = new RISCCalcFrame();
-            riscCalcFrame.visit(irRoot);
-
-            RISCTranslator riscTranslator = new RISCTranslator(mySrcPrint);
-            riscTranslator.visit(irRoot);
-
-
-
-
-            PrintLiveness printLiveness = new PrintLiveness(debug);
-            printLiveness.visit(irRoot);
-        }
-
+        if(CISC)
+            Main.runCISC(is,mySrcPrint,debug,false);
+        else
+            Main.runRISC(is,mySrcPrint,debug,false);
         BufferedReader lib = new BufferedReader(new FileReader("lib/mylib.s"));
         for(String line = lib.readLine();line != null ; line = lib.readLine()) {
             out.println(line);
@@ -215,15 +139,44 @@ public class FinalTest {
                 System.out.println(usrLine);
             }*/
         }
-
-
-        BufferedReader sysBuff = new BufferedReader(sys);
-        int tot = 0;
-        while((line = sysBuff.readLine()) != null) {
-            tot++;
-            System.out.println(line);
+        boolean hasLimit = true;
+        try {
+            data =  new BufferedReader(new FileReader(limitname));
+        } catch (Exception e) {
+            hasLimit = false;
+            System.out.println("No limit");
+            data = new BufferedReader(new FileReader(filename));
         }
-        if(tot > 2)
-            throw new RuntimeException("RE");
+        if(hasLimit) {
+            BufferedReader sysBuff = new BufferedReader(sys);
+            int tot = 0;
+            String info = "";
+            while((line = sysBuff.readLine()) != null) {
+                tot++;
+                if(tot == 2) {
+                    info = line;
+                }
+                System.out.println(line);
+            }
+            if(tot > 2)
+                throw new RuntimeException("RE");
+            String[] arr = info.split("\t");
+            int myTotal = Integer.valueOf(arr[2]);
+            int stdTotal = Integer.valueOf(data.readLine());
+            System.out.print(myTotal +  " vs " + stdTotal + " ratio = " + (double)myTotal / stdTotal +"\n");
+            if(myTotal > stdTotal) {
+                throw new RuntimeException("limitation exceeded");
+            }
+        } else {
+            BufferedReader sysBuff = new BufferedReader(sys);
+            int tot = 0;
+            while((line = sysBuff.readLine()) != null) {
+                tot++;
+                System.out.println(line);
+            }
+            if(tot > 2)
+                throw new RuntimeException("RE");
+        }
+
     }
 }
