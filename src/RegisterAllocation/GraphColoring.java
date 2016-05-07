@@ -6,7 +6,7 @@ import IRVisitor.Visitor;
 import java.io.PrintStream;
 import java.util.*;
 
-import static sun.swing.MenuItemLayoutHelper.max;
+import static java.lang.Math.max;
 
 /**
  * Created by lagoon0o0 on 5/5/16.

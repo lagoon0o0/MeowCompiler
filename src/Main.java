@@ -14,7 +14,6 @@ import IRVisitor.IRPrinter;
 import MIPS.*;
 import RegisterAllocation.*;
 import SymbolTable.SymbolTable;
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import AST.AstNode;
@@ -168,6 +167,22 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         boolean CISC = false;
+
+        // for final test
+        InputStream is = System.in;
+        PrintStream srcfile = System.out;
+        PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
+        ByteArrayOutputStream mySrcTextOut = new ByteArrayOutputStream();
+        PrintStream mySrcPrint = new PrintStream(mySrcTextOut);
+
+        if(CISC) {
+            runCISC(is,mySrcPrint,debug,false);
+        } else {
+            runRISC(is,mySrcPrint,debug,false);
+        }
+
+        /*
+        // for debug
         InputStream is = new FileInputStream("sample/sample0.mx"); // or System.in;
         PrintStream srcfile = new PrintStream(new FileOutputStream("out/src.s"));
         PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
@@ -179,6 +194,7 @@ public class Main {
         } else {
             runRISC(is,mySrcPrint,debug,true);
         }
+        */
 
         // link and output
         BufferedReader lib = new BufferedReader(new FileReader("lib/mylib.s"));
@@ -186,27 +202,10 @@ public class Main {
             srcfile.println(line);
         }
         byte[] mySrcText = mySrcTextOut.toByteArray();
-        BufferedReader my = new BufferedReader(new InputStreamReader(new ByteInputStream(mySrcText,mySrcText.length)));
+        BufferedReader my = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(mySrcText,0,mySrcText.length)));
         for(String line = my.readLine();line != null ; line = my.readLine()) {
             srcfile.println(line);
         }
-        /*
-        Process process = Runtime.getRuntime().exec("out/spim -ldata 10000000000 -stat -file out/src.s");
-        OutputStream tmp = process.getOutputStream();
-        PrintStream data = new PrintStream(tmp);
-        data.println("168");
-        tmp.close();
-        InputStreamReader rr = new InputStreamReader(process.getErrorStream());
-        InputStreamReader ir = new InputStreamReader(process.getInputStream());
-        BufferedReader bufferedReader = new BufferedReader (ir);
-        String line;
-        while ((line = bufferedReader.readLine()) != null)
-        System.out.println(line);
-        bufferedReader = new BufferedReader (rr);
-        while ((line = bufferedReader.readLine()) != null)
-        System.out.println(line);
-        */
-        //System.out.print("Passed!\n");
         //}
         /*catch (Exception e) {
 

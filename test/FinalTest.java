@@ -89,7 +89,7 @@ public class FinalTest {
         for(String line = mipsBuffered.readLine();line != null ; line = mipsBuffered.readLine()) {
             srcfile.println(line);
         }
-        Process process = Runtime.getRuntime().exec("out/spim -lstack 10000000000 -ldata 10000000000 -stat -file out/src.s");
+        Process process = Runtime.getRuntime().exec("out/spim -lstack 104857600 -stat -file out/src.s");
         PrintStream dataEntry = new PrintStream(process.getOutputStream());
         InputStreamReader sys = new InputStreamReader(process.getErrorStream());
         InputStreamReader usr = new InputStreamReader(process.getInputStream());
