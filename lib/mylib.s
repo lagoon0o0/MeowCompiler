@@ -10,6 +10,8 @@
 #
 # All supported functions:
 # 		FunctionName	    args
+# -1.   func_printlnInt        $a0: the int
+# 0.    func_printInt           $a0: the int
 # 1.	func_print 				$a0: the string
 # 2.	func_println			    $a0: the string
 # 3.	func_getString			---
@@ -168,6 +170,23 @@ _string_copy:
 	_exit_string_copy:
 	sb $zero, 0($a1)
 	jr $ra
+
+# int arg in $a0
+###### Checked ###### modified
+func_printlnInt:
+	li $v0, 1
+	syscall
+	li $v0, 4
+	la $a0, _end
+	syscall
+	jr $ra
+# int arg in $a0
+###### Checked ###### modified
+func_printInt:
+	li $v0, 1
+	syscall
+	jr $ra
+
 
 # string arg in $a0
 ###### Checked ###### modified

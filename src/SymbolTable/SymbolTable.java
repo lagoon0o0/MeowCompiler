@@ -29,6 +29,16 @@ public class SymbolTable {
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));
             }
         });
+        currentScope.define(new FunctionSymbol("printInt", currentScope.resolve(VOID).type, currentScope) {
+            {
+                addArgument((Type) symbolTable.currentScope.resolve(INT));
+            }
+        });
+        currentScope.define(new FunctionSymbol("printlnInt", currentScope.resolve(VOID).type, currentScope) {
+            {
+                addArgument((Type) symbolTable.currentScope.resolve(INT));
+            }
+        });
         currentScope.define(new FunctionSymbol("println", currentScope.resolve(VOID).type, currentScope) {
             {
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));

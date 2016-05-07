@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BinaryOperator;
 
 /**
  * Created by lagoon0o0 on 4/28/16.
@@ -555,18 +556,53 @@ public class IRGeneratorVisitor implements Visitor{
         ctx.valueIR = new ImmediateNumber(0);
     }
 
+    void printDivide(Expression ctx, boolean isPrintln) {
+        if(ctx instanceof BinaryExpression) {
+            if(((BinaryExpression) ctx).operator == BinaryExpression.Operator.Plus) {
+                printDivide(((BinaryExpression) ctx).lhs,false);
+                printDivide(((BinaryExpression) ctx).rhs,isPrintln);
+            } else {
+                throw new RuntimeException("Invalid String +");
+            }
+        } else if(ctx instanceof ParenExpression && ((ParenExpression) ctx).functionId.symbol.getName().equals("toString")) {
+            visit(((ParenExpression) ctx).argumentList.get(0));
+            List<Value> list = new ArrayList<Value>(){
+                {
+                    add(((ParenExpression) ctx).argumentList.get(0).valueIR);
+                }
+            };
+            curBlock.add(new FunctionCallInstruction((FunctionSymbol) symbolTable.getGlobalScope().resolve(isPrintln ? "printlnInt":"printInt"), list));
+
+        } else {
+            visit(ctx);
+            List<Value> list = new ArrayList<Value>(){
+                {
+                    add(ctx.valueIR);
+                }
+            };
+            curBlock.add(new FunctionCallInstruction((FunctionSymbol) symbolTable.getGlobalScope().resolve(isPrintln ? "println":"print"), list));
+        }
+    }
+
     @Override
     public void visit(ParenExpression ctx) {
         //System.out.println("calling :" + ctx.functionId.toString() + "hash = "+ctx.hashCode());
         visit(ctx.functionId);
-        ctx.argumentList.stream().forEachOrdered(this::visit);
-        List<Value> list = new ArrayList<>();
-        ctx.argumentList.stream().map(x -> x.valueIR).forEachOrdered(list::add);
-        if(ctx.type.getName().equals(SymbolTable.VOID))
-            curBlock.add(new FunctionCallInstruction((FunctionSymbol) ctx.functionId.symbol,list));
-        else
-            curBlock.add(new FunctionCallInstruction((VirtualRegister) (ctx.valueIR = new VirtualRegister("func_value")),(FunctionSymbol) ctx.functionId.symbol,list));
-
+        if(ctx.type.getName().equals(SymbolTable.VOID)) {
+            if(ctx.functionId.symbol.getName().equals("print") || ctx.functionId.symbol.getName().equals("println")) {
+                printDivide(ctx.argumentList.get(0),ctx.functionId.symbol.getName().equals("println"));
+            }else {
+                ctx.argumentList.stream().forEachOrdered(this::visit);
+                List<Value> list = new ArrayList<>();
+                ctx.argumentList.stream().map(x -> x.valueIR).forEachOrdered(list::add);
+                curBlock.add(new FunctionCallInstruction((FunctionSymbol) ctx.functionId.symbol, list));
+            }
+        }else {
+            ctx.argumentList.stream().forEachOrdered(this::visit);
+            List<Value> list = new ArrayList<>();
+            ctx.argumentList.stream().map(x -> x.valueIR).forEachOrdered(list::add);
+            curBlock.add(new FunctionCallInstruction((VirtualRegister) (ctx.valueIR = new VirtualRegister("func_value")), (FunctionSymbol) ctx.functionId.symbol, list));
+        }
     }
 
     @Override

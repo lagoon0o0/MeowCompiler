@@ -120,7 +120,13 @@ public class BuildCallingGraph implements Visitor{
     public void visit(FunctionCallInstruction ctx) {
         if(ctx.function.functionBlock == null) {// system call
             ctx.function.functionBlock = new FunctionBlock(ctx.function);
-            if(ctx.function.getName().equals("print")) {
+            if(ctx.function.getName().equals("printlnInt")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("printInt")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("print")) {
                 addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
                 addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
             } else if(ctx.function.getName().equals("println")) {
@@ -191,23 +197,10 @@ public class BuildCallingGraph implements Visitor{
                 addVirtual("t0",FunctionBlock.t[0],ctx.function.functionBlock);
                 addVirtual("t1",FunctionBlock.t[1],ctx.function.functionBlock);
                 addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else {
+                throw new RuntimeException("invalid syscall");
             }
-
             // initialize the syscall
-
-            int length = ctx.function.argumentTypeList.size();
-            for(int i = 0; i < length; ++i) {
-                VirtualRegister arg = new VirtualRegister("arg_"+ i);
-                arg.useful = true;
-                ctx.function.functionBlock.argumentList.add(arg);
-                ctx.function.functionBlock.insertVirtual(arg);
-                ctx.function.functionBlock.mapTo(arg,FunctionBlock.a[i]);
-            }
-            VirtualRegister ret = new VirtualRegister("ret");
-            ret.useful = true;
-            ctx.function.functionBlock.argumentList.add(ret);
-            ctx.function.functionBlock.insertVirtual(ret);
-            ctx.function.functionBlock.mapTo(ret,FunctionBlock.v[0]);
             root.externalFunc.add(ctx.function.functionBlock);
         }
         curFunc.succ.add(ctx.function.functionBlock);
