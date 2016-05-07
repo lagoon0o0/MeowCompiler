@@ -149,7 +149,7 @@ public class GraphColoring implements Visitor{
                 maxRef = max(maxRef,x.numberOfRef);
                 maxDeg = max(maxDeg,ctx.getDeg(x));
                 if(ctx.getDeg(x) < ctx.avaReg.size()) {
-                    debug.println("deleting :" + x.toString());
+                    //debug.println("deleting :" + x.toString());
                     target = x;
                     break;
                 }
@@ -194,7 +194,7 @@ public class GraphColoring implements Visitor{
                 continue;
             int vx = ctx.getVirtualIndex(x);
 
-            debug.print("allocating :" + x.toString());
+            //debug.print("allocating :" + x.toString());
             // remove all contraRegs
             for (Integer vy : ctx.contraSet.get(vx)) {
                 VirtualRegister y = ctx.getVirtualRegister(vy);
@@ -216,7 +216,7 @@ public class GraphColoring implements Visitor{
                 Register target = ctx.getPhysicalRegister(y);
                 if(target != null) {
                     if(avaRegSet.contains(target)) {
-                        debug.println(" linked succ :" + target.toString());
+                        //debug.println(" linked succ :" + target.toString());
                         ctx.mapTo(x, target);
                         success = true;
                         break;
@@ -225,11 +225,12 @@ public class GraphColoring implements Visitor{
             }
             if(success)
                 continue;
-
+            /*
             if(ctx.linkedSet.get(vx).size() > 0)
                debug.println(" linked failed :" + avaRegSet.iterator().next().toString());
             else
                debug.println(" linked none :" + avaRegSet.iterator().next().toString());
+            */
 
             ctx.mapTo(x, avaRegSet.iterator().next());
         }

@@ -6,10 +6,10 @@ all: clean
 		./*/*.java \
 		./*.java \
 		-d ../bin
-	@cp ./lib/antlr-4.5-complete.jar ./bin
-	@cd ./bin && jar xf ./antlr-4.5-complete.jar\
+	@cp -r ./lib ./bin
+	@cd ./bin && jar xf ./lib/antlr-4.5-complete.jar\
 			 && rm -rf ./META-INF \
 			 && jar cef Main MeowCompiler.jar ./ \
-			 && rm -rf ./antlr-4.5-complete.jar ./MIPS ./IR ./IRVisitor ./RegisterAllocation ./AST ./FrontEnd Main.class ./SymbolTable ./org  ./st4hidden
+			 && rm -rf ./Optimization ./MIPS ./IR ./IRVisitor ./RegisterAllocation ./AST ./FrontEnd Main.class ./SymbolTable ./org  ./st4hidden
 clean:
 	rm -rf ./bin

@@ -22,7 +22,7 @@ import AST.AstNode;
 
 import java.io.*;
 public class Main {
-    
+
     static final boolean Debugging = false;
     public static void runRISC(InputStream is,PrintStream out, PrintStream debug, boolean Debugging) throws IOException {
         final boolean PrintAST = Debugging;
@@ -201,7 +201,7 @@ public class Main {
         // for final test
         InputStream is = System.in;
         PrintStream srcfile = System.out;
-        PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
+        PrintStream debug = System.err;
         ByteArrayOutputStream mySrcTextOut = new ByteArrayOutputStream();
         PrintStream mySrcPrint = new PrintStream(mySrcTextOut);
 
