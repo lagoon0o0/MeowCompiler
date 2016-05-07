@@ -737,11 +737,10 @@ public class IRGeneratorVisitor implements Visitor{
         loopAfter = new BasicBlock("forAfter");
 
         curFunc.add(loopInit);
-        curFunc.add(loopCondition);
         curFunc.add(loopBody);
         curFunc.add(loopUpdate);
+        curFunc.add(loopCondition);
         curFunc.add(loopAfter);
-
 
         curBlock.add(new JumpInstruction(loopInit));
 
@@ -763,8 +762,6 @@ public class IRGeneratorVisitor implements Visitor{
                 curBlock.add(new BranchInstruction(ctx.condition.valueIR, loopBody,loopAfter));
         }
 
-
-
         curBlock = loopBody;
         visit(ctx.body);
         curBlock.add(new JumpInstruction(loopUpdate));
@@ -773,6 +770,7 @@ public class IRGeneratorVisitor implements Visitor{
         curBlock = loopUpdate;
         visit(ctx.update);
         curBlock.add(new JumpInstruction(loopCondition));
+
 
         curBlock = loopAfter;
         loopCondition = oldLoopCondition;
@@ -895,13 +893,12 @@ public class IRGeneratorVisitor implements Visitor{
         loopCondition = new BasicBlock("whileCondition");
         loopBody = new BasicBlock("whileBody");
         loopAfter = new BasicBlock("whileAfter");
-        curFunc.add(loopCondition);
+
         curFunc.add(loopBody);
+        curFunc.add(loopCondition);
         curFunc.add(loopAfter);
 
         curBlock.add(new JumpInstruction(loopCondition));
-
-
 
 
         curBlock = loopCondition;
@@ -910,9 +907,7 @@ public class IRGeneratorVisitor implements Visitor{
         jumpShortCut = true;
         visit(ctx.condition);
         jumpShortCut = false;
-
-        if(ctx.condition.valueIR != null)
-            curBlock.add(new BranchInstruction(ctx.condition.valueIR, loopBody,loopAfter));
+        curBlock.add(new BranchInstruction(ctx.condition.valueIR, loopBody,loopAfter));
 
         curBlock = loopBody;
         visit(ctx.body);

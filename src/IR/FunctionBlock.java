@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by lagoon0o0 on 4/28/16.
  */
-public class FunctionBlock extends IR{
+public class FunctionBlock extends IR {
     public static final PhysicalRegister useless = new PhysicalRegister(0,"useless");
     public static final PhysicalRegister zero = new PhysicalRegister(0,"zero");
     public static final PhysicalRegister at = new PhysicalRegister(1,"at");
@@ -90,7 +90,6 @@ public class FunctionBlock extends IR{
             }
         }
     }
-
 
     public int virtualTotal = 0;
     public int numberOfSpill = 0;

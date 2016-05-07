@@ -12,6 +12,8 @@ import FrontEnd.VisitorAST.ASTPrinter;
 import IR.IRRoot;
 import IRVisitor.IRPrinter;
 import MIPS.*;
+import Optimization.BuildCallingGraph;
+import Optimization.CalcRegisterUsage;
 import RegisterAllocation.*;
 import SymbolTable.SymbolTable;
 import org.antlr.v4.runtime.*;
@@ -20,7 +22,8 @@ import AST.AstNode;
 
 import java.io.*;
 public class Main {
-
+    
+    static final boolean Debugging = false;
     public static void runRISC(InputStream is,PrintStream out, PrintStream debug, boolean Debugging) throws IOException {
         final boolean PrintAST = Debugging;
         final boolean PrintIR = Debugging;
@@ -59,11 +62,11 @@ public class Main {
         irGeneratorVisitor.visit(astRoot);
         IRRoot irRoot = irGeneratorVisitor.irRoot;
 
+
         if(PrintIR) {
             IRPrinter irPrinter = new IRPrinter(debug);
             irPrinter.visit(irRoot);
         }
-        // Liveness Analysis
 
 
         CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
@@ -165,23 +168,8 @@ public class Main {
         ciscTranslator.visit(irRoot);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void debug() throws IOException {
         boolean CISC = false;
-
-        // for final test
-        InputStream is = System.in;
-        PrintStream srcfile = System.out;
-        PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
-        ByteArrayOutputStream mySrcTextOut = new ByteArrayOutputStream();
-        PrintStream mySrcPrint = new PrintStream(mySrcTextOut);
-
-        if(CISC) {
-            runCISC(is,mySrcPrint,debug,false);
-        } else {
-            runRISC(is,mySrcPrint,debug,false);
-        }
-
-        /*
         // for debug
         InputStream is = new FileInputStream("sample/sample0.mx"); // or System.in;
         PrintStream srcfile = new PrintStream(new FileOutputStream("out/src.s"));
@@ -194,7 +182,7 @@ public class Main {
         } else {
             runRISC(is,mySrcPrint,debug,true);
         }
-        */
+
 
         // link and output
         BufferedReader lib = new BufferedReader(new FileReader("lib/mylib.s"));
@@ -206,12 +194,38 @@ public class Main {
         for(String line = my.readLine();line != null ; line = my.readLine()) {
             srcfile.println(line);
         }
-        //}
-        /*catch (Exception e) {
+    }
 
-            System.out.print("Compilation Error!\n");
+    public static void finaltest() throws IOException {
+        boolean CISC = false;
+        // for final test
+        InputStream is = System.in;
+        PrintStream srcfile = System.out;
+        PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
+        ByteArrayOutputStream mySrcTextOut = new ByteArrayOutputStream();
+        PrintStream mySrcPrint = new PrintStream(mySrcTextOut);
 
-            System.exit(1);
-        }*/
+        if(CISC) {
+            runCISC(is,mySrcPrint,debug,false);
+        } else {
+            runRISC(is,mySrcPrint,debug,false);
+        }
+        // link and output
+        BufferedReader lib = new BufferedReader(new FileReader("lib/mylib.s"));
+        for(String line = lib.readLine();line != null ; line = lib.readLine()) {
+            srcfile.println(line);
+        }
+        byte[] mySrcText = mySrcTextOut.toByteArray();
+        BufferedReader my = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(mySrcText,0,mySrcText.length)));
+        for(String line = my.readLine();line != null ; line = my.readLine()) {
+            srcfile.println(line);
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        if(Debugging)
+            debug();
+        else
+            finaltest();
     }
 }

@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class RISCTranslator implements Visitor{
     FunctionBlock curFunc;
-
+    BasicBlock nextBlock;
     PrintStream out;
     public RISCTranslator(PrintStream anOut) {
         out = anOut;
@@ -235,8 +235,15 @@ public class RISCTranslator implements Visitor{
         Value cond = curVal;
 
         // print instruction
-        printInst("beq",cond, new ImmediateNumber(1), ctx.ifTrue.getName());
-        printInst("j",ctx.ifFalse.getName());
+        if(ctx.ifFalse == nextBlock) {
+            printInst("beq",cond, new ImmediateNumber(1), ctx.ifTrue.getName());
+        } else if(ctx.ifTrue == nextBlock) {
+            printInst("beq",cond, new ImmediateNumber(0), ctx.ifFalse.getName());
+        } else {
+            printInst("beq",cond, new ImmediateNumber(1), ctx.ifTrue.getName());
+            printInst("j",ctx.ifFalse.getName());
+        }
+
 
     }
 
@@ -460,7 +467,8 @@ public class RISCTranslator implements Visitor{
     @Override
     public void visit(JumpInstruction ctx) {
         print("#" + ctx.toString());
-        printInst("j",ctx.destination.getName());
+        if(ctx.destination != nextBlock)
+            printInst("j",ctx.destination.getName());
     }
 
     @Override
@@ -647,7 +655,12 @@ public class RISCTranslator implements Visitor{
 
 
         // visit the basic block list
-        ctx.basicBlockList.stream().forEachOrdered(this::visit);
+        for(int i = 0; i < ctx.basicBlockList.size(); ++i) {
+            if(i < ctx.basicBlockList.size() - 1) {
+                nextBlock = ctx.basicBlockList.get(i + 1);
+            }
+            visit(ctx.basicBlockList.get(i));
+        }
 
         print("__" + ctx.function.getName() + "_return_:");
         // restore the callee registers

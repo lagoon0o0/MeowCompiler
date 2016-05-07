@@ -1,4 +1,4 @@
-package RegisterAllocation;
+package Optimization;
 
 import IR.*;
 import IRVisitor.Visitor;
