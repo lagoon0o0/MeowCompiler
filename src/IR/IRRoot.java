@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class IRRoot  extends IR{
     public List<FunctionBlock> func = new ArrayList<>();
+    public List<FunctionBlock> externalFunc = new ArrayList<>();
     public List<StaticData> staticDatas = new ArrayList<>();
     public void add(FunctionBlock cur) {
         func.add(cur);

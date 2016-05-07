@@ -136,9 +136,10 @@ public class GraphColoring implements Visitor{
         // build the coloring order
         List<VirtualRegister> order = new ArrayList<>();
         Set<VirtualRegister> registerSet = new HashSet<>();
-        ctx.getRegister.values().stream().filter(x -> x.useful).forEachOrdered(registerSet::add); // ????
-        ctx.getRegister.values().stream().filter(x -> !x.useful).forEachOrdered(x->ctx.virtualToPhysical.put(x,FunctionBlock.useless));
-        //registerSet.addAll(ctx.getRegister.values());
+        ctx.getVirtualRegister.values().stream().filter(x -> x.useful).forEachOrdered(registerSet::add);
+        // set the useless virtual register to $useless
+        ctx.getVirtualRegister.values().stream().filter(x -> !x.useful).forEachOrdered(x->ctx.virtualToPhysical.put(x,FunctionBlock.useless));
+
         int tot = registerSet.size();
         for(int times = 0; times < tot; ++times) {
             int maxRef = 0;
@@ -187,7 +188,7 @@ public class GraphColoring implements Visitor{
 
         // alloc the register
         for(int i = order.size() - 1; i >= 0; --i) {
-            Set<PhysicalRegister> avaRegSet = new LinkedHashSet<PhysicalRegister>(ctx.avaReg);
+            Set<PhysicalRegister> avaRegSet = new LinkedHashSet<>(ctx.avaReg);
             VirtualRegister x = order.get(i);
             if(ctx.getPhysicalRegister(x) != null)
                 continue;
@@ -198,7 +199,6 @@ public class GraphColoring implements Visitor{
             for (Integer vy : ctx.contraSet.get(vx)) {
                 VirtualRegister y = ctx.getVirtualRegister(vy);
                 Register phy = ctx.getPhysicalRegister(y);
-                debug.print("contra :" + y);
                 if (phy != null) {
                     avaRegSet.remove(phy);
                 }

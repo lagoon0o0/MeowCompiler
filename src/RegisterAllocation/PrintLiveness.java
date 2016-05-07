@@ -79,6 +79,7 @@ public class PrintLiveness implements Visitor{
         print("BasicBlock: " + ctx.getName());
         depth++;
         ctx.list.stream().forEachOrdered(this::visit);
+
         depth--;
     }
 
@@ -114,7 +115,11 @@ public class PrintLiveness implements Visitor{
 
     @Override
     public void visit(IRRoot ctx) {
+
         ctx.func.stream().forEachOrdered(this::visit);
+
+        print("---------------exteral function-------------------");
+        ctx.externalFunc.stream().forEachOrdered(this::visit);
     }
 
     @Override
@@ -178,13 +183,25 @@ public class PrintLiveness implements Visitor{
         print("function : " + ctx.function.getName());
         print("number of spill = " + ctx.numberOfSpill);
         print("size of frame = " + ctx.frame.getSize());
+        print("list of called function:");
+        depth++;
+        for (FunctionBlock x : ctx.succ) {
+            print(x.function.getName());
+        }
+        depth--;
+        print("list of used physical register:");
+        depth++;
+        for (PhysicalRegister x : ctx.usedPhysicalRegister) {
+            print(x.toString());
+        }
+        depth--;
         print("list of reg:");
         depth++;
         for(int i = 0; i < ctx.virtualTotal; ++i) {
             print(i + ": " + ctx.getVirtualRegister(i).toString()
                     + "\tContra = "  + ctx.contraSet.get(i).size()
                     + "\tLink = " + ctx.linkedSet.get(i).size()
-                    + "\tUse = "  + ctx.getVirtualRegister(i).numberOfRef
+                    + "\tRef = "  + ctx.getVirtualRegister(i).numberOfRef
                     + "\tPhy = " + ctx.getPhysicalRegister(ctx.getVirtualRegister(i)).toString()
                     + "\tuse = " + ctx.getVirtualRegister(i).useful
             );

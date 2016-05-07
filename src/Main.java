@@ -22,10 +22,10 @@ import AST.AstNode;
 import java.io.*;
 public class Main {
 
-    public static void runRISC(InputStream is,PrintStream out, PrintStream debug, boolean Debuging) throws IOException {
-        final boolean PrintAST = Debuging;
-        final boolean PrintIR = Debuging;
-        final boolean PrintLiveness = Debuging;
+    public static void runRISC(InputStream is,PrintStream out, PrintStream debug, boolean Debugging) throws IOException {
+        final boolean PrintAST = Debugging;
+        final boolean PrintIR = Debugging;
+        final boolean PrintLiveness = Debugging;
 
         ANTLRInputStream input = new ANTLRInputStream(is);
 
@@ -39,25 +39,25 @@ public class Main {
         ParseTreeWalker walker = new ParseTreeWalker();
         MeowASTListener Listener = new MeowASTListener();
         walker.walk(Listener, tree);
-        AstNode root =  Listener.astRoot;
+        AstNode astRoot =  Listener.astRoot;
         if(PrintAST) {
             ASTPrinter printer = new ASTPrinter(debug);
-            printer.visit(root);
+            printer.visit(astRoot);
         }
         //semantic check
         SymbolTable symbolTable = new SymbolTable();
         CompilationError compilationError = new CompilationError();
         Phase1 phase1 = new Phase1(symbolTable, compilationError);
-        phase1.visit(root);
+        phase1.visit(astRoot);
         Phase2 phase2 = new Phase2(symbolTable, compilationError);
-        phase2.visit(root);
+        phase2.visit(astRoot);
         Phase3 phase3 = new Phase3(symbolTable, compilationError);
-        phase3.visit(root);
+        phase3.visit(astRoot);
 
         // generate IR
         IRGeneratorVisitor irGeneratorVisitor = new IRGeneratorVisitor(symbolTable);
 
-        irGeneratorVisitor.visit(root);
+        irGeneratorVisitor.visit(astRoot);
         IRRoot irRoot = irGeneratorVisitor.irRoot;
 
         if(PrintIR) {
@@ -69,28 +69,46 @@ public class Main {
 
         CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
         calcVirtualRegisterIndex.visit(irRoot);
-
+        // build instructuon CFG
         BuildGraph buildGraph = new BuildGraph();
         buildGraph.visit(irRoot);
 
+        // calc liveness info
         CalcLiveness calcLiveness = new CalcLiveness(debug);
         calcLiveness.visit(irRoot);
 
+        // build interference graph
         BuildInterferenceGraph buildInterferenceGraph = new BuildInterferenceGraph(debug);
         buildInterferenceGraph.visit(irRoot);
 
+        // alloc register with coloring
         GraphColoring graphColoring = new GraphColoring(debug);
         graphColoring.visit(irRoot);
 
+        // build the calling graph
+        BuildCallingGraph buildCallingGraph = new BuildCallingGraph(debug);
+        buildCallingGraph.visit(irRoot);
 
+        // calc register usage
+        CalcRegisterUsage calcRegisterUsage = new CalcRegisterUsage();
+        calcRegisterUsage.visit(irRoot);
+
+
+        // replace virtual register with physical register
         ReplaceRegister replaceRegister = new ReplaceRegister();
         replaceRegister.visit(irRoot);
 
+        // calculate the frame size
         RISCCalcFrame riscCalcFrame = new RISCCalcFrame();
         riscCalcFrame.visit(irRoot);
 
+
+
+
+        // translate to mips
         RISCTranslator riscTranslator = new RISCTranslator(out);
         riscTranslator.visit(irRoot);
+
         if(PrintLiveness) {
             PrintLiveness printLiveness = new PrintLiveness(debug);
             printLiveness.visit(irRoot);
@@ -99,7 +117,6 @@ public class Main {
     public static void runCISC(InputStream is,PrintStream out, PrintStream debug,boolean Debuging) throws IOException {
         final boolean PrintAST = Debuging;
         final boolean PrintIR = Debuging;
-        final boolean PrintLiveness = Debuging;
 
         ANTLRInputStream input = new ANTLRInputStream(is);
 
@@ -160,7 +177,7 @@ public class Main {
         if(CISC) {
             runCISC(is,mySrcPrint,debug,true);
         } else {
-            runCISC(is,mySrcPrint,debug,true);
+            runRISC(is,mySrcPrint,debug,true);
         }
 
         // link and output

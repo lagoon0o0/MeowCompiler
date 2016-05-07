@@ -11,7 +11,8 @@ import java.io.PrintStream;
 public class BuildCallingGraph implements Visitor{
     FunctionBlock curFunc;
     PrintStream debug;
-    BuildCallingGraph(PrintStream debug) {this.debug = debug;}
+    IRRoot root;
+    public BuildCallingGraph(PrintStream debug) {this.debug = debug;}
     @Override
     public void visit(AllocInstruction ctx) {
         
@@ -54,6 +55,8 @@ public class BuildCallingGraph implements Visitor{
 
     @Override
     public void visit(IRRoot ctx) {
+
+        root = ctx;
         ctx.func.stream().forEachOrdered(this::visit);
     }
 
@@ -106,11 +109,107 @@ public class BuildCallingGraph implements Visitor{
     public void visit(ImmediateNumber ctx) {
 
     }
-
+    void addVirtual(String name, PhysicalRegister phy, FunctionBlock func) {
+        VirtualRegister cur = new VirtualRegister("name");
+        cur.useful = true;
+        func.argumentList.add(cur);
+        func.insertVirtual(cur);
+        func.virtualToPhysical.put(cur,phy);
+    }
     @Override
     public void visit(FunctionCallInstruction ctx) {
-        if(ctx.function.functionBlock == null) // system call
+        if(ctx.function.functionBlock == null) {// system call
             ctx.function.functionBlock = new FunctionBlock(ctx.function);
+            if(ctx.function.getName().equals("print")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("println")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("getString")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("a1",FunctionBlock.a[1],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+                addVirtual("v1",FunctionBlock.v[1],ctx.function.functionBlock);
+                addVirtual("t0",FunctionBlock.t[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("getInt")) {
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("toString")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("t0",FunctionBlock.t[0],ctx.function.functionBlock);
+                addVirtual("t1",FunctionBlock.t[1],ctx.function.functionBlock);
+                addVirtual("t2",FunctionBlock.t[2],ctx.function.functionBlock);
+                addVirtual("t3",FunctionBlock.t[3],ctx.function.functionBlock);
+                addVirtual("t5",FunctionBlock.t[5],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+                addVirtual("v1",FunctionBlock.v[1],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("string.length")) {
+                addVirtual("a0", FunctionBlock.a[0], ctx.function.functionBlock);
+                addVirtual("v0", FunctionBlock.v[0], ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("string.substring")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("a1",FunctionBlock.a[1],ctx.function.functionBlock);
+                addVirtual("a2",FunctionBlock.a[2],ctx.function.functionBlock);
+                addVirtual("t0",FunctionBlock.t[0],ctx.function.functionBlock);
+                addVirtual("t1",FunctionBlock.t[1],ctx.function.functionBlock);
+                addVirtual("t2",FunctionBlock.t[2],ctx.function.functionBlock);
+                addVirtual("t3",FunctionBlock.t[3],ctx.function.functionBlock);
+                addVirtual("t4",FunctionBlock.t[4],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("string.parseInt")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("t0",FunctionBlock.t[0],ctx.function.functionBlock);
+                addVirtual("t1",FunctionBlock.t[1],ctx.function.functionBlock);
+                addVirtual("t2",FunctionBlock.t[2],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("string.ord")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("a1",FunctionBlock.a[1],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("_array.size")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("stringConcatenate")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("a1",FunctionBlock.a[1],ctx.function.functionBlock);
+                addVirtual("t0",FunctionBlock.t[0],ctx.function.functionBlock);
+                addVirtual("t1",FunctionBlock.t[1],ctx.function.functionBlock);
+                addVirtual("t2",FunctionBlock.t[2],ctx.function.functionBlock);
+                addVirtual("t3",FunctionBlock.t[3],ctx.function.functionBlock);
+                addVirtual("t4",FunctionBlock.t[4],ctx.function.functionBlock);
+                addVirtual("t5",FunctionBlock.t[5],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("stringIsEqual")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("a1",FunctionBlock.a[1],ctx.function.functionBlock);
+                addVirtual("t0",FunctionBlock.t[0],ctx.function.functionBlock);
+                addVirtual("t1",FunctionBlock.t[1],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            } else if(ctx.function.getName().equals("stringLess")) {
+                addVirtual("a0",FunctionBlock.a[0],ctx.function.functionBlock);
+                addVirtual("a1",FunctionBlock.a[1],ctx.function.functionBlock);
+                addVirtual("t0",FunctionBlock.t[0],ctx.function.functionBlock);
+                addVirtual("t1",FunctionBlock.t[1],ctx.function.functionBlock);
+                addVirtual("v0",FunctionBlock.v[0],ctx.function.functionBlock);
+            }
+
+            // initialize the syscall
+
+            int length = ctx.function.argumentTypeList.size();
+            for(int i = 0; i < length; ++i) {
+                VirtualRegister arg = new VirtualRegister("arg_"+ i);
+                arg.useful = true;
+                ctx.function.functionBlock.argumentList.add(arg);
+                ctx.function.functionBlock.insertVirtual(arg);
+                ctx.function.functionBlock.mapTo(arg,FunctionBlock.a[i]);
+            }
+            VirtualRegister ret = new VirtualRegister("ret");
+            ret.useful = true;
+            ctx.function.functionBlock.argumentList.add(ret);
+            ctx.function.functionBlock.insertVirtual(ret);
+            ctx.function.functionBlock.mapTo(ret,FunctionBlock.v[0]);
+            root.externalFunc.add(ctx.function.functionBlock);
+        }
         curFunc.succ.add(ctx.function.functionBlock);
     }
 

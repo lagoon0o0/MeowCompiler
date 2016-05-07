@@ -95,8 +95,8 @@ public class FunctionBlock extends IR{
     public int virtualTotal = 0;
     public int numberOfSpill = 0;
     public Map<Register,Register> virtualToPhysical = new Hashtable<>();
-    public Map<VirtualRegister,Integer> getIndex = new Hashtable<>();
-    public Map<Integer,VirtualRegister> getRegister = new Hashtable<>();
+    public Map<VirtualRegister,Integer> getVirtualIndex = new Hashtable<>();
+    public Map<Integer,VirtualRegister> getVirtualRegister = new Hashtable<>();
     public List<Set<Integer>> contraSet = new ArrayList<>();
     public List<Set<Integer>> linkedSet = new ArrayList<>();
 
@@ -108,7 +108,10 @@ public class FunctionBlock extends IR{
     public List<BasicBlock> basicBlockList = new ArrayList<>();
 
     public BasicBlock entryBlock;
+
     public Set<FunctionBlock> succ = new HashSet<>();
+    public Set<PhysicalRegister> usedPhysicalRegister = new HashSet<>();
+
     // previously map PhyReg to itself
     {
         virtualToPhysical.put(useless,useless);
@@ -149,9 +152,9 @@ public class FunctionBlock extends IR{
     }
 
     public boolean insertVirtual(VirtualRegister register) {
-        if(!getIndex.containsKey(register)) {
-            getIndex.put(register,virtualTotal);
-            getRegister.put(virtualTotal, register);
+        if(!getVirtualIndex.containsKey(register)) {
+            getVirtualIndex.put(register,virtualTotal);
+            getVirtualRegister.put(virtualTotal, register);
             contraSet.add(new HashSet<>());
             linkedSet.add(new HashSet<>());
             virtualTotal++;
@@ -162,16 +165,16 @@ public class FunctionBlock extends IR{
         }
     }
     public int getVirtualIndex(VirtualRegister register) {
-        if(getIndex.containsKey(register)) {
-            return getIndex.get(register);
+        if(getVirtualIndex.containsKey(register)) {
+            return getVirtualIndex.get(register);
         } else {
             throw new RuntimeException("No such register:" + register.toString());
         }
 
     }
     public VirtualRegister getVirtualRegister(int x) {
-        if(getRegister.containsKey(x)) {
-            return getRegister.get(x);
+        if(getVirtualRegister.containsKey(x)) {
+            return getVirtualRegister.get(x);
         } else {
             throw new RuntimeException("No such register:" + x);
         }

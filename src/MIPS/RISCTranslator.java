@@ -500,20 +500,29 @@ public class RISCTranslator implements Visitor{
 
         // backup caller registers
         for(int i = 0; i <= 9; ++i) {
-            if(outSet.contains(FunctionBlock.t[i])) {
+            if(outSet.contains(FunctionBlock.t[i])
+                    && ctx.function.functionBlock.usedPhysicalRegister.contains(FunctionBlock.t[i])
+                    ) {
                 backupReg(FunctionBlock.t[i]);
             }
         }
         for(int i = 0; i <= 3; ++i) {
-            if(outSet.contains(FunctionBlock.a[i]) || ctx.argumentList.size() > i) {
+            if(outSet.contains(FunctionBlock.a[i])
+                    && ctx.function.functionBlock.usedPhysicalRegister.contains(FunctionBlock.a[i])
+                    || ctx.argumentList.size() > i
+                    ) {
                 backupReg(FunctionBlock.a[i]);
             }
         }
-        if(outSet.contains(FunctionBlock.fp)) {
+        if(outSet.contains(FunctionBlock.fp)
+                && ctx.function.functionBlock.usedPhysicalRegister.contains(FunctionBlock.fp)
+                ) {
             backupReg(FunctionBlock.fp);
         }
         for(int i = 0; i <= 1; ++i) {
-            if(outSet.contains(FunctionBlock.v[i])) {
+            if(outSet.contains(FunctionBlock.v[i])
+                    && ctx.function.functionBlock.usedPhysicalRegister.contains(FunctionBlock.v[i])
+                    ) {
                 backupReg(FunctionBlock.v[i]);
             }
         }
@@ -576,20 +585,28 @@ public class RISCTranslator implements Visitor{
 
         //restore caller registers
         for(int i = 0; i <= 9; ++i) {
-            if(outSet.contains(FunctionBlock.t[i])) {
+            if(outSet.contains(FunctionBlock.t[i])
+                    && ctx.function.functionBlock.usedPhysicalRegister.contains(FunctionBlock.t[i])
+                    ) {
                 restoreReg(FunctionBlock.t[i]);
             }
         }
         for(int i = 0; i <= 3; ++i) {
-            if(outSet.contains(FunctionBlock.a[i])) {
+            if(outSet.contains(FunctionBlock.a[i])
+                    && ctx.function.functionBlock.usedPhysicalRegister.contains(FunctionBlock.a[i])
+                    ) {
                 restoreReg(FunctionBlock.a[i]);
             }
         }
-        if(outSet.contains(FunctionBlock.fp)) {
+        if(outSet.contains(FunctionBlock.fp)
+                && ctx.function.functionBlock.usedPhysicalRegister.contains(FunctionBlock.fp)
+                ) {
             restoreReg(FunctionBlock.fp);
         }
         for(int i = 0; i <= 1; ++i) {
-            if(outSet.contains(FunctionBlock.v[i])) {
+            if(outSet.contains(FunctionBlock.v[i])
+                    && ctx.function.functionBlock.usedPhysicalRegister.contains(FunctionBlock.v[i])
+                    ) {
                 restoreReg(FunctionBlock.v[i]);
             }
         }
@@ -613,11 +630,11 @@ public class RISCTranslator implements Visitor{
         depth++;
         // move the sp
         printInst("sub", FunctionBlock.sp, FunctionBlock.sp,new ImmediateNumber(ctx.frame.getSize()));
-        // backup the callee registers
         backupReg(FunctionBlock.ra);
-        backupReg(FunctionBlock.fp);
+        // backup the callee registers
         for(int i = 0; i <= 7; ++i) {
-            backupReg(FunctionBlock.s[i]);
+            if(ctx.usedPhysicalRegister.contains(FunctionBlock.s[i]))
+                backupReg(FunctionBlock.s[i]);
         }
         // get the argumentlist
         for(int i = 4; i < ctx.argumentList.size(); ++i) {
@@ -634,13 +651,14 @@ public class RISCTranslator implements Visitor{
 
         print("__" + ctx.function.getName() + "_return_:");
         // restore the callee registers
-        restoreReg(FunctionBlock.ra);
-        restoreReg(FunctionBlock.fp);
+
         for(int i = 0; i <= 7; ++i) {
-            restoreReg(FunctionBlock.s[i]);
+            if(ctx.usedPhysicalRegister.contains(FunctionBlock.s[i]))
+                restoreReg(FunctionBlock.s[i]);
         }
 
-        // move the sp
+        // move the sp restore the ra
+        restoreReg(FunctionBlock.ra);
         printInst("add", FunctionBlock.sp, FunctionBlock.sp,new ImmediateNumber(ctx.frame.getSize()));
         printInst("jr",FunctionBlock.ra);
         depth--;
