@@ -355,23 +355,46 @@ public class IRGeneratorVisitor implements Visitor{
 
         if(ctx.type.getName().equals(SymbolTable.BOOL)){
             VirtualRegister addr;
-            curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,addr = new VirtualRegister("bracket_dest"),ctx.name.valueIR, ctx.subscript.valueIR));
-            curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("bracket_rval")),addr,new ImmediateNumber(4),new ImmediateNumber(sizeTable.get(ctx.type.getName()))));
+            if(ctx.subscript.valueIR instanceof ImmediateNumber) {
+                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("bracket_rval"))
+                        ,ctx.name.valueIR
+                        ,new ImmediateNumber(4+((ImmediateNumber) ctx.subscript.valueIR).value)
+                        ,new ImmediateNumber(sizeTable.get(ctx.type.getName()))));
+            } else {
+                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,addr = new VirtualRegister("bracket_dest"),ctx.name.valueIR, ctx.subscript.valueIR));
+                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("bracket_rval")),addr,new ImmediateNumber(4),new ImmediateNumber(sizeTable.get(ctx.type.getName()))));
+            }
         }
         else if(ctx.type.getName().equals(SymbolTable.INT)) {
-            VirtualRegister addr;
-            VirtualRegister tmp = new VirtualRegister("offset");
-            curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.shl,tmp,ctx.subscript.valueIR, new ImmediateNumber(2)));
-            curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,addr = new VirtualRegister("bracket_dest"),ctx.name.valueIR, tmp));
-            curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("bracket_rval")),addr,new ImmediateNumber(4),new ImmediateNumber(sizeTable.get(ctx.type.getName()))));
-        } else {
+            if(ctx.subscript.valueIR instanceof ImmediateNumber) {
+                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("bracket_rval"))
+                        ,ctx.name.valueIR
+                        ,new ImmediateNumber(4+4*((ImmediateNumber) ctx.subscript.valueIR).value)
+                        ,new ImmediateNumber(sizeTable.get(ctx.type.getName()))));
+            } else {
+                VirtualRegister addr;
+                VirtualRegister tmp = new VirtualRegister("offset");
+                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.shl,tmp,ctx.subscript.valueIR, new ImmediateNumber(2)));
+                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,addr = new VirtualRegister("bracket_dest"),ctx.name.valueIR, tmp));
+                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("bracket_rval")),addr,new ImmediateNumber(4),new ImmediateNumber(sizeTable.get(ctx.type.getName()))));
+
+            }
+            } else {
             // 对于class string array返回了引用
-            VirtualRegister addr;
-            VirtualRegister tmp = new VirtualRegister("offset");
-            curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.shl,tmp,ctx.subscript.valueIR, new ImmediateNumber(2)));
-            curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,addr = new VirtualRegister("bracket_dest"),ctx.name.valueIR, tmp));
-            curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("bracket_rval")),addr,new ImmediateNumber(4),new ImmediateNumber(4)));
-        }
+            if(ctx.subscript.valueIR instanceof ImmediateNumber) {
+                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("bracket_rval"))
+                        ,ctx.name.valueIR
+                        ,new ImmediateNumber(4+4*((ImmediateNumber) ctx.subscript.valueIR).value)
+                        ,new ImmediateNumber(4)));
+            } else {
+                VirtualRegister addr;
+                VirtualRegister tmp = new VirtualRegister("offset");
+                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.shl,tmp,ctx.subscript.valueIR, new ImmediateNumber(2)));
+                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,addr = new VirtualRegister("bracket_dest"),ctx.name.valueIR, tmp));
+                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("bracket_rval")),addr,new ImmediateNumber(4),new ImmediateNumber(4)));
+
+            }
+           }
 
     }
 
@@ -519,16 +542,11 @@ public class IRGeneratorVisitor implements Visitor{
             int offset = ((ClassSymbol) ctx.parent.type).getOffset(ctx.child);
             if(ctx.type.getName().equals(SymbolTable.INT) || ctx.type.getName().equals(SymbolTable.BOOL)) {
                 //对于int bool 类型返回值
-                VirtualRegister addr;
-                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add,addr = new VirtualRegister("member_dest"),ctx.parent.valueIR, new ImmediateNumber(offset)));
-                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("load_dest")),addr,new ImmediateNumber(0),new ImmediateNumber(sizeTable.get(ctx.type.getName()))));
+                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("load_dest")),ctx.parent.valueIR,new ImmediateNumber(offset),new ImmediateNumber(sizeTable.get(ctx.type.getName()))));
 
             } else {
                 //对于class string array返回引用
-                VirtualRegister addr;
-                curBlock.add(new BinaryInstruction(BinaryInstruction.OpCode.add, addr = new VirtualRegister("member_dest"), ctx.parent.valueIR, new ImmediateNumber(offset)));
-                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("load_dest")),addr,new ImmediateNumber(0),new ImmediateNumber(4)));
-
+                curBlock.add(new LoadInstruction((VirtualRegister)(ctx.valueIR = new VirtualRegister("load_dest")),ctx.parent.valueIR,new ImmediateNumber(offset),new ImmediateNumber(4)));
             }
         } else {
             // 调用系统内建方法

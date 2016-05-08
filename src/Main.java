@@ -23,7 +23,7 @@ import AST.AstNode;
 import java.io.*;
 public class Main {
 
-    static final boolean Debugging = false;
+    static final boolean Debugging = true;
     public static void runRISC(InputStream is,PrintStream out, PrintStream debug, boolean Debugging) throws IOException {
         final boolean PrintAST = Debugging;
         final boolean PrintIR = Debugging;
