@@ -168,6 +168,8 @@ public class FunctionBlock extends IR {
         if(getVirtualIndex.containsKey(register)) {
             return getVirtualIndex.get(register);
         } else {
+            //insertVirtual(register);
+            //return getVirtualIndex.get(register);
             throw new RuntimeException("No such register:" + register.toString());
         }
 

@@ -11,7 +11,7 @@ import java.util.List;
 public class BasicBlock extends IR{
     static int total = 0;
     int index;
-    String name;
+    public String name;
     public List<Instruction> list = new ArrayList<>();
     public BasicBlock(String aName) {
         index = ++total;
@@ -27,7 +27,7 @@ public class BasicBlock extends IR{
     }
     public Instruction getFirst() {
         if(list.size() == 0) {
-            throw new RuntimeException("Empty Blcok!");
+            throw new RuntimeException(getName() + "Empty Blcok!");
         }
         return list.get(0);
     }

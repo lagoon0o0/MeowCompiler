@@ -12,10 +12,7 @@ import FrontEnd.VisitorAST.ASTPrinter;
 import IR.IRRoot;
 import IRVisitor.IRPrinter;
 import MIPS.*;
-import Optimization.BuildCallingGraph;
-import Optimization.CalcRegisterUsage;
-import Optimization.CalcStaticDataUsage;
-import Optimization.LoadAndStoreStaticData;
+import Optimization.*;
 import RegisterAllocation.*;
 import SymbolTable.SymbolTable;
 import org.antlr.v4.runtime.*;
@@ -65,20 +62,22 @@ public class Main {
         IRRoot irRoot = irGeneratorVisitor.irRoot;
 
 
-
-
-
-        CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
-        calcVirtualRegisterIndex.visit(irRoot);
-
         // build the calling graph
         BuildCallingGraph buildCallingGraph = new BuildCallingGraph(debug);
         buildCallingGraph.visit(irRoot);
 
+        // leaf function inline
+        InlineLeafFunction inlineLeafFunction = new InlineLeafFunction();
+         inlineLeafFunction.visit(irRoot);
+
+        // calc Virtual Register Index
+        CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
+        calcVirtualRegisterIndex.visit(irRoot);
+
+
         //get StaticData usage
         CalcStaticDataUsage calcStaticDataUsage = new CalcStaticDataUsage();
         calcStaticDataUsage.visit(irRoot);
-
 
 
         //insert Load and Store of StaticData
@@ -92,7 +91,7 @@ public class Main {
 
 
 
-        // build instructuon CFG
+        // build instruction CFG
         BuildGraph buildGraph = new BuildGraph();
         buildGraph.visit(irRoot);
 
@@ -109,7 +108,6 @@ public class Main {
         // alloc register with coloring
         GraphColoring graphColoring = new GraphColoring(debug);
         graphColoring.visit(irRoot);
-
 
 
 

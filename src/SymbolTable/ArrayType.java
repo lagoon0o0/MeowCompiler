@@ -13,7 +13,7 @@ public class ArrayType extends BaseScope implements Type {
         super("ArrayType", enclosingScope);
         bodyType = aBodyType;
         Type aType = this;
-        define(new FunctionSymbol("_array" + "." + "size",resolve(SymbolTable.INT).type, this){
+        define(new FunctionSymbol("_array" + "." + "size",resolve(SymbolTable.INT).type, this,true){
             {
                 addArgument(aType);
             }

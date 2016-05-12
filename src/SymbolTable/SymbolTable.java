@@ -24,46 +24,46 @@ public class SymbolTable {
         }
         // Define System Functions
         SymbolTable symbolTable = this;
-        currentScope.define(new FunctionSymbol("print", currentScope.resolve(VOID).type, currentScope) {
+        currentScope.define(new FunctionSymbol("print", currentScope.resolve(VOID).type, currentScope,true) {
             {
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));
             }
         });
-        currentScope.define(new FunctionSymbol("printInt", currentScope.resolve(VOID).type, currentScope) {
+        currentScope.define(new FunctionSymbol("printInt", currentScope.resolve(VOID).type, currentScope,true) {
             {
                 addArgument((Type) symbolTable.currentScope.resolve(INT));
             }
         });
-        currentScope.define(new FunctionSymbol("printlnInt", currentScope.resolve(VOID).type, currentScope) {
+        currentScope.define(new FunctionSymbol("printlnInt", currentScope.resolve(VOID).type, currentScope,true) {
             {
                 addArgument((Type) symbolTable.currentScope.resolve(INT));
             }
         });
-        currentScope.define(new FunctionSymbol("println", currentScope.resolve(VOID).type, currentScope) {
+        currentScope.define(new FunctionSymbol("println", currentScope.resolve(VOID).type, currentScope,true) {
             {
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));
             }
         });
-        currentScope.define(new FunctionSymbol("getString", currentScope.resolve(STRING).type, currentScope));
-        currentScope.define(new FunctionSymbol("getInt", currentScope.resolve(INT).type, currentScope));
-        currentScope.define(new FunctionSymbol("toString", currentScope.resolve(STRING).type, currentScope) {
+        currentScope.define(new FunctionSymbol("getString", currentScope.resolve(STRING).type, currentScope,true));
+        currentScope.define(new FunctionSymbol("getInt", currentScope.resolve(INT).type, currentScope,true));
+        currentScope.define(new FunctionSymbol("toString", currentScope.resolve(STRING).type, currentScope,true) {
             {
                 addArgument((Type) symbolTable.currentScope.resolve(INT));
             }
         });
-        currentScope.define(new FunctionSymbol("stringConcatenate",currentScope.resolve(STRING).type, currentScope, new ArrayList<Type>()){
+        currentScope.define(new FunctionSymbol("stringConcatenate",currentScope.resolve(STRING).type, currentScope, new ArrayList<>(),true){
             {
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));
             }
         });
-        currentScope.define(new FunctionSymbol("stringIsEqual",currentScope.resolve(BOOL).type, currentScope, new ArrayList<Type>()){
+        currentScope.define(new FunctionSymbol("stringIsEqual",currentScope.resolve(BOOL).type, currentScope, new ArrayList<>(),true){
             {
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));
             }
         });
-        currentScope.define(new FunctionSymbol("stringLess",currentScope.resolve(BOOL).type, currentScope, new ArrayList<Type>()){
+        currentScope.define(new FunctionSymbol("stringLess",currentScope.resolve(BOOL).type, currentScope, new ArrayList<>(),true){
             {
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));
                 addArgument((Type) symbolTable.currentScope.resolve(STRING));
@@ -72,24 +72,24 @@ public class SymbolTable {
         // Define Member Functions
         PrimitiveType stringType = (PrimitiveType) currentScope.resolve(STRING);
         push(stringType);
-        currentScope.define(new FunctionSymbol(stringType.getName() + "." + "length", currentScope.resolve(INT).type, currentScope) {
+        currentScope.define(new FunctionSymbol(stringType.getName() + "." + "length", currentScope.resolve(INT).type, currentScope,true) {
             {
                 addArgument((Type) symbolTable.currentScope.resolve(stringType.getName()));
             }
         });
-        currentScope.define(new FunctionSymbol(stringType.getName() + "." + "substring", currentScope.resolve(STRING).type, currentScope) {
+        currentScope.define(new FunctionSymbol(stringType.getName() + "." + "substring", currentScope.resolve(STRING).type, currentScope,true) {
             {
                 addArgument((Type) symbolTable.currentScope.resolve(stringType.getName()));
                 addArgument((Type) symbolTable.currentScope.resolve(INT));
                 addArgument((Type) symbolTable.currentScope.resolve(INT));
             }
         });
-        currentScope.define(new FunctionSymbol(stringType.getName() + "." + "parseInt", currentScope.resolve(INT).type, currentScope){
+        currentScope.define(new FunctionSymbol(stringType.getName() + "." + "parseInt", currentScope.resolve(INT).type, currentScope,true){
             {
                 addArgument((Type) symbolTable.currentScope.resolve(stringType.getName()));
             }
         });
-        currentScope.define(new FunctionSymbol(stringType.getName() + "." + "ord", currentScope.resolve(INT).type, currentScope) {
+        currentScope.define(new FunctionSymbol(stringType.getName() + "." + "ord", currentScope.resolve(INT).type, currentScope,true) {
             {
                 addArgument((Type) symbolTable.currentScope.resolve(stringType.getName()));
                 addArgument((Type) symbolTable.currentScope.resolve(INT));
