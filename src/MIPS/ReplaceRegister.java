@@ -13,6 +13,8 @@ public class ReplaceRegister implements Visitor{
     FunctionBlock curFunction;
 
     public Value calc(Value ctx) {
+        if(ctx instanceof StaticData)
+            return ctx;
         if(ctx instanceof Register) {
             if(ctx instanceof VirtualRegister) {
                 if(((VirtualRegister) ctx).useful)
@@ -25,6 +27,8 @@ public class ReplaceRegister implements Visitor{
         return ctx;
     }
     public Register calc(Register ctx) {
+        if(ctx instanceof StaticData)
+            return ctx;
         if(ctx instanceof VirtualRegister) {
             if(((VirtualRegister) ctx).useful)
                 return curFunction.getPhysicalRegister((Register) ctx);

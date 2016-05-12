@@ -14,6 +14,8 @@ import IRVisitor.IRPrinter;
 import MIPS.*;
 import Optimization.BuildCallingGraph;
 import Optimization.CalcRegisterUsage;
+import Optimization.CalcStaticDataUsage;
+import Optimization.LoadAndStoreStaticData;
 import RegisterAllocation.*;
 import SymbolTable.SymbolTable;
 import org.antlr.v4.runtime.*;
@@ -23,7 +25,7 @@ import AST.AstNode;
 import java.io.*;
 public class Main {
 
-    static final boolean Debugging = false;
+    static final boolean Debugging = true;
     public static void runRISC(InputStream is,PrintStream out, PrintStream debug, boolean Debugging) throws IOException {
         final boolean PrintAST = Debugging;
         final boolean PrintIR = Debugging;
@@ -63,14 +65,33 @@ public class Main {
         IRRoot irRoot = irGeneratorVisitor.irRoot;
 
 
+
+
+
+        CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
+        calcVirtualRegisterIndex.visit(irRoot);
+
+        // build the calling graph
+        BuildCallingGraph buildCallingGraph = new BuildCallingGraph(debug);
+        buildCallingGraph.visit(irRoot);
+
+        //get StaticData usage
+        CalcStaticDataUsage calcStaticDataUsage = new CalcStaticDataUsage();
+        calcStaticDataUsage.visit(irRoot);
+
+
+
+        //insert Load and Store of StaticData
+        LoadAndStoreStaticData loadAndStoreStaticData = new LoadAndStoreStaticData();
+        loadAndStoreStaticData.visit(irRoot);
+
         if(PrintIR) {
             IRPrinter irPrinter = new IRPrinter(debug);
             irPrinter.visit(irRoot);
         }
 
 
-        CalcVirtualRegisterIndex calcVirtualRegisterIndex = new CalcVirtualRegisterIndex();
-        calcVirtualRegisterIndex.visit(irRoot);
+
         // build instructuon CFG
         BuildGraph buildGraph = new BuildGraph();
         buildGraph.visit(irRoot);
@@ -79,42 +100,43 @@ public class Main {
         CalcLiveness calcLiveness = new CalcLiveness(debug);
         calcLiveness.visit(irRoot);
 
+
         // build interference graph
         BuildInterferenceGraph buildInterferenceGraph = new BuildInterferenceGraph(debug);
         buildInterferenceGraph.visit(irRoot);
+
 
         // alloc register with coloring
         GraphColoring graphColoring = new GraphColoring(debug);
         graphColoring.visit(irRoot);
 
-        // build the calling graph
-        BuildCallingGraph buildCallingGraph = new BuildCallingGraph(debug);
-        buildCallingGraph.visit(irRoot);
+
+
 
         // calc register usage
         CalcRegisterUsage calcRegisterUsage = new CalcRegisterUsage();
         calcRegisterUsage.visit(irRoot);
 
 
+
         // replace virtual register with physical register
         ReplaceRegister replaceRegister = new ReplaceRegister();
         replaceRegister.visit(irRoot);
+        if(PrintLiveness) {
+            PrintLiveness printLiveness = new PrintLiveness(debug);
+            printLiveness.visit(irRoot);
+        }
 
         // calculate the frame size
         RISCCalcFrame riscCalcFrame = new RISCCalcFrame();
         riscCalcFrame.visit(irRoot);
 
 
-
-
         // translate to mips
         RISCTranslator riscTranslator = new RISCTranslator(out);
         riscTranslator.visit(irRoot);
 
-        if(PrintLiveness) {
-            PrintLiveness printLiveness = new PrintLiveness(debug);
-            printLiveness.visit(irRoot);
-        }
+
     }
     public static void runCISC(InputStream is,PrintStream out, PrintStream debug,boolean Debuging) throws IOException {
         final boolean PrintAST = Debuging;

@@ -10,6 +10,7 @@ import java.io.PrintStream;
 public class PrintLiveness implements Visitor{
     PrintStream out;
     FunctionBlock curFunc;
+    IRRoot irRoot;
     public PrintLiveness(PrintStream x) {
         out = x;
     }
@@ -115,7 +116,7 @@ public class PrintLiveness implements Visitor{
 
     @Override
     public void visit(IRRoot ctx) {
-
+        irRoot = ctx;
         ctx.func.stream().forEachOrdered(this::visit);
 
         print("---------------exteral function-------------------");
@@ -183,6 +184,13 @@ public class PrintLiveness implements Visitor{
         print("function : " + ctx.function.getName());
         print("number of spill = " + ctx.numberOfSpill);
         print("size of frame = " + ctx.frame.getSize());
+        print("list of used staticdata:");
+        depth++;
+        for (VirtualRegister x : ctx.ocrStaticData) {
+            print(x.toString() + ": " + irRoot.virtualToSymbol.get(x).getName());
+        }
+        depth--;
+
         print("list of called function:");
         depth++;
         for (FunctionBlock x : ctx.succ) {

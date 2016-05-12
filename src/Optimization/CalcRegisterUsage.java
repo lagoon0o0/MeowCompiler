@@ -9,6 +9,7 @@ import java.util.*;
  * Created by lagoon0o0 on 5/7/16.
  */
 public class CalcRegisterUsage implements Visitor{
+    IRRoot irRoot;
     @Override
     public void visit(AllocInstruction ctx) {
         
@@ -51,16 +52,13 @@ public class CalcRegisterUsage implements Visitor{
 
     @Override
     public void visit(IRRoot ctx) {
+        irRoot = ctx;
         ctx.externalFunc.stream().forEach(this::visit);
         ctx.func.stream().forEach(this::visit);
-        Set<FunctionBlock> vis = new HashSet<>();
-        List<FunctionBlock> list = new ArrayList<>();
-        ctx.func.stream().forEach(list::add);
         boolean finished = true;
        do {
            finished = true;
-           for (FunctionBlock cur : list) {
-               vis.remove(cur);
+           for (FunctionBlock cur : ctx.func) {
                Set<PhysicalRegister> old = new HashSet<>(cur.usedPhysicalRegister);
                for (FunctionBlock x : cur.succ) {
                    cur.usedPhysicalRegister.addAll(x.usedPhysicalRegister);
@@ -134,5 +132,6 @@ public class CalcRegisterUsage implements Visitor{
                 .map(ctx::getPhysicalRegister)
                 .map(x -> (PhysicalRegister)x)
                 .forEach(ctx.usedPhysicalRegister::add);
+
     }
 }

@@ -22,6 +22,9 @@ public class BasicBlock extends IR{
             return;
         list.add(x);
     }
+    public void prepend(Instruction x) {
+        list.add(0,x);
+    }
     public Instruction getFirst() {
         if(list.size() == 0) {
             throw new RuntimeException("Empty Blcok!");

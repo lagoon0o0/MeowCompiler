@@ -13,6 +13,7 @@ import static java.lang.Math.max;
  */
 public class GraphColoring implements Visitor{
     PrintStream debug;
+    IRRoot irRoot;
     public GraphColoring(PrintStream debug) {this.debug=debug;}
     @Override
     public void visit(AllocInstruction ctx) {
@@ -56,6 +57,7 @@ public class GraphColoring implements Visitor{
 
     @Override
     public void visit(IRRoot ctx) {
+        irRoot = ctx;
         ctx.func.stream().forEachOrdered(this::visit);
     }
 
@@ -204,9 +206,16 @@ public class GraphColoring implements Visitor{
                 }
             }
             if(avaRegSet.size() == 0) {
-                ctx.mapTo(x, ctx.frame.get(x));
-                ctx.numberOfSpill++;
-                continue;
+                if(irRoot.virtualToSymbol.containsKey(x)) {
+                    ctx.mapTo(x, irRoot.virtualToSymbol.get(x).label);
+                    ctx.numberOfSpill++;
+                    continue;
+                } else {
+                    ctx.mapTo(x, ctx.frame.get(x));
+                    ctx.numberOfSpill++;
+                    continue;
+                }
+
             }
 
             // first select from linkedRegs

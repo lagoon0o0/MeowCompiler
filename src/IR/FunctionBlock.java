@@ -110,7 +110,8 @@ public class FunctionBlock extends IR {
 
     public Set<FunctionBlock> succ = new HashSet<>();
     public Set<PhysicalRegister> usedPhysicalRegister = new HashSet<>();
-
+    public Set<VirtualRegister> ocrStaticData = new HashSet<>();
+    public Set<VirtualRegister> usedStaticData = new HashSet<>();
     // previously map PhyReg to itself
     {
         virtualToPhysical.put(useless,useless);
