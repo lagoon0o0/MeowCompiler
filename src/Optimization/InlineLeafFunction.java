@@ -21,6 +21,7 @@ public class InlineLeafFunction implements Visitor{
     IRRoot irRoot;
     Map<VirtualRegister,VirtualRegister> registerMap;
     Map<BasicBlock, BasicBlock> basicBlockMap;
+    FunctionBlock curFunc, dupFunc;
     public Value getValue(Value value) {
         if(value instanceof Register) {
             return getRegister((Register) value);
@@ -150,11 +151,19 @@ public class InlineLeafFunction implements Visitor{
 
     @Override
     public void visit(FunctionCallInstruction ctx) {
+        List<Value> list = new ArrayList<>();
+        ctx.argumentList.stream().map(this::getValue).forEachOrdered(list::add);
+        curBlock.add(new FunctionCallInstruction(getRegister(ctx.destination),ctx.function,list));
+    }
+    public void expand(FunctionCallInstruction ctx) {
+
         returnDest = ctx.destination;
         registerMap = new HashMap<>();
         basicBlockMap = new HashMap<>();
         // copy the argument
-        FunctionBlock func = ctx.function.functionBlock;
+        FunctionBlock func = (ctx.function.functionBlock == curFunc)
+                ? dupFunc
+                :ctx.function.functionBlock;
         for(int i = 0; i < ctx.argumentList.size(); ++i) {
             Value src = ctx.argumentList.get(i);
             Register dest = getRegister(func.argumentList.get(i));
@@ -177,12 +186,40 @@ public class InlineLeafFunction implements Visitor{
         }
 
     }
+    public FunctionBlock duplicateFunc(FunctionBlock ctx) {
+        basicBlockMap = new HashMap<>();
+        FunctionBlock ret = new FunctionBlock(ctx.function);
+        ret.argumentList = ctx.argumentList;
+        for (BasicBlock x : ctx.basicBlockList) {
+            curBlock = getBasicBlock(x);
 
+            for (Instruction inst : x.list) {
+                if(inst instanceof ControlInstruction) {
+                    if(inst instanceof JumpInstruction) {
+                        curBlock.add(new JumpInstruction(getBasicBlock(((JumpInstruction) inst).destination)));
+                    } else if(inst instanceof BranchInstruction) {
+                        curBlock.add(new BranchInstruction(((BranchInstruction) inst).condition
+                                ,getBasicBlock(((BranchInstruction) inst).ifTrue)
+                                ,getBasicBlock(((BranchInstruction) inst).ifFalse)));
+                    } else if(inst instanceof ReturnInstruction) {
+                        curBlock.add(inst);
+                    }
+                } else {
+                    curBlock.add(inst);
+                }
+
+            }
+            ret.basicBlockList.add(curBlock);
+        }
+        return ret;
+    }
 
     @Override
     public void visit(FunctionBlock ctx) {
         if(ctx.function.isExternal)
             return;
+        curFunc = ctx;
+        dupFunc = duplicateFunc(ctx);
         List<BasicBlock> list = new ArrayList<>();
         curList = list;
         for (BasicBlock cur : ctx.basicBlockList) {
@@ -193,10 +230,13 @@ public class InlineLeafFunction implements Visitor{
             for (Instruction inst : temp.list) {
                 if(inst instanceof FunctionCallInstruction
                         && !((FunctionCallInstruction) inst).function.isExternal
-                        && ((FunctionCallInstruction) inst).function.functionBlock.succ.size() == 0) {
+                        //&& ((FunctionCallInstruction) inst).function.functionBlock.succ.size() == 0
+                        //&& ((FunctionCallInstruction) inst).function.functionBlock != ctx
+                        ) {
+                    System.out.println("expanding " + inst.toString());
                     callingBlock = newBlock;
                     returnBlock = new BasicBlock("returnBlock");
-                    visit(inst);
+                    expand((FunctionCallInstruction) inst);
                     newBlock = returnBlock;
                 } else {
                     newBlock.add(inst);
@@ -206,4 +246,6 @@ public class InlineLeafFunction implements Visitor{
         }
         ctx.basicBlockList = list;
     }
+
+
 }

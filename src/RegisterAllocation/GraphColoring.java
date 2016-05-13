@@ -168,13 +168,18 @@ public class GraphColoring implements Visitor{
             double spillCost = 1e10;
             target = null;
             for (VirtualRegister x : registerSet) {
-                if(ctx.getPhysicalRegister(x) != null)
+                if(ctx.getPhysicalRegister(x) != null) {
+                    System.out.println(x.toString() + "->" + ctx.getPhysicalRegister(x).toString());
                     continue;
+                }
                 double val = A * x.numberOfRef / maxRef + B * ctx.getDeg(x) / maxDeg;
                 if(val < spillCost) {
                     spillCost = val;
                     target = x;
                 }
+            }
+            if(target == null) {
+                continue;
             }
             ctx.delVirtualReg(target);
             registerSet.remove(target);
@@ -240,7 +245,6 @@ public class GraphColoring implements Visitor{
             else
                debug.println(" linked none :" + avaRegSet.iterator().next().toString());
             */
-
             ctx.mapTo(x, avaRegSet.iterator().next());
         }
 

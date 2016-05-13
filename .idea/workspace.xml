@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4407b6ff-3995-47ae-88ad-41ee71786462" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Optimization/InlineLeafFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/BasicBlock.java" afterPath="$PROJECT_DIR$/src/IR/BasicBlock.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/FunctionBlock.java" afterPath="$PROJECT_DIR$/src/IR/FunctionBlock.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/ArrayType.java" afterPath="$PROJECT_DIR$/src/SymbolTable/ArrayType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/FunctionSymbol.java" afterPath="$PROJECT_DIR$/src/SymbolTable/FunctionSymbol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymbolTable/SymbolTable.java" afterPath="$PROJECT_DIR$/src/SymbolTable/SymbolTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/InlineLeafFunction.java" afterPath="$PROJECT_DIR$/src/Optimization/InlineLeafFunction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RegisterAllocation/GraphColoring.java" afterPath="$PROJECT_DIR$/src/RegisterAllocation/GraphColoring.java" />
     </list>
     <ignored path="MeowCompiler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,11 +34,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GraphColoring.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RegisterAllocation/GraphColoring.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1433">
+              <caret line="140" column="69" selection-start-line="140" selection-start-column="69" selection-end-line="140" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FinalTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/FinalTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sample0.mx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sample/sample0.mx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InlineLeafFunction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Optimization/InlineLeafFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1226">
+              <caret line="231" column="37" selection-start-line="231" selection-start-column="37" selection-end-line="231" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3804#3805#0" expanded="true" />
+                <element signature="e#3885#3886#0" expanded="true" />
+                <element signature="e#3932#3933#0" expanded="true" />
+                <element signature="e#3964#3965#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="queens-5100379110-daibo.mx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/queens-5100379110-daibo.mx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VirtualRegister.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IR/VirtualRegister.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding>
+                <element signature="e#393#394#0" expanded="true" />
+                <element signature="e#444#445#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+            <state relative-caret-position="198">
+              <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -51,35 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalcStaticDataUsage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Optimization/CalcStaticDataUsage.java">
+      <file leaf-file-name="magic-5100309153-yanghuan.mx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/magic-5100309153-yanghuan.mx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="107" column="14" selection-start-line="107" selection-start-column="14" selection-end-line="107" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InlineLeafFunction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Optimization/InlineLeafFunction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3247">
-              <caret line="195" column="102" selection-start-line="195" selection-start-column="102" selection-end-line="195" selection-end-column="102" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="horse-5100309153-yanghuan.mx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse-5100309153-yanghuan.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+            <state relative-caret-position="17">
+              <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -88,62 +131,24 @@
       <file leaf-file-name="FunctionBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IR/FunctionBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1241">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="489">
+              <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7998#8007#0" expanded="true" />
-                <element signature="e#8232#8241#0" expanded="true" />
+                <element signature="e#4970#4971#0" expanded="true" />
+                <element signature="e#5006#5007#0" expanded="true" />
+                <element signature="e#8079#8088#0" expanded="true" />
+                <element signature="e#8313#8322#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SymbolTable/SymbolTable.java">
+      <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/src.zip!/java/util/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1078">
-              <caret line="91" column="132" selection-start-line="91" selection-start-column="132" selection-end-line="91" selection-end-column="132" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArrayType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SymbolTable/ArrayType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="15" column="98" selection-start-line="15" selection-start-column="98" selection-end-line="15" selection-end-column="98" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample0.mx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sample/sample0.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="721">
-              <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FinalTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/FinalTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="56" column="16" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prime-5100309153-yanghuan.mx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/prime-5100309153-yanghuan.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="8" selection-start-line="14" selection-start-column="4" selection-end-line="19" selection-end-column="8" />
+            <state relative-caret-position="258">
+              <caret line="239" column="6" selection-start-line="239" selection-start-column="6" selection-end-line="239" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -172,26 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/LivenessAnalysis/CalcVirtualRegisterIndex.java" />
-        <option value="$PROJECT_DIR$/src/LivenessAnalysis/BuildGraph.java" />
-        <option value="$PROJECT_DIR$/src/LivenessAnalysis/CalcLiveness.java" />
-        <option value="$PROJECT_DIR$/src/LivenessAnalysis/BuildInterferenceGraph.java" />
-        <option value="$PROJECT_DIR$/src/LivenessAnalysis/PrintLiveness.java" />
-        <option value="$PROJECT_DIR$/src/RegisterAllocation/CalcVirtualRegisterIndex.java" />
-        <option value="$PROJECT_DIR$/src/MIPS/CISCCalcFrame.java" />
-        <option value="$PROJECT_DIR$/src/MIPS/Translator.java" />
-        <option value="$PROJECT_DIR$/src/MIPS/CISCTranslator.java" />
-        <option value="$PROJECT_DIR$/src/MIPS/RISCCalcFrame.java" />
-        <option value="$PROJECT_DIR$/out/src.s" />
-        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/array_test1-mahaojun.in" />
-        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/array_test1-mahaojun.out" />
-        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/array_test1-mahaojun.mx" />
-        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/class_test-mahaojun.mx" />
-        <option value="$PROJECT_DIR$/src/IR/Instruction.java" />
-        <option value="$PROJECT_DIR$/src/RegisterAllocation/CalcLiveness.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/VisitorAST/ASTPrinter.java" />
-        <option value="$PROJECT_DIR$/test/SemanticCheckerTest.java" />
-        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/superloop-5090379042-jiaxiao.mx" />
         <option value="$PROJECT_DIR$/compiler2016-testcases/passed/maxflow-5100379110-daibo.mx" />
         <option value="$PROJECT_DIR$/src/IR/VirtualRegister.java" />
         <option value="$PROJECT_DIR$/src/RegisterAllocation/BuildInterferenceGraph.java" />
@@ -209,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/MIPS/ReplaceRegister.java" />
         <option value="$PROJECT_DIR$/src/RegisterAllocation/PrintLiveness.java" />
         <option value="$PROJECT_DIR$/src/MIPS/RISCTranslator.java" />
-        <option value="$PROJECT_DIR$/src/RegisterAllocation/GraphColoring.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/IRGeneratorVisitor.java" />
         <option value="$PROJECT_DIR$/src/Optimization/CalcRegisterUsage.java" />
         <option value="$PROJECT_DIR$/src/Optimization/CalcStaticDataUsage.java" />
@@ -218,11 +202,32 @@
         <option value="$PROJECT_DIR$/src/SymbolTable/SymbolTable.java" />
         <option value="$PROJECT_DIR$/src/Optimization/BuildCallingGraph.java" />
         <option value="$PROJECT_DIR$/src/IR/BasicBlock.java" />
-        <option value="$PROJECT_DIR$/src/IR/FunctionBlock.java" />
         <option value="$PROJECT_DIR$/src/SymbolTable/ArrayType.java" />
-        <option value="$PROJECT_DIR$/sample/sample0.mx" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/basicopt1-5100309127-hetianxing.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/bulgarian-5110379024-wuhang.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/expr-5110309085-jintianxing.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/hanoi-5100379110-daibo.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/hashmap-5100309127-hetianxing.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/heapsort-5100379110-daibo.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/horse2-5100309153-yanghuan.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/horse3-5100309153-yanghuan.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/horse-5100309153-yanghuan.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/magic-5100309153-yanghuan.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/maxflow-5100379110-daibo.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/prime-5100309153-yanghuan.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/qsort-5100379110-daibo.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/queens-5100379110-daibo.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/spill2-5100379110-daibo.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/superloop-5090379042-jiaxiao.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/tak-5090379042-jiaxiao.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/twinprime-5090379042-jiaxiao.limit" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/basicopt1-5100309127-hetianxing.mx" />
         <option value="$PROJECT_DIR$/src/Optimization/InlineLeafFunction.java" />
+        <option value="$PROJECT_DIR$/compiler2016-testcases/passed/queens-5100379110-daibo.mx" />
+        <option value="$PROJECT_DIR$/src/IR/FunctionBlock.java" />
+        <option value="$PROJECT_DIR$/src/RegisterAllocation/GraphColoring.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/sample/sample0.mx" />
       </list>
     </option>
   </component>
@@ -398,6 +403,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RegisterAllocation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="sample" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -413,6 +436,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="compiler2016-testcases" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MeowCompiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="compiler2016-testcases" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="passed" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -468,7 +509,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FinalTest.testPass">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="FinalTest.testPass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="MeowCompiler" />
@@ -490,7 +531,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="FinalTest.testPass (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="FinalTest.testPass (5)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="MeowCompiler" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -500,7 +541,7 @@
       <option name="METHOD_NAME" value="testPass" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="[5]" />
+      <option name="PARAMETERS" value="[23]" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -511,7 +552,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="FinalTest.testPass (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="FinalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="MeowCompiler" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -519,9 +560,9 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FinalTest" />
       <option name="METHOD_NAME" value="testPass" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="[29]" />
+      <option name="PARAMETERS" value="[16]" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -532,7 +573,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="FinalTest.testPass (4)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="FinalTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="MeowCompiler" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -540,9 +581,9 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FinalTest" />
       <option name="METHOD_NAME" value="testPass" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="[4]" />
+      <option name="PARAMETERS" value="[23]" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -553,7 +594,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="FinalTest.testPass (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="FinalTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="MeowCompiler" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -561,9 +602,9 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FinalTest" />
       <option name="METHOD_NAME" value="testPass" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="[2]" />
+      <option name="PARAMETERS" value="[17]" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -1042,18 +1083,18 @@
       <item index="1" class="java.lang.String" itemvalue="JUnit.SemanticCheckerTest" />
       <item index="2" class="java.lang.String" itemvalue="Application.Main" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (2)" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (3)" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (4)" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (1)" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (5)" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.FinalTest" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.FinalTest (1)" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.FinalTest (2)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (1)" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (4)" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (3)" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (2)" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.FinalTest (1)" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.FinalTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.FinalTest (2)" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.FinalTest.testPass (5)" />
       </list>
     </recent_temporary>
   </component>
@@ -1120,44 +1161,44 @@
       <workItem from="1462674383278" duration="2192000" />
       <workItem from="1462718323654" duration="1807000" />
       <workItem from="1462767154595" duration="374000" />
-      <workItem from="1463018865118" duration="23677000" />
+      <workItem from="1463018865118" duration="32595000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 15h 23m 11s.xml">
+    <history-entry file="FinalTest_(1) - 2016.05.13 at 00h 49m 39s.xml">
+      <configuration name="FinalTest (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FinalTest_(1) - 2016.05.13 at 00h 50m 06s.xml">
+      <configuration name="FinalTest (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FinalTest_(2) - 2016.05.13 at 00h 48m 30s.xml">
+      <configuration name="FinalTest (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FinalTest_(2) - 2016.05.13 at 00h 49m 25s.xml">
+      <configuration name="FinalTest (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FinalTest_testPass - 2016.05.13 at 00h 48m 14s.xml">
       <configuration name="FinalTest.testPass" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 15h 25m 12s.xml">
+    <history-entry file="FinalTest_testPass - 2016.05.13 at 00h 48m 28s.xml">
       <configuration name="FinalTest.testPass" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 20h 53m 28s.xml">
+    <history-entry file="FinalTest_testPass - 2016.05.13 at 00h 49m 33s.xml">
       <configuration name="FinalTest.testPass" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 21h 33m 12s.xml">
-      <configuration name="FinalTest.testPass" configurationId="JUnit" />
+    <history-entry file="FinalTest_testPass_(5) - 2016.05.13 at 00h 43m 35s.xml">
+      <configuration name="FinalTest.testPass (5)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 21h 34m 38s.xml">
-      <configuration name="FinalTest.testPass" configurationId="JUnit" />
+    <history-entry file="FinalTest_testPass_(5) - 2016.05.13 at 00h 43m 42s.xml">
+      <configuration name="FinalTest.testPass (5)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 21h 35m 40s.xml">
-      <configuration name="FinalTest.testPass" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 21h 35m 45s.xml">
-      <configuration name="FinalTest.testPass" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 21h 40m 37s.xml">
-      <configuration name="FinalTest.testPass" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 21h 51m 05s.xml">
-      <configuration name="FinalTest.testPass" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FinalTest_testPass - 2016.05.12 at 21h 51m 31s.xml">
-      <configuration name="FinalTest.testPass" configurationId="JUnit" />
+    <history-entry file="FinalTest_testPass_(5) - 2016.05.13 at 00h 43m 52s.xml">
+      <configuration name="FinalTest.testPass (5)" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="342119000" />
+    <option name="totallyTimeSpent" value="351037000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1181,7 +1222,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49306932" sideWeight="0.51277953" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11386139" sideWeight="0.49574015" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35544553" sideWeight="0.48722044" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.490099" sideWeight="0.48722044" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1193,7 +1234,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33547926" sideWeight="0.510101" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09504951" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1248,7 +1289,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/IR/FunctionBlock.java</url>
+          <line>254</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1257,444 +1306,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BracketExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegisterAllocation/BuildInterferenceGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegisterAllocation/CalcLiveness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PostfixExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/IR">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>IR</OriginalElement>
-          <nodes>
-            <node x="1295.5" y="250.0">IR.VirtualRegister</node>
-            <node x="388.0" y="250.0">IR.LoadInstruction</node>
-            <node x="1510.5" y="80.0">IR.Value</node>
-            <node x="202.0" y="170.0">IR.MemoryAccessInstruction</node>
-            <node x="578.0" y="80.0">IR.FunctionBlock</node>
-            <node x="0.0" y="170.0">IR.FunctionCallInstruction</node>
-            <node x="1391.5" y="170.0">IR.Register</node>
-            <node x="1598.5" y="80.0">IR.BasicBlock</node>
-            <node x="1597.5" y="250.0">IR.FrameAddr</node>
-            <node x="697.5" y="170.0">IR.ControlInstruction</node>
-            <node x="1496.5" y="170.0">IR.VoidValue</node>
-            <node x="1612.5" y="170.0">IR.ImmediateNumber</node>
-            <node x="1144.25" y="0.0">IR.IR</node>
-            <node x="541.0" y="250.0">IR.ReturnInstruction</node>
-            <node x="502.9085884353742" y="170.0">IR.MoveInstruction</node>
-            <node x="1441.5" y="250.0">IR.PhysicalRegister</node>
-            <node x="867.5" y="170.0">IR.UnaryInstruction</node>
-            <node x="721.0" y="80.0">IR.Instruction</node>
-            <node x="1026.5" y="170.0">IR.ConditionSetInstruction</node>
-            <node x="1068.8125" y="250.0">IR.StaticData</node>
-            <node x="1129.75" y="80.0">IR.IRRoot</node>
-            <node x="1127.5625" y="330.0">IR.StaticString</node>
-            <node x="78.0" y="250.0">IR.AllocInstruction</node>
-            <node x="1002.5625" y="330.0">IR.StaticSpace</node>
-            <node x="233.0" y="250.0">IR.StoreInstruction</node>
-            <node x="1230.5" y="170.0">IR.BinaryInstruction</node>
-            <node x="705.0" y="250.0">IR.JumpInstruction</node>
-            <node x="903.8125" y="250.0">IR.BranchInstruction</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="IR.StaticData" target="IR.Register">
-              <point x="0.0" y="-15.0" />
-              <point x="1117.8125" y="220.0" />
-              <point x="1402.125" y="220.0" />
-              <point x="-31.875" y="15.0" />
-            </edge>
-            <edge source="IR.Instruction" target="IR.IR">
-              <point x="0.0" y="-15.0" />
-              <point x="772.5" y="60.0" />
-              <point x="1158.05" y="60.0" />
-              <point x="-9.200000000000045" y="15.0" />
-            </edge>
-            <edge source="IR.ImmediateNumber" target="IR.Value">
-              <point x="0.0" y="-15.0" />
-              <point x="1687.5" y="150.0" />
-              <point x="1567.1666666666667" y="150.0" />
-              <point x="22.666666666666686" y="15.0" />
-            </edge>
-            <edge source="IR.LoadInstruction" target="IR.MemoryAccessInstruction">
-              <point x="0.0" y="-15.0" />
-              <point x="454.5" y="230.0" />
-              <point x="366.16666666666674" y="230.0" />
-              <point x="65.66666666666674" y="15.0" />
-            </edge>
-            <edge source="IR.UnaryInstruction" target="IR.Instruction">
-              <point x="0.0" y="-15.0" />
-              <point x="937.0" y="150.0" />
-              <point x="787.2142857142858" y="150.0" />
-              <point x="14.71428571428578" y="15.0" />
-            </edge>
-            <edge source="IR.ControlInstruction" target="IR.Instruction">
-              <point x="0.0" y="-15.0" />
-              <point x="0.0" y="15.0" />
-            </edge>
-            <edge source="IR.BinaryInstruction" target="IR.Instruction">
-              <point x="0.0" y="-15.0" />
-              <point x="1301.0" y="130.0" />
-              <point x="816.6428571428571" y="130.0" />
-              <point x="44.14285714285711" y="15.0" />
-            </edge>
-            <edge source="IR.VoidValue" target="IR.Value">
-              <point x="0.0" y="-15.0" />
-              <point x="0.0" y="15.0" />
-            </edge>
-            <edge source="IR.BranchInstruction" target="IR.ControlInstruction">
-              <point x="0.0" y="-15.0" />
-              <point x="976.3125" y="230.0" />
-              <point x="822.5" y="230.0" />
-              <point x="50.0" y="15.0" />
-            </edge>
-            <edge source="IR.JumpInstruction" target="IR.ControlInstruction">
-              <point x="0.0" y="-15.0" />
-              <point x="0.0" y="15.0" />
-            </edge>
-            <edge source="IR.StaticSpace" target="IR.StaticData">
-              <point x="0.0" y="-15.0" />
-              <point x="1055.0625" y="305.0" />
-              <point x="1093.3125" y="305.0" />
-              <point x="-24.5" y="15.0" />
-            </edge>
-            <edge source="IR.FunctionBlock" target="IR.IR">
-              <point x="0.0" y="-15.0" />
-              <point x="639.5" y="50.0" />
-              <point x="1148.85" y="50.0" />
-              <point x="-18.40000000000009" y="15.0" />
-            </edge>
-            <edge source="IR.PhysicalRegister" target="IR.Register">
-              <point x="0.0" y="-15.0" />
-              <point x="1509.5" y="230.0" />
-              <point x="1444.625" y="230.0" />
-              <point x="10.625" y="15.0" />
-            </edge>
-            <edge source="IR.ReturnInstruction" target="IR.ControlInstruction">
-              <point x="0.0" y="-15.0" />
-              <point x="613.0" y="230.0" />
-              <point x="722.5" y="230.0" />
-              <point x="-50.0" y="15.0" />
-            </edge>
-            <edge source="IR.FunctionCallInstruction" target="IR.Instruction">
-              <point x="0.0" y="-15.0" />
-              <point x="91.0" y="130.0" />
-              <point x="728.3571428571429" y="130.0" />
-              <point x="-44.14285714285711" y="15.0" />
-            </edge>
-            <edge source="IR.StoreInstruction" target="IR.MemoryAccessInstruction">
-              <point x="0.0" y="-15.0" />
-              <point x="0.0" y="15.0" />
-            </edge>
-            <edge source="IR.MoveInstruction" target="IR.Instruction">
-              <point x="0.0" y="-15.0" />
-              <point x="570.9085884353742" y="150.0" />
-              <point x="757.7857142857142" y="150.0" />
-              <point x="-14.71428571428578" y="15.0" />
-            </edge>
-            <edge source="IR.AllocInstruction" target="IR.MemoryAccessInstruction">
-              <point x="0.0" y="-15.0" />
-              <point x="145.5" y="230.0" />
-              <point x="234.83333333333337" y="230.0" />
-              <point x="-65.66666666666663" y="15.0" />
-            </edge>
-            <edge source="IR.Register" target="IR.Value">
-              <point x="-5.6843418860808015E-14" y="-15.0" />
-              <point x="1434.0" y="150.0" />
-              <point x="1521.8333333333335" y="150.0" />
-              <point x="-22.666666666666657" y="15.0" />
-            </edge>
-            <edge source="IR.MemoryAccessInstruction" target="IR.Instruction">
-              <point x="0.0" y="-15.0" />
-              <point x="300.5" y="140.0" />
-              <point x="743.0714285714287" y="140.0" />
-              <point x="-29.42857142857133" y="15.0" />
-            </edge>
-            <edge source="IR.FrameAddr" target="IR.Register">
-              <point x="0.0" y="-15.0" />
-              <point x="1648.5" y="220.0" />
-              <point x="1465.875" y="220.0" />
-              <point x="31.874999999999943" y="15.0" />
-            </edge>
-            <edge source="IR.StaticString" target="IR.StaticData">
-              <point x="0.0" y="-15.0" />
-              <point x="1180.5625" y="305.0" />
-              <point x="1142.3125" y="305.0" />
-              <point x="24.5" y="15.0" />
-            </edge>
-            <edge source="IR.BasicBlock" target="IR.IR">
-              <point x="0.0" y="-15.0" />
-              <point x="1648.5" y="50.0" />
-              <point x="1185.65" y="50.0" />
-              <point x="18.40000000000009" y="15.0" />
-            </edge>
-            <edge source="IR.Value" target="IR.IR">
-              <point x="0.0" y="-15.0" />
-              <point x="1544.5" y="60.0" />
-              <point x="1176.45" y="60.0" />
-              <point x="9.200000000000045" y="15.0" />
-            </edge>
-            <edge source="IR.IRRoot" target="IR.IR">
-              <point x="0.0" y="-15.0" />
-              <point x="0.0" y="15.0" />
-            </edge>
-            <edge source="IR.ConditionSetInstruction" target="IR.Instruction">
-              <point x="0.0" y="-15.0" />
-              <point x="1118.5" y="140.0" />
-              <point x="801.9285714285713" y="140.0" />
-              <point x="29.42857142857133" y="15.0" />
-            </edge>
-            <edge source="IR.VirtualRegister" target="IR.Register">
-              <point x="0.0" y="-15.0" />
-              <point x="1358.5" y="230.0" />
-              <point x="1423.375" y="230.0" />
-              <point x="-10.625" y="15.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.9052159282108806" x="255.13011152416357" y="-42.04646840148695" />
-          <SelectedNodes>
-            <node>IR.StaticData</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/Instruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-          <folding>
-            <element signature="e#698#699#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/PhysicalRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/IRRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
-          <folding>
-            <element signature="e#557#558#0" expanded="true" />
-            <element signature="e#586#587#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/StaticSpace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/StaticData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="49" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MIPS/ReplaceRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-340">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/Register.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/LoadInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/StoreInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegisterAllocation/PrintLiveness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="189" column="79" selection-start-line="189" selection-start-column="79" selection-end-line="189" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegisterAllocation/GraphColoring.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="209" column="68" selection-start-line="209" selection-start-column="68" selection-end-line="209" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MIPS/RISCTranslator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="667" column="0" selection-start-line="667" selection-start-column="0" selection-end-line="667" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/bulgarian-5110379024-wuhang.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="104" column="28" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/IRGeneratorVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-777">
-          <caret line="941" column="13" selection-start-line="941" selection-start-column="13" selection-end-line="941" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse-5100309153-yanghuan.in">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/CalcRegisterUsage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="61" column="35" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse3-5100309153-yanghuan.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="23" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse3-5100309153-yanghuan.limit">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/LoadAndStoreStaticData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="839">
-          <caret line="143" column="24" selection-start-line="143" selection-start-column="24" selection-end-line="143" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse3-5100309153-yanghuan.in">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable/FunctionSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="29" column="117" selection-start-line="29" selection-start-column="117" selection-end-line="29" selection-end-column="117" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/AllocInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/BinaryInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/ConditionSetInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/IR/BranchInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1711,62 +1322,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/FunctionCallInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="e#1153#1154#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RegisterAllocation/CalcVirtualRegisterIndex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="734">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/BasicBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/JumpInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#476#477#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegisterAllocation/BuildGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="698">
-          <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
-          <folding>
-            <element signature="e#1723#1724#0" expanded="true" />
-            <element signature="e#1784#1785#0" expanded="true" />
-            <element signature="e#3305#3306#0" expanded="true" />
-            <element signature="e#3337#3338#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/VirtualRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#535#536#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1788,14 +1348,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/array_test1-mahaojun.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Optimization/BuildCallingGraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1445">
@@ -1814,26 +1366,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/sample0.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="721">
-          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SymbolTable/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1078">
           <caret line="91" column="132" selection-start-line="91" selection-start-column="132" selection-end-line="91" selection-end-column="132" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/FinalTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="56" column="16" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1846,33 +1382,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/FunctionBlock.java">
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/SematicAnalysis/CompilationError.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1241">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7998#8007#0" expanded="true" />
-            <element signature="e#8232#8241#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse-5100309153-yanghuan.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        <state relative-caret-position="238">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/InlineLeafFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3247">
-          <caret line="195" column="102" selection-start-line="195" selection-start-column="102" selection-end-line="195" selection-end-column="102" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1886,14 +1400,353 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse-5100309153-yanghuan.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/queens-5100379110-daibo.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/FunctionCallInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+          <folding>
+            <element signature="e#1118#1119#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/basicopt1-5100309127-hetianxing.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/bulgarian-5110379024-wuhang.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/expr-5110309085-jintianxing.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/hanoi-5100379110-daibo.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/hashmap-5100309127-hetianxing.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/heapsort-5100379110-daibo.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse2-5100309153-yanghuan.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse3-5100309153-yanghuan.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/spill2-5100379110-daibo.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/superloop-5090379042-jiaxiao.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/tak-5090379042-jiaxiao.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/twinprime-5090379042-jiaxiao.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/qsort-5100379110-daibo.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/prime-5100309153-yanghuan.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/maxflow-5100379110-daibo.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/magic-5100309153-yanghuan.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/horse-5100309153-yanghuan.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/queens-5100379110-daibo.limit">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/class_test-mahaojun.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/array_test1-mahaojun.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="5" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/gcd-5090379042-jiaxiao.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/basicopt1-5100309127-hetianxing.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/function_test-huyuncong.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-532">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RegisterAllocation/BuildGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="e#1723#1724#0" expanded="true" />
+            <element signature="e#1784#1785#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/JumpInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/BasicBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/src.zip!/java/util/Hashtable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="334" column="0" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="239" column="6" selection-start-line="239" selection-start-column="6" selection-end-line="239" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/VirtualRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="e#393#394#0" expanded="true" />
+            <element signature="e#444#445#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/FunctionBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4970#4971#0" expanded="true" />
+            <element signature="e#5006#5007#0" expanded="true" />
+            <element signature="e#8079#8088#0" expanded="true" />
+            <element signature="e#8313#8322#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/magic-5100309153-yanghuan.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RegisterAllocation/GraphColoring.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1433">
+          <caret line="140" column="69" selection-start-line="140" selection-start-column="69" selection-end-line="140" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Optimization/InlineLeafFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1226">
+          <caret line="231" column="37" selection-start-line="231" selection-start-column="37" selection-end-line="231" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3804#3805#0" expanded="true" />
+            <element signature="e#3885#3886#0" expanded="true" />
+            <element signature="e#3932#3933#0" expanded="true" />
+            <element signature="e#3964#3965#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        <state relative-caret-position="198">
+          <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/FinalTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler2016-testcases/passed/queens-5100379110-daibo.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample/sample0.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
