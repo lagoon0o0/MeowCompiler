@@ -13,6 +13,7 @@ import java.util.Map;
  * Created by lagoon0o0 on 5/12/16.
  */
 public class InlineLeafFunction implements Visitor{
+    int Time;
     Register returnDest;
     BasicBlock curBlock;
     BasicBlock callingBlock;
@@ -22,6 +23,7 @@ public class InlineLeafFunction implements Visitor{
     Map<VirtualRegister,VirtualRegister> registerMap;
     Map<BasicBlock, BasicBlock> basicBlockMap;
     FunctionBlock curFunc, dupFunc;
+    public InlineLeafFunction(int time) {Time = time;}
     public Value getValue(Value value) {
         if(value instanceof Register) {
             return getRegister((Register) value);
@@ -188,8 +190,9 @@ public class InlineLeafFunction implements Visitor{
     }
     public FunctionBlock duplicateFunc(FunctionBlock ctx) {
         basicBlockMap = new HashMap<>();
+        registerMap = new HashMap<>();
         FunctionBlock ret = new FunctionBlock(ctx.function);
-        ret.argumentList = ctx.argumentList;
+        ctx.argumentList.stream().map(this::getRegister).forEachOrdered(ret.argumentList::add);
         for (BasicBlock x : ctx.basicBlockList) {
             curBlock = getBasicBlock(x);
 
@@ -198,14 +201,14 @@ public class InlineLeafFunction implements Visitor{
                     if(inst instanceof JumpInstruction) {
                         curBlock.add(new JumpInstruction(getBasicBlock(((JumpInstruction) inst).destination)));
                     } else if(inst instanceof BranchInstruction) {
-                        curBlock.add(new BranchInstruction(((BranchInstruction) inst).condition
+                        curBlock.add(new BranchInstruction(getValue(((BranchInstruction) inst).condition)
                                 ,getBasicBlock(((BranchInstruction) inst).ifTrue)
                                 ,getBasicBlock(((BranchInstruction) inst).ifFalse)));
                     } else if(inst instanceof ReturnInstruction) {
-                        curBlock.add(inst);
+                       curBlock.add(new ReturnInstruction(getValue(((ReturnInstruction) inst).value)));
                     }
                 } else {
-                    curBlock.add(inst);
+                    visit(inst);
                 }
 
             }
@@ -213,39 +216,63 @@ public class InlineLeafFunction implements Visitor{
         }
         return ret;
     }
+    public int getSize(FunctionBlock ctx) {
 
+        int res = 0;
+        for (BasicBlock x : ctx.basicBlockList) {
+            res += x.list.size();
+        }
+        return  res;
+    }
     @Override
     public void visit(FunctionBlock ctx) {
         if(ctx.function.isExternal)
             return;
         curFunc = ctx;
         dupFunc = duplicateFunc(ctx);
-        List<BasicBlock> list = new ArrayList<>();
-        curList = list;
-        for (BasicBlock cur : ctx.basicBlockList) {
-            BasicBlock temp = new BasicBlock(cur.name);
-            temp.list = cur.list;
-            cur.list = new ArrayList<>();
-            BasicBlock newBlock = cur;
-            for (Instruction inst : temp.list) {
-                if(inst instanceof FunctionCallInstruction
-                        && !((FunctionCallInstruction) inst).function.isExternal
-                        //&& ((FunctionCallInstruction) inst).function.functionBlock.succ.size() == 0
-                        //&& ((FunctionCallInstruction) inst).function.functionBlock != ctx
-                        ) {
-                    System.out.println("expanding " + inst.toString());
-                    callingBlock = newBlock;
-                    returnBlock = new BasicBlock("returnBlock");
-                    expand((FunctionCallInstruction) inst);
-                    newBlock = returnBlock;
-                } else {
-                    newBlock.add(inst);
+
+        for(int i = 1; i <= 3; ++i) {
+            //System.out.println("time = " + i);
+            int length = 0;
+            for (BasicBlock cur : ctx.basicBlockList) {
+                for (Instruction inst : cur.list) {
+                    if(inst instanceof FunctionCallInstruction) {
+                        if(!((FunctionCallInstruction) inst).function.isExternal)
+                            length += getSize(((FunctionCallInstruction) inst).function.functionBlock);
+                        else
+                            length++;
+                    } else {
+                        length ++;
+                    }
                 }
             }
-            list.add(newBlock);
+            if(length > 800)
+                break;
+            List<BasicBlock> list = new ArrayList<>();
+            curList = list;
+            for (BasicBlock cur : ctx.basicBlockList) {
+                BasicBlock temp = new BasicBlock(cur.name);
+                temp.list = cur.list;
+                cur.list = new ArrayList<>();
+                BasicBlock newBlock = cur;
+                for (Instruction inst : temp.list) {
+                    if(inst instanceof FunctionCallInstruction
+                            && !((FunctionCallInstruction) inst).function.isExternal
+                        //&& ((FunctionCallInstruction) inst).function.functionBlock.succ.size() == 0
+                        //&& ((FunctionCallInstruction) inst).function.functionBlock != ctx
+                            ) {
+                        //System.out.println("expanding " + inst.toString() + " in " + ctx.function.getName());
+                        callingBlock = newBlock;
+                        returnBlock = new BasicBlock("returnBlock");
+                        expand((FunctionCallInstruction) inst);
+                        newBlock = returnBlock;
+                    } else {
+                        newBlock.add(inst);
+                    }
+                }
+                list.add(newBlock);
+            }
+            ctx.basicBlockList = list;
         }
-        ctx.basicBlockList = list;
     }
-
-
 }
