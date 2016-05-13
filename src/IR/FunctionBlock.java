@@ -251,9 +251,6 @@ public class FunctionBlock extends IR {
             throw new RuntimeException("invalid vReg " + x.toString() + "->" + getPhysicalRegister(x).toString());
         if(y instanceof PhysicalRegister && !avaReg.contains(y))
             throw new RuntimeException("invalid pReg");
-        if(x instanceof VirtualRegister && ((VirtualRegister) x).idx == 25) {
-            System.out.println("mapping :" + x.toString() + " to " + y.toString());
-        }
         virtualToPhysical.put(x,y);
     }
     public void mapTo(int vx,Register y) {

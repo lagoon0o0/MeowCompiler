@@ -169,7 +169,6 @@ public class GraphColoring implements Visitor{
             target = null;
             for (VirtualRegister x : registerSet) {
                 if(ctx.getPhysicalRegister(x) != null) {
-                    System.out.println(x.toString() + "->" + ctx.getPhysicalRegister(x).toString());
                     continue;
                 }
                 double val = A * x.numberOfRef / maxRef + B * ctx.getDeg(x) / maxDeg;
