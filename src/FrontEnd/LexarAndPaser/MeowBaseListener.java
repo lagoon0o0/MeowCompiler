@@ -1,8 +1,7 @@
-// Generated from Meow.g4 by ANTLR 4.5
+// Generated from /Users/lagoon0o0/Documents/Compiler/MeowCompiler/src/FrontEnd/LexarAndPaser/Meow.g4 by ANTLR 4.5.1
 package FrontEnd.LexarAndPaser;
 
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -1037,13 +1036,25 @@ public class MeowBaseListener implements MeowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMemberDeclaration(MeowParser.MemberDeclarationContext ctx) { }
+	@Override public void enterMemberDeclarationfield(MeowParser.MemberDeclarationfieldContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMemberDeclaration(MeowParser.MemberDeclarationContext ctx) { }
+	@Override public void exitMemberDeclarationfield(MeowParser.MemberDeclarationfieldContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMemberDeclarationfunction(MeowParser.MemberDeclarationfunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMemberDeclarationfunction(MeowParser.MemberDeclarationfunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -22,7 +22,7 @@ import AST.AstNode;
 import java.io.*;
 public class Main {
 
-    static final boolean Debugging = false;
+    static final boolean Debugging = true;
     public static void runRISC(InputStream is,PrintStream out, PrintStream debug, boolean Debugging) throws IOException {
         final boolean PrintAST = Debugging;
         final boolean PrintIR = Debugging;
@@ -36,6 +36,9 @@ public class Main {
         MeowParser parser = new  MeowParser(tokens);
         ParseTree tree = parser.program(); // calc is the starting rule
 
+
+
+
         // build ast
         ParseTreeWalker walker = new ParseTreeWalker();
         MeowASTListener Listener = new MeowASTListener();
@@ -45,6 +48,7 @@ public class Main {
             ASTPrinter printer = new ASTPrinter(debug);
             printer.visit(astRoot);
         }
+
         //semantic check
         SymbolTable symbolTable = new SymbolTable();
         CompilationError compilationError = new CompilationError();
@@ -54,7 +58,8 @@ public class Main {
         phase2.visit(astRoot);
         Phase3 phase3 = new Phase3(symbolTable, compilationError);
         phase3.visit(astRoot);
-
+        if(true)
+            return;
         // generate IR
         IRGeneratorVisitor irGeneratorVisitor = new IRGeneratorVisitor(symbolTable);
 
@@ -156,6 +161,7 @@ public class Main {
             ASTPrinter printer = new ASTPrinter(debug);
             printer.visit(root);
         }
+
         //semantic check
         SymbolTable symbolTable = new SymbolTable();
         CompilationError compilationError = new CompilationError();

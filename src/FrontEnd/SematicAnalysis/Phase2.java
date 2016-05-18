@@ -55,10 +55,19 @@ public class Phase2 extends SemanticChecker{
     public void visit(ClassDeclaration ctx) {   //???
         symbolTable.push((Scope) ctx.symbol);
         ctx.fieldList.stream().forEachOrdered(this::visit);
+        classMethod = true;
+        curClass = ctx;
+        ctx.methodList.stream().forEachOrdered(this::visit);
+        classMethod = false;
         symbolTable.pop();
     }
+    boolean classMethod = false;
+    ClassDeclaration curClass;
     @Override
     public void visit(FunctionDeclaration ctx) {
+        if(classMethod) {
+            ctx.id = curClass.symbol.type.getName() + "." + ctx.id;
+        }
         if(!symbolTable.getCurrentScope().define(ctx.symbol =  new FunctionSymbol(ctx.id, null, symbolTable.getCurrentScope()))) {
             compilationError.add(ctx, "InvalidFunctionName " + ctx.id);
         }

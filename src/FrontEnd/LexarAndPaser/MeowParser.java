@@ -1,4 +1,4 @@
-// Generated from Meow.g4 by ANTLR 4.5
+// Generated from /Users/lagoon0o0/Documents/Compiler/MeowCompiler/src/FrontEnd/LexarAndPaser/Meow.g4 by ANTLR 4.5.1
 package FrontEnd.LexarAndPaser;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class MeowParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.5", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -152,6 +152,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPrimaryExpressionIdentifier(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPrimaryExpressionIdentifier(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class PrimaryExpressionParenContext extends PrimaryExpressionContext {
 		public ExpressionContext expression() {
@@ -166,6 +171,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPrimaryExpressionParen(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPrimaryExpressionParen(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class PrimaryExpressionStringLiteralContext extends PrimaryExpressionContext {
 		public TerminalNode Stringliteral() { return getToken(MeowParser.Stringliteral, 0); }
@@ -177,6 +187,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPrimaryExpressionStringLiteral(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPrimaryExpressionStringLiteral(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class PrimaryExpressionconstantContext extends PrimaryExpressionContext {
@@ -191,6 +206,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPrimaryExpressionconstant(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPrimaryExpressionconstant(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -280,6 +300,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPostfixExpressionBracket(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPostfixExpressionBracket(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class PostfixExpressionDotContext extends PostfixExpressionContext {
 		public PostfixExpressionContext postfixExpression() {
@@ -295,6 +320,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPostfixExpressionDot(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPostfixExpressionDot(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class PostfixExpressionMinusMinusContext extends PostfixExpressionContext {
 		public PostfixExpressionContext postfixExpression() {
@@ -309,6 +339,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPostfixExpressionMinusMinus(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPostfixExpressionMinusMinus(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class PostfixExpressionPreContext extends PostfixExpressionContext {
 		public PrimaryExpressionContext primaryExpression() {
@@ -322,6 +357,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPostfixExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPostfixExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class PostfixExpressionParenContext extends PostfixExpressionContext {
@@ -340,6 +380,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPostfixExpressionParen(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPostfixExpressionParen(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class PostfixExpressionPlusPlusContext extends PostfixExpressionContext {
 		public PostfixExpressionContext postfixExpression() {
@@ -353,6 +398,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPostfixExpressionPlusPlus(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPostfixExpressionPlusPlus(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -384,7 +434,7 @@ public class MeowParser extends Parser {
 			setState(124);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -502,6 +552,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitUnaryExpressionMinus(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitUnaryExpressionMinus(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class UnaryExpressionPlusContext extends UnaryExpressionContext {
 		public UnaryExpressionContext unaryExpression() {
@@ -515,6 +570,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitUnaryExpressionPlus(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitUnaryExpressionPlus(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class UnaryExpressionPlusPlusContext extends UnaryExpressionContext {
@@ -530,6 +590,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitUnaryExpressionPlusPlus(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitUnaryExpressionPlusPlus(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class UnaryExpressionNewContext extends UnaryExpressionContext {
 		public CreatorContext creator() {
@@ -543,6 +608,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitUnaryExpressionNew(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitUnaryExpressionNew(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class UnaryExpressionMinusMinusContext extends UnaryExpressionContext {
@@ -558,6 +628,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitUnaryExpressionMinusMinus(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitUnaryExpressionMinusMinus(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class UnaryExpressionPreContext extends UnaryExpressionContext {
 		public PostfixExpressionContext postfixExpression() {
@@ -571,6 +646,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitUnaryExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitUnaryExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class UnaryExpressionNotContext extends UnaryExpressionContext {
@@ -586,6 +666,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitUnaryExpressionNot(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitUnaryExpressionNot(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class UnaryExpressionTildeContext extends UnaryExpressionContext {
 		public UnaryExpressionContext unaryExpression() {
@@ -599,6 +684,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitUnaryExpressionTilde(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitUnaryExpressionTilde(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -730,6 +820,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitCastExpressionPre(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitCastExpressionPre(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final CastExpressionContext castExpression() throws RecognitionException {
@@ -781,6 +876,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitMultiplicativeExpressionDiv(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitMultiplicativeExpressionDiv(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class MultiplicativeExpressionPreContext extends MultiplicativeExpressionContext {
 		public CastExpressionContext castExpression() {
@@ -794,6 +894,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitMultiplicativeExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitMultiplicativeExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class MultiplicativeExpressionModContext extends MultiplicativeExpressionContext {
@@ -812,6 +917,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitMultiplicativeExpressionMod(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitMultiplicativeExpressionMod(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class MultiplicativeExpressionMulContext extends MultiplicativeExpressionContext {
 		public MultiplicativeExpressionContext multiplicativeExpression() {
@@ -828,6 +938,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitMultiplicativeExpressionMul(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitMultiplicativeExpressionMul(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -858,7 +973,7 @@ public class MeowParser extends Parser {
 			setState(160);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -948,6 +1063,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitAddativeExpressionPlus(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitAddativeExpressionPlus(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class AddativeExpressionMinusContext extends AddativeExpressionContext {
 		public AddativeExpressionContext addativeExpression() {
@@ -965,6 +1085,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitAddativeExpressionMinus(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitAddativeExpressionMinus(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class AddativeExpressionPreContext extends AddativeExpressionContext {
 		public MultiplicativeExpressionContext multiplicativeExpression() {
@@ -978,6 +1103,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitAddativeExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitAddativeExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1008,7 +1138,7 @@ public class MeowParser extends Parser {
 			setState(174);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1086,6 +1216,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitShiftExpressionLeftShift(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitShiftExpressionLeftShift(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class ShiftExpressionPreContext extends ShiftExpressionContext {
 		public AddativeExpressionContext addativeExpression() {
@@ -1099,6 +1234,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitShiftExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitShiftExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ShiftExpressionRightShiftContext extends ShiftExpressionContext {
@@ -1116,6 +1256,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitShiftExpressionRightShift(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitShiftExpressionRightShift(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1146,7 +1291,7 @@ public class MeowParser extends Parser {
 			setState(188);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1224,6 +1369,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitRelationalExpressionLessThan(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitRelationalExpressionLessThan(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class RelationalExpressionGreaterOrEqualThanContext extends RelationalExpressionContext {
 		public RelationalExpressionContext relationalExpression() {
@@ -1241,6 +1391,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitRelationalExpressionGreaterOrEqualThan(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitRelationalExpressionGreaterOrEqualThan(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class RelationalExpressionPreContext extends RelationalExpressionContext {
 		public ShiftExpressionContext shiftExpression() {
@@ -1254,6 +1409,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitRelationalExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitRelationalExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class RelationalExpressionLessOrEqualThanContext extends RelationalExpressionContext {
@@ -1272,6 +1432,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitRelationalExpressionLessOrEqualThan(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitRelationalExpressionLessOrEqualThan(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class RelationalExpressionGreaterThanContext extends RelationalExpressionContext {
 		public RelationalExpressionContext relationalExpression() {
@@ -1288,6 +1453,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitRelationalExpressionGreaterThan(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitRelationalExpressionGreaterThan(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1318,7 +1488,7 @@ public class MeowParser extends Parser {
 			setState(208);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1417,6 +1587,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitEqualityExpressionPre(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitEqualityExpressionPre(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class EqualityExpressionEqualContext extends EqualityExpressionContext {
 		public EqualityExpressionContext equalityExpression() {
@@ -1434,6 +1609,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitEqualityExpressionEqual(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitEqualityExpressionEqual(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class EqualityExpressionNotEqualContext extends EqualityExpressionContext {
 		public EqualityExpressionContext equalityExpression() {
@@ -1450,6 +1630,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitEqualityExpressionNotEqual(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitEqualityExpressionNotEqual(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1480,7 +1665,7 @@ public class MeowParser extends Parser {
 			setState(222);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,14,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1555,6 +1740,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitAndExpressionPre(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitAndExpressionPre(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class AndExpressionAndContext extends AndExpressionContext {
 		public AndExpressionContext andExpression() {
@@ -1571,6 +1761,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitAndExpressionAnd(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitAndExpressionAnd(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1601,7 +1796,7 @@ public class MeowParser extends Parser {
 			setState(233);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,15,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1662,6 +1857,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitXorExpressionXor(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitXorExpressionXor(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class XorExpressionPreContext extends XorExpressionContext {
 		public AndExpressionContext andExpression() {
@@ -1675,6 +1875,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitXorExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitXorExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1705,7 +1910,7 @@ public class MeowParser extends Parser {
 			setState(244);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,16,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1766,6 +1971,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitOrExpressionOr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitOrExpressionOr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class OrExpressionPreContext extends OrExpressionContext {
 		public XorExpressionContext xorExpression() {
@@ -1779,6 +1989,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitOrExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitOrExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1809,7 +2024,7 @@ public class MeowParser extends Parser {
 			setState(255);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1870,6 +2085,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitLogicalAndExpressionAnd(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitLogicalAndExpressionAnd(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class LogicalAndExpressionPreContext extends LogicalAndExpressionContext {
 		public OrExpressionContext orExpression() {
@@ -1883,6 +2103,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitLogicalAndExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitLogicalAndExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1913,7 +2138,7 @@ public class MeowParser extends Parser {
 			setState(266);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,18,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1971,6 +2196,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitLogicalOrExpressionPre(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitLogicalOrExpressionPre(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class LogicalOrExpressionOrContext extends LogicalOrExpressionContext {
 		public LogicalOrExpressionContext logicalOrExpression() {
@@ -1987,6 +2217,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitLogicalOrExpressionOr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitLogicalOrExpressionOr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2017,7 +2252,7 @@ public class MeowParser extends Parser {
 			setState(277);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -2075,6 +2310,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitConditionalExpressionPre(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitConditionalExpressionPre(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ConditionalExpressionContext conditionalExpression() throws RecognitionException {
@@ -2129,6 +2369,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitAssignmentExpressionAssgin(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitAssignmentExpressionAssgin(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class AssignmentExpressionPreContext extends AssignmentExpressionContext {
 		public ConditionalExpressionContext conditionalExpression() {
@@ -2142,6 +2387,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitAssignmentExpressionPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitAssignmentExpressionPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2197,6 +2447,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitAssignmentOperator(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitAssignmentOperator(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AssignmentOperatorContext assignmentOperator() throws RecognitionException {
@@ -2244,6 +2499,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitArgumentExpressionPre(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitArgumentExpressionPre(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class ArgumentExpressionCurContext extends ArgumentExpressionContext {
 		public ArgumentExpressionContext argumentExpression() {
@@ -2260,6 +2520,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitArgumentExpressionCur(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitArgumentExpressionCur(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2290,7 +2555,7 @@ public class MeowParser extends Parser {
 			setState(299);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,21,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -2348,6 +2613,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitExpressionPre(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitExpressionPre(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
@@ -2394,6 +2664,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitCreatorIdentifier(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitCreatorIdentifier(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class CreatorArrayContext extends CreatorContext {
 		public CreatorContext creator() {
@@ -2411,6 +2686,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitCreatorArray(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitCreatorArray(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class CreatorPrimitiveTypeContext extends CreatorContext {
 		public PrimitiveTypeContext primitiveType() {
@@ -2424,6 +2704,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitCreatorPrimitiveType(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitCreatorPrimitiveType(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2474,7 +2759,7 @@ public class MeowParser extends Parser {
 			setState(317);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,24,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -2541,6 +2826,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitTypeNameArray(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitTypeNameArray(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class TypeNameIdentifierContext extends TypeNameContext {
 		public TerminalNode Identifier() { return getToken(MeowParser.Identifier, 0); }
@@ -2552,6 +2842,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitTypeNameIdentifier(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitTypeNameIdentifier(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class TypeNameprimitiveTypeContext extends TypeNameContext {
@@ -2566,6 +2861,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitTypeNameprimitiveType(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitTypeNameprimitiveType(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2615,7 +2915,7 @@ public class MeowParser extends Parser {
 			setState(330);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -2663,6 +2963,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitPrimitiveType(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitPrimitiveType(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final PrimitiveTypeContext primitiveType() throws RecognitionException {
@@ -2708,6 +3013,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitBlock(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitBlock(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2771,6 +3081,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitBlockStatementsCur(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitBlockStatementsCur(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class BlockStatementsPreContext extends BlockStatementsContext {
 		public StatementContext statement() {
@@ -2784,6 +3099,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitBlockStatementsPre(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitBlockStatementsPre(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2814,7 +3134,7 @@ public class MeowParser extends Parser {
 			setState(348);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,28,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -2870,6 +3190,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementExpressionStatement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementExpressionStatement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class StatementReturnContext extends StatementContext {
 		public ExpressionContext expression() {
@@ -2883,6 +3208,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementReturn(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementReturn(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class StatementForContext extends StatementContext {
@@ -2907,6 +3237,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementFor(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementFor(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class StatementBlockContext extends StatementContext {
 		public BlockContext block() {
@@ -2921,6 +3256,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementBlock(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementBlock(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class StatementBreakContext extends StatementContext {
 		public StatementBreakContext(StatementContext ctx) { copyFrom(ctx); }
@@ -2931,6 +3271,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementBreak(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementBreak(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class StatementVariableDeclarationStatementContext extends StatementContext {
@@ -2945,6 +3290,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementVariableDeclarationStatement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementVariableDeclarationStatement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class StatementIfElseContext extends StatementContext {
@@ -2968,6 +3318,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementIfElse(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementIfElse(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class StatementWhileContext extends StatementContext {
 		public ExpressionContext expression() {
@@ -2985,6 +3340,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementWhile(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementWhile(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class StatementcontinueContext extends StatementContext {
 		public StatementcontinueContext(StatementContext ctx) { copyFrom(ctx); }
@@ -2996,6 +3356,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementcontinue(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementcontinue(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class StatementEmptyContext extends StatementContext {
 		public StatementEmptyContext(StatementContext ctx) { copyFrom(ctx); }
@@ -3006,6 +3371,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitStatementEmpty(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitStatementEmpty(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3204,6 +3574,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitExpressionStatement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitExpressionStatement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionStatementContext expressionStatement() throws RecognitionException {
@@ -3245,6 +3620,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitProgram(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitProgram(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3303,6 +3683,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitTranslationUnitPre(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitTranslationUnitPre(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class TranslationUnitsCurContext extends TranslationUnitsContext {
 		public TranslationUnitsContext translationUnits() {
@@ -3319,6 +3704,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitTranslationUnitsCur(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitTranslationUnitsCur(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3349,7 +3739,7 @@ public class MeowParser extends Parser {
 			setState(411);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,36,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -3405,6 +3795,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitTranslationUnitFunctionDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitTranslationUnitFunctionDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class TranslationUnitClassDeclarationContext extends TranslationUnitContext {
 		public ClassDeclarationContext classDeclaration() {
@@ -3419,6 +3814,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitTranslationUnitClassDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitTranslationUnitClassDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class TranslationUnitVariableDeclarationContext extends TranslationUnitContext {
 		public VariableDeclarationStatementContext variableDeclarationStatement() {
@@ -3432,6 +3832,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitTranslationUnitVariableDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitTranslationUnitVariableDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3495,6 +3900,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitClassDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitClassDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ClassDeclarationContext classDeclaration() throws RecognitionException {
@@ -3540,6 +3950,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitClassBody(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitClassBody(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3605,6 +4020,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitClassBodyDeclarationMember(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitClassBodyDeclarationMember(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class ClassBodyDeclarationEmptyContext extends ClassBodyDeclarationContext {
 		public ClassBodyDeclarationEmptyContext(ClassBodyDeclarationContext ctx) { copyFrom(ctx); }
@@ -3615,6 +4035,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitClassBodyDeclarationEmpty(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitClassBodyDeclarationEmpty(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3660,20 +4085,52 @@ public class MeowParser extends Parser {
 	}
 
 	public static class MemberDeclarationContext extends ParserRuleContext {
-		public FieldDeclarationContext fieldDeclaration() {
-			return getRuleContext(FieldDeclarationContext.class,0);
-		}
 		public MemberDeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_memberDeclaration; }
+	 
+		public MemberDeclarationContext() { }
+		public void copyFrom(MemberDeclarationContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class MemberDeclarationfunctionContext extends MemberDeclarationContext {
+		public FunctionDeclarationContext functionDeclaration() {
+			return getRuleContext(FunctionDeclarationContext.class,0);
+		}
+		public MemberDeclarationfunctionContext(MemberDeclarationContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof MeowListener ) ((MeowListener)listener).enterMemberDeclaration(this);
+			if ( listener instanceof MeowListener ) ((MeowListener)listener).enterMemberDeclarationfunction(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitMemberDeclaration(this);
+			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitMemberDeclarationfunction(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitMemberDeclarationfunction(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class MemberDeclarationfieldContext extends MemberDeclarationContext {
+		public FieldDeclarationContext fieldDeclaration() {
+			return getRuleContext(FieldDeclarationContext.class,0);
+		}
+		public MemberDeclarationfieldContext(MemberDeclarationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MeowListener ) ((MeowListener)listener).enterMemberDeclarationfield(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitMemberDeclarationfield(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitMemberDeclarationfield(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3681,10 +4138,24 @@ public class MeowParser extends Parser {
 		MemberDeclarationContext _localctx = new MemberDeclarationContext(_ctx, getState());
 		enterRule(_localctx, 64, RULE_memberDeclaration);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(436);
-			fieldDeclaration();
+			setState(438);
+			switch ( getInterpreter().adaptivePredict(_input,40,_ctx) ) {
+			case 1:
+				_localctx = new MemberDeclarationfieldContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(436);
+				fieldDeclaration();
+				}
+				break;
+			case 2:
+				_localctx = new MemberDeclarationfunctionContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(437);
+				functionDeclaration();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -3717,6 +4188,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitFieldDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitFieldDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FieldDeclarationContext fieldDeclaration() throws RecognitionException {
@@ -3725,11 +4201,11 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(438);
-			typeName(0);
-			setState(439);
-			variableDeclaratorIDList();
 			setState(440);
+			typeName(0);
+			setState(441);
+			variableDeclaratorIDList();
+			setState(442);
 			match(Semi);
 			}
 		}
@@ -3767,6 +4243,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitFunctionDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitFunctionDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FunctionDeclarationContext functionDeclaration() throws RecognitionException {
@@ -3775,13 +4256,13 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(442);
-			typeName(0);
-			setState(443);
-			match(Identifier);
 			setState(444);
-			formalParameters();
+			typeName(0);
 			setState(445);
+			match(Identifier);
+			setState(446);
+			formalParameters();
+			setState(447);
 			block();
 			}
 		}
@@ -3812,6 +4293,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitFormalParameters(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitFormalParameters(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FormalParametersContext formalParameters() throws RecognitionException {
@@ -3821,18 +4307,18 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(447);
-			match(LeftParen);
 			setState(449);
+			match(LeftParen);
+			setState(451);
 			_la = _input.LA(1);
 			if (((((_la - 48)) & ~0x3f) == 0 && ((1L << (_la - 48)) & ((1L << (Bool - 48)) | (1L << (Int - 48)) | (1L << (String - 48)) | (1L << (Void - 48)) | (1L << (Identifier - 48)))) != 0)) {
 				{
-				setState(448);
+				setState(450);
 				formalParameterList();
 				}
 			}
 
-			setState(451);
+			setState(453);
 			match(RightParen);
 			}
 		}
@@ -3866,6 +4352,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitFormalParameterList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitFormalParameterList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FormalParameterListContext formalParameterList() throws RecognitionException {
@@ -3875,21 +4366,21 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(453);
+			setState(455);
 			formalParameter();
-			setState(458);
+			setState(460);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==Comma) {
 				{
 				{
-				setState(454);
+				setState(456);
 				match(Comma);
-				setState(455);
+				setState(457);
 				formalParameter();
 				}
 				}
-				setState(460);
+				setState(462);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -3925,6 +4416,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitFormalParameter(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitFormalParameter(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FormalParameterContext formalParameter() throws RecognitionException {
@@ -3933,9 +4429,9 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(461);
+			setState(463);
 			typeName(0);
-			setState(462);
+			setState(464);
 			variableDeclaratorID();
 			}
 		}
@@ -3966,6 +4462,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitVariableDeclarationStatement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitVariableDeclarationStatement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableDeclarationStatementContext variableDeclarationStatement() throws RecognitionException {
@@ -3974,9 +4475,9 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(464);
+			setState(466);
 			variableDeclaration();
-			setState(465);
+			setState(467);
 			match(Semi);
 			}
 		}
@@ -4010,6 +4511,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitVariableDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitVariableDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableDeclarationContext variableDeclaration() throws RecognitionException {
@@ -4018,9 +4524,9 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(467);
+			setState(469);
 			typeName(0);
-			setState(468);
+			setState(470);
 			variableDeclaratorList();
 			}
 		}
@@ -4054,6 +4560,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitVariableDeclaratorList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitVariableDeclaratorList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableDeclaratorListContext variableDeclaratorList() throws RecognitionException {
@@ -4063,21 +4574,21 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(470);
+			setState(472);
 			variableDeclarator();
-			setState(475);
+			setState(477);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==Comma) {
 				{
 				{
-				setState(471);
+				setState(473);
 				match(Comma);
-				setState(472);
+				setState(474);
 				variableDeclarator();
 				}
 				}
-				setState(477);
+				setState(479);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -4113,6 +4624,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitVariableDeclarator(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitVariableDeclarator(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableDeclaratorContext variableDeclarator() throws RecognitionException {
@@ -4122,15 +4638,15 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(478);
+			setState(480);
 			variableDeclaratorID();
-			setState(481);
+			setState(483);
 			_la = _input.LA(1);
 			if (_la==Assign) {
 				{
-				setState(479);
+				setState(481);
 				match(Assign);
-				setState(480);
+				setState(482);
 				expression();
 				}
 			}
@@ -4162,6 +4678,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitVariableDeclaratorID(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitVariableDeclaratorID(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableDeclaratorIDContext variableDeclaratorID() throws RecognitionException {
@@ -4170,7 +4691,7 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(483);
+			setState(485);
 			match(Identifier);
 			}
 		}
@@ -4204,6 +4725,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitVariableDeclaratorIDList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitVariableDeclaratorIDList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableDeclaratorIDListContext variableDeclaratorIDList() throws RecognitionException {
@@ -4213,21 +4739,21 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(485);
+			setState(487);
 			variableDeclaratorID();
-			setState(490);
+			setState(492);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==Comma) {
 				{
 				{
-				setState(486);
+				setState(488);
 				match(Comma);
-				setState(487);
+				setState(489);
 				variableDeclaratorID();
 				}
 				}
-				setState(492);
+				setState(494);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -4265,6 +4791,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitConstantNullConstant(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitConstantNullConstant(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class ConstantBooleanConstantContext extends ConstantContext {
 		public TerminalNode BooleanConstant() { return getToken(MeowParser.BooleanConstant, 0); }
@@ -4276,6 +4807,11 @@ public class MeowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitConstantBooleanConstant(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitConstantBooleanConstant(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ConstantIntegerConstantContext extends ConstantContext {
@@ -4289,19 +4825,24 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitConstantIntegerConstant(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitConstantIntegerConstant(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ConstantContext constant() throws RecognitionException {
 		ConstantContext _localctx = new ConstantContext(_ctx, getState());
 		enterRule(_localctx, 88, RULE_constant);
 		try {
-			setState(496);
+			setState(498);
 			switch (_input.LA(1)) {
 			case IntegerConstant:
 				_localctx = new ConstantIntegerConstantContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(493);
+				setState(495);
 				match(IntegerConstant);
 				}
 				break;
@@ -4309,7 +4850,7 @@ public class MeowParser extends Parser {
 				_localctx = new ConstantBooleanConstantContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(494);
+				setState(496);
 				match(BooleanConstant);
 				}
 				break;
@@ -4317,7 +4858,7 @@ public class MeowParser extends Parser {
 				_localctx = new ConstantNullConstantContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(495);
+				setState(497);
 				match(Null);
 				}
 				break;
@@ -4350,6 +4891,11 @@ public class MeowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MeowListener ) ((MeowListener)listener).exitTestID(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MeowVisitor ) return ((MeowVisitor<? extends T>)visitor).visitTestID(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TestIDContext testID() throws RecognitionException {
@@ -4358,7 +4904,7 @@ public class MeowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(498);
+			setState(500);
 			match(Identifier);
 			}
 		}
@@ -4548,7 +5094,7 @@ public class MeowParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3H\u01f7\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3H\u01f9\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -4581,45 +5127,45 @@ public class MeowParser extends Parser {
 		"\33\3\34\5\34\u0193\n\34\3\34\3\34\3\35\3\35\3\35\3\35\3\35\7\35\u019c"+
 		"\n\35\f\35\16\35\u019f\13\35\3\36\3\36\3\36\5\36\u01a4\n\36\3\37\3\37"+
 		"\3\37\3\37\3 \3 \7 \u01ac\n \f \16 \u01af\13 \3 \3 \3!\3!\5!\u01b5\n!"+
-		"\3\"\3\"\3#\3#\3#\3#\3$\3$\3$\3$\3$\3%\3%\5%\u01c4\n%\3%\3%\3&\3&\3&\7"+
-		"&\u01cb\n&\f&\16&\u01ce\13&\3\'\3\'\3\'\3(\3(\3(\3)\3)\3)\3*\3*\3*\7*"+
-		"\u01dc\n*\f*\16*\u01df\13*\3+\3+\3+\5+\u01e4\n+\3,\3,\3-\3-\3-\7-\u01eb"+
-		"\n-\f-\16-\u01ee\13-\3.\3.\3.\5.\u01f3\n.\3/\3/\3/\2\22\4\n\f\16\20\22"+
-		"\24\26\30\32\34$(*\608\60\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&"+
-		"(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\\2\3\3\2\62\65\u020e\2e\3\2\2\2\4"+
-		"g\3\2\2\2\6\u0090\3\2\2\2\b\u0092\3\2\2\2\n\u0094\3\2\2\2\f\u00a5\3\2"+
-		"\2\2\16\u00b3\3\2\2\2\20\u00c1\3\2\2\2\22\u00d5\3\2\2\2\24\u00e3\3\2\2"+
-		"\2\26\u00ee\3\2\2\2\30\u00f9\3\2\2\2\32\u0104\3\2\2\2\34\u010f\3\2\2\2"+
-		"\36\u011a\3\2\2\2 \u0121\3\2\2\2\"\u0123\3\2\2\2$\u0125\3\2\2\2&\u0130"+
-		"\3\2\2\2(\u0135\3\2\2\2*\u0145\3\2\2\2,\u014f\3\2\2\2.\u0151\3\2\2\2\60"+
-		"\u0157\3\2\2\2\62\u018c\3\2\2\2\64\u018e\3\2\2\2\66\u0192\3\2\2\28\u0196"+
-		"\3\2\2\2:\u01a3\3\2\2\2<\u01a5\3\2\2\2>\u01a9\3\2\2\2@\u01b4\3\2\2\2B"+
-		"\u01b6\3\2\2\2D\u01b8\3\2\2\2F\u01bc\3\2\2\2H\u01c1\3\2\2\2J\u01c7\3\2"+
-		"\2\2L\u01cf\3\2\2\2N\u01d2\3\2\2\2P\u01d5\3\2\2\2R\u01d8\3\2\2\2T\u01e0"+
-		"\3\2\2\2V\u01e5\3\2\2\2X\u01e7\3\2\2\2Z\u01f2\3\2\2\2\\\u01f4\3\2\2\2"+
-		"^f\7E\2\2_f\5Z.\2`f\7B\2\2ab\7\4\2\2bc\5&\24\2cd\7\5\2\2df\3\2\2\2e^\3"+
-		"\2\2\2e_\3\2\2\2e`\3\2\2\2ea\3\2\2\2f\3\3\2\2\2gh\b\3\1\2hi\5\2\2\2i~"+
-		"\3\2\2\2jk\f\7\2\2kl\7\6\2\2lm\5&\24\2mn\7\7\2\2n}\3\2\2\2op\f\6\2\2p"+
-		"r\7\4\2\2qs\5$\23\2rq\3\2\2\2rs\3\2\2\2st\3\2\2\2t}\7\5\2\2uv\f\5\2\2"+
-		"vw\7\60\2\2w}\7E\2\2xy\f\4\2\2y}\7\21\2\2z{\f\3\2\2{}\7\23\2\2|j\3\2\2"+
-		"\2|o\3\2\2\2|u\3\2\2\2|x\3\2\2\2|z\3\2\2\2}\u0080\3\2\2\2~|\3\2\2\2~\177"+
-		"\3\2\2\2\177\5\3\2\2\2\u0080~\3\2\2\2\u0081\u0091\5\4\3\2\u0082\u0083"+
-		"\7\61\2\2\u0083\u0091\5(\25\2\u0084\u0085\7\21\2\2\u0085\u0091\5\6\4\2"+
-		"\u0086\u0087\7\23\2\2\u0087\u0091\5\6\4\2\u0088\u0089\7\34\2\2\u0089\u0091"+
-		"\5\6\4\2\u008a\u008b\7\35\2\2\u008b\u0091\5\6\4\2\u008c\u008d\7\20\2\2"+
-		"\u008d\u0091\5\6\4\2\u008e\u008f\7\22\2\2\u008f\u0091\5\6\4\2\u0090\u0081"+
-		"\3\2\2\2\u0090\u0082\3\2\2\2\u0090\u0084\3\2\2\2\u0090\u0086\3\2\2\2\u0090"+
-		"\u0088\3\2\2\2\u0090\u008a\3\2\2\2\u0090\u008c\3\2\2\2\u0090\u008e\3\2"+
-		"\2\2\u0091\7\3\2\2\2\u0092\u0093\5\6\4\2\u0093\t\3\2\2\2\u0094\u0095\b"+
-		"\6\1\2\u0095\u0096\5\b\5\2\u0096\u00a2\3\2\2\2\u0097\u0098\f\5\2\2\u0098"+
-		"\u0099\7\24\2\2\u0099\u00a1\5\b\5\2\u009a\u009b\f\4\2\2\u009b\u009c\7"+
-		"\25\2\2\u009c\u00a1\5\b\5\2\u009d\u009e\f\3\2\2\u009e\u009f\7\26\2\2\u009f"+
-		"\u00a1\5\b\5\2\u00a0\u0097\3\2\2\2\u00a0\u009a\3\2\2\2\u00a0\u009d\3\2"+
-		"\2\2\u00a1\u00a4\3\2\2\2\u00a2\u00a0\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3"+
-		"\13\3\2\2\2\u00a4\u00a2\3\2\2\2\u00a5\u00a6\b\7\1\2\u00a6\u00a7\5\n\6"+
-		"\2\u00a7\u00b0\3\2\2\2\u00a8\u00a9\f\4\2\2\u00a9\u00aa\7\20\2\2\u00aa"+
-		"\u00af\5\n\6\2\u00ab\u00ac\f\3\2\2\u00ac\u00ad\7\22\2\2\u00ad\u00af\5"+
-		"\n\6\2\u00ae\u00a8\3\2\2\2\u00ae\u00ab\3\2\2\2\u00af\u00b2\3\2\2\2\u00b0"+
+		"\3\"\3\"\5\"\u01b9\n\"\3#\3#\3#\3#\3$\3$\3$\3$\3$\3%\3%\5%\u01c6\n%\3"+
+		"%\3%\3&\3&\3&\7&\u01cd\n&\f&\16&\u01d0\13&\3\'\3\'\3\'\3(\3(\3(\3)\3)"+
+		"\3)\3*\3*\3*\7*\u01de\n*\f*\16*\u01e1\13*\3+\3+\3+\5+\u01e6\n+\3,\3,\3"+
+		"-\3-\3-\7-\u01ed\n-\f-\16-\u01f0\13-\3.\3.\3.\5.\u01f5\n.\3/\3/\3/\2\22"+
+		"\4\n\f\16\20\22\24\26\30\32\34$(*\608\60\2\4\6\b\n\f\16\20\22\24\26\30"+
+		"\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\\2\3\3\2\62\65\u0211"+
+		"\2e\3\2\2\2\4g\3\2\2\2\6\u0090\3\2\2\2\b\u0092\3\2\2\2\n\u0094\3\2\2\2"+
+		"\f\u00a5\3\2\2\2\16\u00b3\3\2\2\2\20\u00c1\3\2\2\2\22\u00d5\3\2\2\2\24"+
+		"\u00e3\3\2\2\2\26\u00ee\3\2\2\2\30\u00f9\3\2\2\2\32\u0104\3\2\2\2\34\u010f"+
+		"\3\2\2\2\36\u011a\3\2\2\2 \u0121\3\2\2\2\"\u0123\3\2\2\2$\u0125\3\2\2"+
+		"\2&\u0130\3\2\2\2(\u0135\3\2\2\2*\u0145\3\2\2\2,\u014f\3\2\2\2.\u0151"+
+		"\3\2\2\2\60\u0157\3\2\2\2\62\u018c\3\2\2\2\64\u018e\3\2\2\2\66\u0192\3"+
+		"\2\2\28\u0196\3\2\2\2:\u01a3\3\2\2\2<\u01a5\3\2\2\2>\u01a9\3\2\2\2@\u01b4"+
+		"\3\2\2\2B\u01b8\3\2\2\2D\u01ba\3\2\2\2F\u01be\3\2\2\2H\u01c3\3\2\2\2J"+
+		"\u01c9\3\2\2\2L\u01d1\3\2\2\2N\u01d4\3\2\2\2P\u01d7\3\2\2\2R\u01da\3\2"+
+		"\2\2T\u01e2\3\2\2\2V\u01e7\3\2\2\2X\u01e9\3\2\2\2Z\u01f4\3\2\2\2\\\u01f6"+
+		"\3\2\2\2^f\7E\2\2_f\5Z.\2`f\7B\2\2ab\7\4\2\2bc\5&\24\2cd\7\5\2\2df\3\2"+
+		"\2\2e^\3\2\2\2e_\3\2\2\2e`\3\2\2\2ea\3\2\2\2f\3\3\2\2\2gh\b\3\1\2hi\5"+
+		"\2\2\2i~\3\2\2\2jk\f\7\2\2kl\7\6\2\2lm\5&\24\2mn\7\7\2\2n}\3\2\2\2op\f"+
+		"\6\2\2pr\7\4\2\2qs\5$\23\2rq\3\2\2\2rs\3\2\2\2st\3\2\2\2t}\7\5\2\2uv\f"+
+		"\5\2\2vw\7\60\2\2w}\7E\2\2xy\f\4\2\2y}\7\21\2\2z{\f\3\2\2{}\7\23\2\2|"+
+		"j\3\2\2\2|o\3\2\2\2|u\3\2\2\2|x\3\2\2\2|z\3\2\2\2}\u0080\3\2\2\2~|\3\2"+
+		"\2\2~\177\3\2\2\2\177\5\3\2\2\2\u0080~\3\2\2\2\u0081\u0091\5\4\3\2\u0082"+
+		"\u0083\7\61\2\2\u0083\u0091\5(\25\2\u0084\u0085\7\21\2\2\u0085\u0091\5"+
+		"\6\4\2\u0086\u0087\7\23\2\2\u0087\u0091\5\6\4\2\u0088\u0089\7\34\2\2\u0089"+
+		"\u0091\5\6\4\2\u008a\u008b\7\35\2\2\u008b\u0091\5\6\4\2\u008c\u008d\7"+
+		"\20\2\2\u008d\u0091\5\6\4\2\u008e\u008f\7\22\2\2\u008f\u0091\5\6\4\2\u0090"+
+		"\u0081\3\2\2\2\u0090\u0082\3\2\2\2\u0090\u0084\3\2\2\2\u0090\u0086\3\2"+
+		"\2\2\u0090\u0088\3\2\2\2\u0090\u008a\3\2\2\2\u0090\u008c\3\2\2\2\u0090"+
+		"\u008e\3\2\2\2\u0091\7\3\2\2\2\u0092\u0093\5\6\4\2\u0093\t\3\2\2\2\u0094"+
+		"\u0095\b\6\1\2\u0095\u0096\5\b\5\2\u0096\u00a2\3\2\2\2\u0097\u0098\f\5"+
+		"\2\2\u0098\u0099\7\24\2\2\u0099\u00a1\5\b\5\2\u009a\u009b\f\4\2\2\u009b"+
+		"\u009c\7\25\2\2\u009c\u00a1\5\b\5\2\u009d\u009e\f\3\2\2\u009e\u009f\7"+
+		"\26\2\2\u009f\u00a1\5\b\5\2\u00a0\u0097\3\2\2\2\u00a0\u009a\3\2\2\2\u00a0"+
+		"\u009d\3\2\2\2\u00a1\u00a4\3\2\2\2\u00a2\u00a0\3\2\2\2\u00a2\u00a3\3\2"+
+		"\2\2\u00a3\13\3\2\2\2\u00a4\u00a2\3\2\2\2\u00a5\u00a6\b\7\1\2\u00a6\u00a7"+
+		"\5\n\6\2\u00a7\u00b0\3\2\2\2\u00a8\u00a9\f\4\2\2\u00a9\u00aa\7\20\2\2"+
+		"\u00aa\u00af\5\n\6\2\u00ab\u00ac\f\3\2\2\u00ac\u00ad\7\22\2\2\u00ad\u00af"+
+		"\5\n\6\2\u00ae\u00a8\3\2\2\2\u00ae\u00ab\3\2\2\2\u00af\u00b2\3\2\2\2\u00b0"+
 		"\u00ae\3\2\2\2\u00b0\u00b1\3\2\2\2\u00b1\r\3\2\2\2\u00b2\u00b0\3\2\2\2"+
 		"\u00b3\u00b4\b\b\1\2\u00b4\u00b5\5\f\7\2\u00b5\u00be\3\2\2\2\u00b6\u00b7"+
 		"\f\4\2\2\u00b7\u00b8\7\16\2\2\u00b8\u00bd\5\f\7\2\u00b9\u00ba\f\3\2\2"+
@@ -4705,29 +5251,30 @@ public class MeowParser extends Parser {
 		"\u01af\3\2\2\2\u01ad\u01ab\3\2\2\2\u01ad\u01ae\3\2\2\2\u01ae\u01b0\3\2"+
 		"\2\2\u01af\u01ad\3\2\2\2\u01b0\u01b1\7\t\2\2\u01b1?\3\2\2\2\u01b2\u01b5"+
 		"\7 \2\2\u01b3\u01b5\5B\"\2\u01b4\u01b2\3\2\2\2\u01b4\u01b3\3\2\2\2\u01b5"+
-		"A\3\2\2\2\u01b6\u01b7\5D#\2\u01b7C\3\2\2\2\u01b8\u01b9\5*\26\2\u01b9\u01ba"+
-		"\5X-\2\u01ba\u01bb\7 \2\2\u01bbE\3\2\2\2\u01bc\u01bd\5*\26\2\u01bd\u01be"+
-		"\7E\2\2\u01be\u01bf\5H%\2\u01bf\u01c0\5.\30\2\u01c0G\3\2\2\2\u01c1\u01c3"+
-		"\7\4\2\2\u01c2\u01c4\5J&\2\u01c3\u01c2\3\2\2\2\u01c3\u01c4\3\2\2\2\u01c4"+
-		"\u01c5\3\2\2\2\u01c5\u01c6\7\5\2\2\u01c6I\3\2\2\2\u01c7\u01cc\5L\'\2\u01c8"+
-		"\u01c9\7!\2\2\u01c9\u01cb\5L\'\2\u01ca\u01c8\3\2\2\2\u01cb\u01ce\3\2\2"+
-		"\2\u01cc\u01ca\3\2\2\2\u01cc\u01cd\3\2\2\2\u01cdK\3\2\2\2\u01ce\u01cc"+
-		"\3\2\2\2\u01cf\u01d0\5*\26\2\u01d0\u01d1\5V,\2\u01d1M\3\2\2\2\u01d2\u01d3"+
-		"\5P)\2\u01d3\u01d4\7 \2\2\u01d4O\3\2\2\2\u01d5\u01d6\5*\26\2\u01d6\u01d7"+
-		"\5R*\2\u01d7Q\3\2\2\2\u01d8\u01dd\5T+\2\u01d9\u01da\7!\2\2\u01da\u01dc"+
-		"\5T+\2\u01db\u01d9\3\2\2\2\u01dc\u01df\3\2\2\2\u01dd\u01db\3\2\2\2\u01dd"+
-		"\u01de\3\2\2\2\u01deS\3\2\2\2\u01df\u01dd\3\2\2\2\u01e0\u01e3\5V,\2\u01e1"+
-		"\u01e2\7\"\2\2\u01e2\u01e4\5&\24\2\u01e3\u01e1\3\2\2\2\u01e3\u01e4\3\2"+
-		"\2\2\u01e4U\3\2\2\2\u01e5\u01e6\7E\2\2\u01e6W\3\2\2\2\u01e7\u01ec\5V,"+
-		"\2\u01e8\u01e9\7!\2\2\u01e9\u01eb\5V,\2\u01ea\u01e8\3\2\2\2\u01eb\u01ee"+
-		"\3\2\2\2\u01ec\u01ea\3\2\2\2\u01ec\u01ed\3\2\2\2\u01edY\3\2\2\2\u01ee"+
-		"\u01ec\3\2\2\2\u01ef\u01f3\7A\2\2\u01f0\u01f3\7@\2\2\u01f1\u01f3\7\67"+
-		"\2\2\u01f2\u01ef\3\2\2\2\u01f2\u01f0\3\2\2\2\u01f2\u01f1\3\2\2\2\u01f3"+
-		"[\3\2\2\2\u01f4\u01f5\7E\2\2\u01f5]\3\2\2\2\60er|~\u0090\u00a0\u00a2\u00ae"+
+		"A\3\2\2\2\u01b6\u01b9\5D#\2\u01b7\u01b9\5F$\2\u01b8\u01b6\3\2\2\2\u01b8"+
+		"\u01b7\3\2\2\2\u01b9C\3\2\2\2\u01ba\u01bb\5*\26\2\u01bb\u01bc\5X-\2\u01bc"+
+		"\u01bd\7 \2\2\u01bdE\3\2\2\2\u01be\u01bf\5*\26\2\u01bf\u01c0\7E\2\2\u01c0"+
+		"\u01c1\5H%\2\u01c1\u01c2\5.\30\2\u01c2G\3\2\2\2\u01c3\u01c5\7\4\2\2\u01c4"+
+		"\u01c6\5J&\2\u01c5\u01c4\3\2\2\2\u01c5\u01c6\3\2\2\2\u01c6\u01c7\3\2\2"+
+		"\2\u01c7\u01c8\7\5\2\2\u01c8I\3\2\2\2\u01c9\u01ce\5L\'\2\u01ca\u01cb\7"+
+		"!\2\2\u01cb\u01cd\5L\'\2\u01cc\u01ca\3\2\2\2\u01cd\u01d0\3\2\2\2\u01ce"+
+		"\u01cc\3\2\2\2\u01ce\u01cf\3\2\2\2\u01cfK\3\2\2\2\u01d0\u01ce\3\2\2\2"+
+		"\u01d1\u01d2\5*\26\2\u01d2\u01d3\5V,\2\u01d3M\3\2\2\2\u01d4\u01d5\5P)"+
+		"\2\u01d5\u01d6\7 \2\2\u01d6O\3\2\2\2\u01d7\u01d8\5*\26\2\u01d8\u01d9\5"+
+		"R*\2\u01d9Q\3\2\2\2\u01da\u01df\5T+\2\u01db\u01dc\7!\2\2\u01dc\u01de\5"+
+		"T+\2\u01dd\u01db\3\2\2\2\u01de\u01e1\3\2\2\2\u01df\u01dd\3\2\2\2\u01df"+
+		"\u01e0\3\2\2\2\u01e0S\3\2\2\2\u01e1\u01df\3\2\2\2\u01e2\u01e5\5V,\2\u01e3"+
+		"\u01e4\7\"\2\2\u01e4\u01e6\5&\24\2\u01e5\u01e3\3\2\2\2\u01e5\u01e6\3\2"+
+		"\2\2\u01e6U\3\2\2\2\u01e7\u01e8\7E\2\2\u01e8W\3\2\2\2\u01e9\u01ee\5V,"+
+		"\2\u01ea\u01eb\7!\2\2\u01eb\u01ed\5V,\2\u01ec\u01ea\3\2\2\2\u01ed\u01f0"+
+		"\3\2\2\2\u01ee\u01ec\3\2\2\2\u01ee\u01ef\3\2\2\2\u01efY\3\2\2\2\u01f0"+
+		"\u01ee\3\2\2\2\u01f1\u01f5\7A\2\2\u01f2\u01f5\7@\2\2\u01f3\u01f5\7\67"+
+		"\2\2\u01f4\u01f1\3\2\2\2\u01f4\u01f2\3\2\2\2\u01f4\u01f3\3\2\2\2\u01f5"+
+		"[\3\2\2\2\u01f6\u01f7\7E\2\2\u01f7]\3\2\2\2\61er|~\u0090\u00a0\u00a2\u00ae"+
 		"\u00b0\u00bc\u00be\u00d0\u00d2\u00de\u00e0\u00eb\u00f6\u0101\u010c\u0117"+
 		"\u0121\u012d\u0135\u013a\u013f\u0145\u014c\u0153\u015e\u016b\u0170\u0174"+
-		"\u0178\u0184\u018c\u0192\u019d\u01a3\u01ad\u01b4\u01c3\u01cc\u01dd\u01e3"+
-		"\u01ec\u01f2";
+		"\u0178\u0184\u018c\u0192\u019d\u01a3\u01ad\u01b4\u01b8\u01c5\u01ce\u01df"+
+		"\u01e5\u01ee\u01f4";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

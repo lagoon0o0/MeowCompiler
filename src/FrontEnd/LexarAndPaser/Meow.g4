@@ -160,7 +160,8 @@ classBodyDeclaration
     | memberDeclaration             #classBodyDeclarationMember
     ;
 memberDeclaration
-    : fieldDeclaration
+    : fieldDeclaration              #memberDeclarationfield
+    | functionDeclaration           #memberDeclarationfunction
     ;
 fieldDeclaration
     : typeName variableDeclaratorIDList ';'

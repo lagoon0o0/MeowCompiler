@@ -1,4 +1,4 @@
-// Generated from Meow.g4 by ANTLR 4.5
+// Generated from /Users/lagoon0o0/Documents/Compiler/MeowCompiler/src/FrontEnd/LexarAndPaser/Meow.g4 by ANTLR 4.5.1
 package FrontEnd.LexarAndPaser;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -11,7 +11,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class MeowLexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.5", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =

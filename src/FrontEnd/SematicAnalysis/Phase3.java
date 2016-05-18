@@ -8,7 +8,6 @@ import AST.TranslationUnit.ClassDeclaration;
 import AST.TranslationUnit.FunctionDeclaration;
 import AST.TypeNode.*;
 import SymbolTable.*;
-import org.stringtemplate.v4.ST;
 
 /**
  * Created by lagoon0o0 on 16/4/3.
@@ -180,7 +179,7 @@ public class Phase3 extends SemanticChecker{
         visit(ctx.parent);
         if(ctx.parent.type instanceof Scope) {
             Symbol symbol = ((Scope) ctx.parent.type).resolve(ctx.child);
-            if(symbol == null) {
+            if(symbol == null || symbol instanceof FunctionSymbol) {
                 if(ctx.parent.type instanceof ArrayType)
                     symbol = ((Scope) ctx.parent.type).resolve("_array"+ "." + ctx.child);
                 else

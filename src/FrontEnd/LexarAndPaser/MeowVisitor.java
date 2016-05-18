@@ -599,11 +599,19 @@ public interface MeowVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitClassBodyDeclarationMember(MeowParser.ClassBodyDeclarationMemberContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MeowParser#memberDeclaration}.
+	 * Visit a parse tree produced by the {@code memberDeclarationfield}
+	 * labeled alternative in {@link MeowParser#memberDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMemberDeclaration(MeowParser.MemberDeclarationContext ctx);
+	T visitMemberDeclarationfield(MeowParser.MemberDeclarationfieldContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code memberDeclarationfunction}
+	 * labeled alternative in {@link MeowParser#memberDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMemberDeclarationfunction(MeowParser.MemberDeclarationfunctionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MeowParser#fieldDeclaration}.
 	 * @param ctx the parse tree

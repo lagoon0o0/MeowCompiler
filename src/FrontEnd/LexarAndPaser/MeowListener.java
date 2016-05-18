@@ -1,6 +1,5 @@
-// Generated from Meow.g4 by ANTLR 4.5
+// Generated from /Users/lagoon0o0/Documents/Compiler/MeowCompiler/src/FrontEnd/LexarAndPaser/Meow.g4 by ANTLR 4.5.1
 package FrontEnd.LexarAndPaser;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -1015,15 +1014,29 @@ public interface MeowListener extends ParseTreeListener {
 	 */
 	void exitClassBodyDeclarationMember(MeowParser.ClassBodyDeclarationMemberContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link MeowParser#memberDeclaration}.
+	 * Enter a parse tree produced by the {@code memberDeclarationfield}
+	 * labeled alternative in {@link MeowParser#memberDeclaration}.
 	 * @param ctx the parse tree
 	 */
-	void enterMemberDeclaration(MeowParser.MemberDeclarationContext ctx);
+	void enterMemberDeclarationfield(MeowParser.MemberDeclarationfieldContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link MeowParser#memberDeclaration}.
+	 * Exit a parse tree produced by the {@code memberDeclarationfield}
+	 * labeled alternative in {@link MeowParser#memberDeclaration}.
 	 * @param ctx the parse tree
 	 */
-	void exitMemberDeclaration(MeowParser.MemberDeclarationContext ctx);
+	void exitMemberDeclarationfield(MeowParser.MemberDeclarationfieldContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code memberDeclarationfunction}
+	 * labeled alternative in {@link MeowParser#memberDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterMemberDeclarationfunction(MeowParser.MemberDeclarationfunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code memberDeclarationfunction}
+	 * labeled alternative in {@link MeowParser#memberDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitMemberDeclarationfunction(MeowParser.MemberDeclarationfunctionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MeowParser#fieldDeclaration}.
 	 * @param ctx the parse tree

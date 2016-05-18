@@ -87,6 +87,11 @@ public class ASTPrinter implements Visitor {
         for(int i = 0; i < ctx.fieldList.size(); ++i) {
             visit(ctx.fieldList.get(i));
         }
+
+        print("methodList:");
+        for(int i = 0; i < ctx.methodList.size(); ++i) {
+            visit(ctx.methodList.get(i));
+        }
         depth--;
     }
 

@@ -612,7 +612,14 @@ public class MeowBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements M
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMemberDeclaration(MeowParser.MemberDeclarationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMemberDeclarationfield(MeowParser.MemberDeclarationfieldContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitMemberDeclarationfunction(MeowParser.MemberDeclarationfunctionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

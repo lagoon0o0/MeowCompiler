@@ -5,6 +5,7 @@ import FrontEnd.VisitorAST.Visitor;
 import AST.Expression.IdentifierExpression;
 import SymbolTable.Scope;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
 public class ClassDeclaration extends TranslationUnit {
     public String id;
     public Scope scope;
-    public List<VariableDeclarationStatement> fieldList;
+    public List<VariableDeclarationStatement> fieldList = new ArrayList<>();
+    public List<FunctionDeclaration> methodList = new ArrayList<>();
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

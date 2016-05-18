@@ -13,7 +13,7 @@ import AST.TypeNode.*;
 
 import java.util.*;
 
-public class MeowASTListener extends MeowBaseListener {
+public class MeowASTListener extends MeowBaseListener{
     public ParseTreeProperty<Object> values = new ParseTreeProperty<>();
     public AstNode astRoot;
     //
@@ -875,7 +875,8 @@ public class MeowASTListener extends MeowBaseListener {
                 row = ctx.getStart().getLine();
                 column = ctx.getStart().getCharPositionInLine();
                 id = ctx.Identifier().getText();
-                fieldList = (ArrayList<VariableDeclarationStatement>) values.get(ctx.classBody());
+                ((List)values.get(ctx.classBody())).stream().filter(x -> x instanceof FunctionDeclaration).forEachOrdered(x->methodList.add((FunctionDeclaration)x));
+                ((List)values.get(ctx.classBody())).stream().filter(x -> x instanceof VariableDeclarationStatement).forEachOrdered(x->fieldList.add((VariableDeclarationStatement)x));
             }
 
         });
@@ -883,9 +884,16 @@ public class MeowASTListener extends MeowBaseListener {
 
     @Override
     public void exitClassBody(MeowParser.ClassBodyContext ctx) {
-        List<VariableDeclarationStatement> cur = new ArrayList<>();
+        List<Object> cur = new ArrayList<>();
         values.put(ctx, cur);
-        ctx.classBodyDeclaration().stream().map(values::get).forEachOrdered(x -> cur.addAll((List<VariableDeclarationStatement>)x));
+        for (MeowParser.ClassBodyDeclarationContext x : ctx.classBodyDeclaration()) {
+            Object val = values.get(x);
+            if(val instanceof FunctionDeclaration) {
+                cur.add(val);
+            } else if(val instanceof List){
+                cur.addAll((List)val);
+            }
+        }
     }
     @Override
     public void exitClassBodyDeclarationEmpty(MeowParser.ClassBodyDeclarationEmptyContext ctx) {
@@ -899,9 +907,15 @@ public class MeowASTListener extends MeowBaseListener {
     }
 
     @Override
-    public void exitMemberDeclaration(MeowParser.MemberDeclarationContext ctx) {
-        values.put(ctx, values.get(ctx.fieldDeclaration()));
+    public void exitMemberDeclarationfield(MeowParser.MemberDeclarationfieldContext ctx) {
+        values.put(ctx,values.get(ctx.fieldDeclaration()));
     }
+
+    @Override
+    public void exitMemberDeclarationfunction(MeowParser.MemberDeclarationfunctionContext ctx) {
+        values.put(ctx,values.get(ctx.functionDeclaration()));
+    }
+
 
     @Override
     public void exitFieldDeclaration(MeowParser.FieldDeclarationContext ctx) {
