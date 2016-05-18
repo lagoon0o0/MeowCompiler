@@ -23,8 +23,11 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         boolean CISC = false;
-        InputStream is = new FileInputStream("sample/sample0.mx"); // or System.in;
-        PrintStream srcfile = new PrintStream(new FileOutputStream("out/src.s"));
+
+        InputStream is = System.in;
+        PrintStream srcfile = System.out;
+        //InputStream is = new FileInputStream("sample/sample0.mx"); // or System.in;
+        //PrintStream srcfile = new PrintStream(new FileOutputStream("out/src.s"));
         PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
 
         //InputStream is = System.in;
