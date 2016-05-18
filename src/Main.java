@@ -171,7 +171,7 @@ public class Main {
         // for final test
         InputStream is = System.in;
         PrintStream srcfile = System.out;
-        PrintStream debug = new PrintStream(new FileOutputStream("out/main_bug.R"));
+        PrintStream debug = System.err;
         ByteArrayOutputStream mySrcTextOut = new ByteArrayOutputStream();
         PrintStream mySrcPrint = new PrintStream(mySrcTextOut);
 
